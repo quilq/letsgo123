@@ -5,4 +5,4 @@
 
 2. Run Angular app in another terminal: `ng serve --proxy-config proxy.config.json`
 
-3. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+3. Open browser. Navigate to `http://localhost:4200/`.
