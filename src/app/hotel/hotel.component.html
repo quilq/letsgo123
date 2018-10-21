@@ -1,4 +1,10 @@
+<div>
+  <input type="text" placeholder="Search by places">
+  <button>Search</button>
+</div>
+<hr>
 <div>All Hotels</div>
 <ul *ngFor="let hotel of hotels">
-  <li>{{hotel.name}} | {{ hotel.address.city }}</li>
+  <li>Hotel{{hotel.name}} | {{ hotel.address.city }}, {{hotel.address.country}}</li> 
+  <button routerLink="/user/booking"> Book Hotel{{hotel.name}} </button>
 </ul>
