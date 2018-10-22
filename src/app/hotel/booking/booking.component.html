@@ -1,0 +1,8 @@
+<button routerLink="/">Home</button>
+
+<div>All Bookings</div>
+
+<ul *ngFor="let booking of bookings$ | async"> 
+  <li>{{booking.hotel.name}} | {{booking.hotel.rating}} </li>
+  <button (click)="removeHotel(booking)">Remove this booking</button>
+</ul>

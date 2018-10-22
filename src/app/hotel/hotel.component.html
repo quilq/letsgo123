@@ -4,7 +4,16 @@
 </div>
 <hr>
 <div>All Hotels</div>
-<ul *ngFor="let hotel of hotels">
+<ul *ngFor="let hotel of hotels; let i = index">
   <li>Hotel{{hotel.name}} | {{ hotel.address.city }}, {{hotel.address.country}}</li> 
-  <button routerLink="/user/booking"> Book Hotel{{hotel.name}} </button>
+  <button (click)="bookHotel(hotel)"> Book Hotel{{hotel.name}} </button>
 </ul>
+
+<hr>
+
+<div>All Bookings</div>
+<ul *ngFor="let booking of bookings$ | async"> 
+  <li>{{booking.hotel.name}} | {{booking.hotel.rating}}</li>
+</ul>
+
+<button routerLink="/booking">Check booking</button>

@@ -9,7 +9,7 @@ export class HotelService {
 
   constructor(private httpClient: HttpClient) { }
 
-  findHotels(skip: number = 0, limit: number = 10){
+  findHotels(skip: number = 0, limit: number = 5){
     let url = `/api/${skip}/${limit}`;
     return this.httpClient.get<Hotel[]>(url);
   }
