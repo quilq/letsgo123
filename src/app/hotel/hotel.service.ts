@@ -13,4 +13,8 @@ export class HotelService {
     let url = `/api/${skip}/${limit}`;
     return this.httpClient.get<Hotel[]>(url);
   }
+
+  // createHotels(){
+  //   return this.httpClient.post('/api/new', {});
+  // }
 }

@@ -25,11 +25,9 @@ export class Hotel {
     rooms: [{
         roomNumber: number,
         availableDate: [Date],
-        roomDetails: {
-            bedType: BedType,
-            view: RoomView,
-            size: number,  //meter square
-        }
+        bedType: BedType,
+        view: RoomView,
+        size: number,  //meter square
     }];
     roomType: [{
         bedType: BedType,

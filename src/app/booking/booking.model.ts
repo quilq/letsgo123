@@ -1,4 +1,4 @@
-import { Hotel } from '../../hotel/hotel.model';
+import { Hotel } from '../hotel/hotel.model';
 
 export interface Booking {
     hotel: Hotel,

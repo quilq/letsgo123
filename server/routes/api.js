@@ -48,9 +48,9 @@ router.get('/price/:price', (req, res) => {
 
 router.post('/new', (req, res) => {
 
-    let randomNumber = Math.floor((Math.random()*100) + 1);
-    randomCharacter1 = String.fromCharCode(Math.floor((Math.random()*25) + 65)),
-    randomCharacter2 = String.fromCharCode(Math.floor((Math.random()*25) + 65));
+    let randomNumber = Math.floor((Math.random() * 100) + 1);
+    randomCharacter1 = String.fromCharCode(Math.floor((Math.random() * 25) + 65)),
+        randomCharacter2 = String.fromCharCode(Math.floor((Math.random() * 25) + 65));
 
     const newHotel = new Hotel({
         name: `${randomCharacter1}${randomCharacter2}-${randomNumber}`,
@@ -58,19 +58,13 @@ router.post('/new', (req, res) => {
             city: 'Ho Chi Minh',
             country: 'Vietnam'
         },
-        rating: Math.floor((Math.random()*2) + 3),
+        rating: Math.floor((Math.random() * 2) + 3),
         rooms: [{
-            roomNumber: Math.floor((Math.random()*899) + 100),
-            availableDate: [
-                (new Date()).setFullYear(2018, 10, 22), 
-                (new Date()).setFullYear(2018, 10, 23), 
-                (new Date()).setFullYear(2018, 10, 24)
-            ],
-            roomDetails: {
-                bedType: 'double',
-                view: 'city',
-                size: 20,  //meter square
-            }
+            roomNumber: Math.floor((Math.random() * 899) + 100),
+            availableDate: [new Date()],
+            bedType: 'double',
+            view: 'city',
+            size: 20,  //meter square
         }],
         roomType: [{
             bedType: 'double',
@@ -86,7 +80,7 @@ router.post('/new', (req, res) => {
         };
     })
 
-    res.send('New hotels created');
+    console.log('New hotels created');
 })
 
 module.exports = router;

@@ -1,0 +1,4 @@
+.all-bookings{
+    display: flex;
+    flex-direction: row;
+}

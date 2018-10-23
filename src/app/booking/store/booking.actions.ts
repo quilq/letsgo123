@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Booking } from './booking.models';
+import { Booking } from './../booking.model';
 
 export const BOOK_HOTEL = 'BOOK_HOTEL';
 export const REMOVE_HOTEL = 'REMOVE_HOTEL';

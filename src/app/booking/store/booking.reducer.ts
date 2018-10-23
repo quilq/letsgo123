@@ -1,5 +1,4 @@
-import { Booking } from './booking.models';
-import { Hotel } from '../../hotel/hotel.model';
+import { Booking } from '../booking.model';
 import * as BookingActions from './booking.actions';
 
 // const initialState: Booking = {

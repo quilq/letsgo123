@@ -4,9 +4,11 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { HotelService } from './hotel.service';
-import { BookingState } from './store/booking.reducer';
-import { Booking } from './store/booking.models';
-import * as BookingActions from './store/booking.actions';
+import { BookingState } from '../booking/store/booking.reducer';
+import { Booking } from '../booking/booking.model';
+import * as BookingActions from '../booking/store/booking.actions';
+import * as HotelActions from './store/hotel.action';
+import { HotelsState } from './store/hotel.reducer';
 
 @Component({
   selector: 'app-hotel',
@@ -16,22 +18,31 @@ import * as BookingActions from './store/booking.actions';
 
 export class HotelComponent implements OnInit {
 
-  hotels: Hotel[];
+  hotels$: Observable<Hotel[]>;
+  hotels;
   bookings$: Observable<Booking[]>;
 
-  constructor(private hotelService: HotelService,
-    private store: Store<BookingState>) {
-    this.bookings$ = store.select('booking');
+  constructor(private bookingStore: Store<BookingState>,
+    private hotelStore: Store<HotelsState>) {
+    this.hotels$ = hotelStore.select('hotels');
+    this.bookings$ = bookingStore.select('booking');
   }
 
+  //TODO: convert array of array
+  
   ngOnInit() {
-    this.hotelService.findHotels().subscribe((hotels: Hotel[]) => {
-      this.hotels = hotels;
-    })
+    this.hotelStore.dispatch(new HotelActions.OnGetHotels());
+    this.hotels$.subscribe (hotels => {
+      this.hotels = hotels[0];
+    });
   }
 
   bookHotel(hotel: Hotel) {
     let dates = [new Date()];
-    this.store.dispatch(new BookingActions.BookHotel({ hotel: hotel, dates: dates }))
+    this.bookingStore.dispatch(new BookingActions.BookHotel({ hotel: hotel, dates: dates }));
   }
+
+  // createHotels(){
+  //   this.hotelService.createHotels().subscribe();
+  // }
 }

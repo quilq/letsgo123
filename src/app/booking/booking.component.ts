@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { Booking } from './../store/booking.models';
-import { BookingState } from './../store/booking.reducer';
-import { Hotel } from './../hotel.model';
-import * as BookingActions from './../store/booking.actions';
+import { Booking } from './booking.model';
+import { BookingState } from './store/booking.reducer';
+import * as BookingActions from './store/booking.actions';
 
 @Component({
   selector: 'app-booking',
@@ -22,7 +21,7 @@ export class BookingComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
   removeHotel(number: number) {
     this.store.dispatch(new BookingActions.RemoveHotel(number));
   }

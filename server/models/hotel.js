@@ -10,11 +10,9 @@ const hotelSchema = new mongoose.Schema({
     rooms: [{
         roomNumber: Number,
         availableDate: [Date],
-        roomDetails: {
-            bedType: String,
-            view: String,
-            size: Number,
-        }
+        bedType: String,
+        view: String,
+        size: Number
     }],
     roomType: [{
         bedType: String,
