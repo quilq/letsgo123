@@ -16,8 +16,8 @@ export function bookingReducer(state: Booking[] = [], action: BookingActions.Act
             return [...state, action.payload];
 
         case BookingActions.REMOVE_HOTEL:
-            state.splice(action.payload, 1);
-            return state;
+        //Use slice instead of splice
+            return [...state.slice(0, action.payload), ...state.slice(action.payload + 1)];
 
         default:
             return state;

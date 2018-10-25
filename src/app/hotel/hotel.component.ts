@@ -3,7 +3,6 @@ import { Hotel } from './hotel.model';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { HotelService } from './hotel.service';
 import { BookingState } from '../booking/store/booking.reducer';
 import { Booking } from '../booking/booking.model';
 import * as BookingActions from '../booking/store/booking.actions';
@@ -19,7 +18,7 @@ import { HotelsState } from './store/hotel.reducer';
 export class HotelComponent implements OnInit {
 
   hotels$: Observable<Hotel[]>;
-  hotels;
+  // hotels;
   bookings$: Observable<Booking[]>;
 
   constructor(private bookingStore: Store<BookingState>,
@@ -32,9 +31,9 @@ export class HotelComponent implements OnInit {
   
   ngOnInit() {
     this.hotelStore.dispatch(new HotelActions.OnGetHotels());
-    this.hotels$.subscribe (hotels => {
-      this.hotels = hotels[0];
-    });
+    // this.hotels$.subscribe (hotels => {
+    //   this.hotels = hotels[0];
+    // });
   }
 
   bookHotel(hotel: Hotel) {
@@ -45,4 +44,8 @@ export class HotelComponent implements OnInit {
   // createHotels(){
   //   this.hotelService.createHotels().subscribe();
   // }
+
+  loadMoreHotels(){
+    this.hotelStore.dispatch(new HotelActions.OnGetHotels({skip: 5, limit: 5}));
+  }
 }

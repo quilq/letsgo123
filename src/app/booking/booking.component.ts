@@ -13,9 +13,9 @@ import * as BookingActions from './store/booking.actions';
 })
 export class BookingComponent implements OnInit {
 
-  bookings$: Observable<Booking[]>;
+  bookings$: Observable<BookingState[]>;
 
-  constructor(private store: Store<BookingState>) {
+  constructor(private store: Store<BookingState[]>) {
     this.bookings$ = store.select('booking');
   }
 

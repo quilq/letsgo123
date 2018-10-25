@@ -2,7 +2,7 @@
 
 <div>All Bookings</div>
 
-<ul *ngFor="let booking of bookings$ | async"> 
+<ul *ngFor="let booking of bookings$ | async ; let i = index"> 
   <li>{{booking.hotel.name}} | {{booking.hotel.rating}} </li>
-  <button (click)="removeHotel(booking)">Remove this booking</button>
+  <button (click)="removeHotel(i)">Remove this booking</button>
 </ul>

@@ -19,6 +19,7 @@ export class Address {
 }
 
 export class Hotel {
+    _id?: string;
     name: string;
     address: Address;
     rating: number;

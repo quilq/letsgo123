@@ -6,10 +6,11 @@
 <div class="all-bookings">
   <div>
     <div>All Hotels</div>
-    <ul *ngFor="let hotel of hotels">
+    <ul *ngFor="let hotel of hotels$ | async">
       <li>Hotel {{hotel.name}} | {{ hotel.address.city }}, {{hotel.address.country}}</li> 
       <button (click)="bookHotel(hotel)"> Book Hotel{{hotel.name}} </button>
     </ul>
+    <button (click)="loadMoreHotels()">Load more hotels</button>
   </div>
   
   <div>

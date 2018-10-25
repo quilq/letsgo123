@@ -6,6 +6,7 @@ export const GET_HOTELS = 'GET_HOTELS';
 
 export class OnGetHotels implements Action {
     readonly type = ON_GET_HOTELS;
+    constructor(public payload?: {skip?: number, limit?: number}){};
 };
 
 export class GetHotels implements Action {

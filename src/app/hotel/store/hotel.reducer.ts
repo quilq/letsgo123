@@ -8,7 +8,20 @@ export interface HotelsState {
 export function hotelReducer(state: Hotel[] = [], action: HotelActions.Actions) {
     switch (action.type) {
         case HotelActions.GET_HOTELS:
-            return [...state, action.payload];
+            let newHotels: Hotel[] = [],
+                newHotelIDs: string[] = [];
+
+            state.forEach(hotel => {
+                newHotelIDs.push(hotel._id);
+            });
+
+            action.payload.forEach(hotel => {
+                if (!newHotelIDs.includes(hotel._id)) {
+                    newHotelIDs.push(hotel._id);
+                    newHotels.push(hotel);
+                }
+            });
+            return [...state, ...newHotels];
 
         default:
             return state;

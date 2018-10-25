@@ -26,6 +26,7 @@ hotelSchema.statics.findHotel = function (req, res) {
     const Hotel = this,
         skip = parseInt(req.params.skip),
         limit = parseInt(req.params.limit);
+        console.log('skip & limit: ', skip,'  ', limit)
 
     Hotel.find({}, null, { skip: skip, limit: limit }, (err, doc) => {
         if (err) {
