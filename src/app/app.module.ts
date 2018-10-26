@@ -17,6 +17,7 @@ import { HotelEffects } from './hotel/store/hotel.effect';
 import { hotelReducer } from './hotel/store/hotel.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environemnt
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { environment } from '../environments/environment'; // Angular CLI enviro
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    MaterialModule,
     StoreModule.forRoot({
       booking: bookingReducer,
       hotels: hotelReducer

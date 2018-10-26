@@ -26,8 +26,6 @@ export class HotelComponent implements OnInit {
     this.hotels$ = hotelStore.select('hotels');
     this.bookings$ = bookingStore.select('booking');
   }
-
-  //TODO: convert array of array
   
   ngOnInit() {
     this.hotelStore.dispatch(new HotelActions.OnGetHotels());
