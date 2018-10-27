@@ -23,24 +23,36 @@ router.get('/price/:price', (req, res) => {
     Hotel.findHotelByPrice(req, res);
 })
 
-//[Admin] Add hotels
-
-//[Admin] Delte hotels
-
-//[Admin] Update hotels
-
-
 //[User] Sign up
+router.post('/user/signup', (req, res)=>{
+
+})
 
 //[User] Sign in
+router.post('/user/signin', (req, res)=>{
+
+})
 
 //[User] Sign out
+router.delete('/user/signout', (req, res)=>{
+
+})
+
+//[User] Get user info
+router.get('/user/me', (req, res)=>{
+
+})
 
 //[User] Update user info
 
 //[User] Delete user info
 
-//[User] Find user info
+
+//[Admin] Add hotels
+
+//[Admin] Delte hotels
+
+//[Admin] Update hotels
 
 
 //---------------------------------------------

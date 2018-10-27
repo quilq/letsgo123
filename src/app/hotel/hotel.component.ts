@@ -18,8 +18,8 @@ import { HotelsState } from './store/hotel.reducer';
 export class HotelComponent implements OnInit {
 
   hotels$: Observable<Hotel[]>;
-  // hotels;
   bookings$: Observable<Booking[]>;
+  hotels: Hotel[] = [];
 
   constructor(private bookingStore: Store<BookingState>,
     private hotelStore: Store<HotelsState>) {
@@ -29,9 +29,9 @@ export class HotelComponent implements OnInit {
   
   ngOnInit() {
     this.hotelStore.dispatch(new HotelActions.OnGetHotels());
-    // this.hotels$.subscribe (hotels => {
-    //   this.hotels = hotels[0];
-    // });
+    this.hotels$.subscribe (hotels => {
+      this.hotels = hotels;
+    });
   }
 
   bookHotel(hotel: Hotel) {
@@ -44,6 +44,6 @@ export class HotelComponent implements OnInit {
   // }
 
   loadMoreHotels(){
-    this.hotelStore.dispatch(new HotelActions.OnGetHotels({skip: 5, limit: 5}));
+    this.hotelStore.dispatch(new HotelActions.OnGetHotels({skip: this.hotels.length, limit: 5}));
   }
 }

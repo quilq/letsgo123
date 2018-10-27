@@ -30,16 +30,65 @@ const userSchema = new mongoose.Schema({
 });
 
 //Hash password before saving
+userSchema.pre('save', function (next) {
+    let user = this;
+    if (user.isModified('password')) {
+        bcrypt.genSalt(12, (err, salt) => {
+            bcrypt.hash(user.password, salt, (err, hash) => {
+                user.password = hash;
+                next();
+            })
+        })
+    } else {
+        next();
+    }
+})
+
+//Check hashed password when user logged in (Use statics method for model)
+userSchema.statics.findUserByCredentials = function (emai, password) {
+    let User = this;
+
+    return User.findOne({email}).then(user => {
+        if (!user){
+            return Promise.reject();
+        }
+        return new Promise((result, reject)=>{
+            bcrypt.compare(password, user.password, (err, result)=>{
+                if (result){
+                    resolve(user);
+                } else {
+                    reject(user);
+                }
+            });
+        });
+    });
+}
 
 
-//Check hashed password when user logged in
-
-
-//Generate auth jwt
-
+//Generate auth jwt with document method (instance method)
+userSchema.methods.generateAuthToken = function(){
+    let user = this;
+    let token = jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '1d'}, (err, token)=>{
+        console.log('token', token);
+    });
+    return Promise.resolve(token);
+}
 
 //Verify jwt
+userSchema.methods.findByToken = function(token){
+    let user = this;
+    let decoded;
 
+    try {
+        decoded = jwt.verify(token, process.env.JWT_SECRET);
+    } catch (error) {
+        return Promise.reject(error);        
+    }
+
+    return user.findOne({
+        _id: decoded._id
+    });
+}
 
 const User = mongoose.model('User', userSchema);
 
