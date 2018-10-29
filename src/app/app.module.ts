@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { StoreModule } from '@ngrx/store';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -33,6 +34,7 @@ import { MaterialModule } from './material/material.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FlexLayoutModule,
     MaterialModule,
     StoreModule.forRoot({
       booking: bookingReducer,
