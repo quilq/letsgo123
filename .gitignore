@@ -3,6 +3,9 @@
 # config files
 server/config/config.json
 
+# Assets
+src/assets
+
 # compiled output
 /dist
 /tmp

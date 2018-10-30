@@ -1,51 +1,25 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-  <form>
-    <mat-form-field>
-      <input matInput placeholder="Where do you want to go?">
-    </mat-form-field>
-  </form>
-  <form>
-    <mat-form-field>
-      <input matInput [matDatepicker]="checkin" placeholder="Check in date">
-      <mat-datepicker-toggle matSuffix [for]="checkin"></mat-datepicker-toggle>
-      <mat-datepicker #checkin></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput [matDatepicker]="checkout" placeholder="Check out date">
-      <mat-datepicker-toggle matSuffix [for]="checkout"></mat-datepicker-toggle>
-      <mat-datepicker #checkout></mat-datepicker>
-    </mat-form-field>
-  </form>
-  <form>
-    <mat-form-field>
-      <mat-select placeholder="Number of rooms | guests">
-        <mat-option >1 guest | 1 room</mat-option>
-        <mat-option >2 guest | 1 room</mat-option>
-        <mat-option >2 guest | 2 room</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </form>
+<div fxLayout="row">
+  <div fxFlexAlign="start" fxFlex="30">
+    Search criteria
+  </div>
+  <div fxLayout="column" fxFlex="70">
+    <mat-card *ngFor="let hotel of hotels$ | async">
+        <mat-card-header>
+          <mat-card-title>Hotel  {{hotel.name}} </mat-card-title>
+          <mat-card-subtitle>Rating</mat-card-subtitle>
+        </mat-card-header>
+        <img src="." alt="Photo of hotel {{hotel.name}}">
+        <mat-card-content>
+          Review
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="bookHotel(hotel)"> Book Hotel {{hotel.name}} </button>
+        </mat-card-actions>
+      </mat-card>
+    <button mat-button (click)="loadMoreHotels()">Load more hotels</button>
+  </div>
 </div>
 
-<div class="all-bookings">
-  <div>
-    <div>All Hotels</div>
-    <ul *ngFor="let hotel of hotels$ | async">
-      <li>Hotel {{hotel.name}} | {{ hotel.address.city }}, {{hotel.address.country}}</li>
-      <button (click)="bookHotel(hotel)"> Book Hotel{{hotel.name}} </button>
-    </ul>
-    <button (click)="loadMoreHotels()">Load more hotels</button>
-  </div>
 
-  <div>
-    <div>All Bookings</div>
-    <button mat-raised-button routerLink="/booking">Check booking</button>
-    <ul *ngFor="let booking of bookings$ | async">
-      <li>{{booking.hotel.name}} | {{booking.hotel.rating}}</li>
-    </ul>
-  </div>
-
-</div>
 
 <!-- <button (click)="createHotels()">Create Hotel</button> -->
-

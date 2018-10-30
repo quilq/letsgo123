@@ -18,13 +18,11 @@ import { HotelsState } from './store/hotel.reducer';
 export class HotelComponent implements OnInit {
 
   hotels$: Observable<Hotel[]>;
-  bookings$: Observable<Booking[]>;
   hotels: Hotel[] = [];
 
   constructor(private bookingStore: Store<BookingState>,
     private hotelStore: Store<HotelsState>) {
     this.hotels$ = hotelStore.select('hotels');
-    this.bookings$ = bookingStore.select('booking');
   }
   
   ngOnInit() {

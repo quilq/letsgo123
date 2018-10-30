@@ -8,19 +8,20 @@
         <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
             <div fxLayout="row" fxLayoutAlign="start center">
                 <button mat-button (click)="sidenav.toggle()">Toggle</button>
-                <div> letsgo123.xyz | </div>
+                <div routerLink="/"> letsgo123.xyz | </div>
                 <div> Explore | </div>
                 <div> Today's deal </div>
             </div>
             <div fxLayout="row" fxLayoutAlign="end center">
-                <div> Sign in | </div>
-                <div> Create account </div>
+                <div routerLink="/user"> Sign in | </div>
+                <div routerLink="/user"> Create account </div>
             </div>
         </mat-toolbar>
-        <button routerLink="/user">User page</button>
-        <hr>
-        <app-hotel></app-hotel>
-        <hr>
-        <div>Footer</div>
+
+        <router-outlet></router-outlet>
+
+        <mat-toolbar fxLayout="row" fxLayoutAlign="end center">
+            <div>Test site</div>
+        </mat-toolbar>
     </mat-sidenav-content>
 </mat-sidenav-container>

@@ -19,6 +19,7 @@ import { hotelReducer } from './hotel/store/hotel.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environemnt
 import { MaterialModule } from './material/material.module';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MaterialModule } from './material/material.module';
     HotelComponent,
     BookingComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
