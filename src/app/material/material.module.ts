@@ -8,7 +8,10 @@ import {
   MatDatepickerModule,
   MatSelectModule,
   MatCardModule,
-  MatListModule
+  MatListModule,
+  MatRadioModule,
+  MatCheckboxModule,
+  MatDividerModule
 }
   from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -26,7 +29,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatMomentDateModule,
     MatSelectModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatDividerModule
   ],
   exports: [
     MatIconModule,
@@ -37,7 +43,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDatepickerModule,
     MatSelectModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatDividerModule
   ]
 })
 export class MaterialModule { }

@@ -1,11 +1,31 @@
-<div fxLayout="row">
-  <div fxFlexAlign="start" fxFlex="30">
-    Search criteria
-  </div>
-  <div fxLayout="column" fxFlex="70">
-    <mat-card *ngFor="let hotel of hotels$ | async">
+<div fxLayout="column">
+<form fxFlexAlign="center">
+  <mat-form-field class="search-bar">
+    <input type="text" matInput placeholder="Search...">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</form>
+  <div fxLayout="row">
+    <div fxFlexAlign="start" fxFlex="30">
+      <section fxLayout="column">
+        <div>Guest rating by category</div>
+        <mat-checkbox>Value for money</mat-checkbox>
+        <mat-checkbox>Excellent service</mat-checkbox>
+        <mat-checkbox>Excellent location</mat-checkbox>
+      </section>
+      <mat-divider></mat-divider>
+      <section>
+        <div>Acommodation class</div>
+        <mat-radio-group fxLayout="column">
+          <mat-radio-button value="1">Budget</mat-radio-button>
+          <mat-radio-button value="2">Luxary</mat-radio-button>
+        </mat-radio-group>
+      </section>
+    </div>
+    <div fxLayout="column" fxFlex="70">
+      <mat-card *ngFor="let hotel of hotels$ | async">
         <mat-card-header>
-          <mat-card-title>Hotel  {{hotel.name}} </mat-card-title>
+          <mat-card-title>Hotel {{hotel.name}} </mat-card-title>
           <mat-card-subtitle>Rating</mat-card-subtitle>
         </mat-card-header>
         <img src="." alt="Photo of hotel {{hotel.name}}">
@@ -16,7 +36,8 @@
           <button mat-button (click)="bookHotel(hotel)"> Book Hotel {{hotel.name}} </button>
         </mat-card-actions>
       </mat-card>
-    <button mat-button (click)="loadMoreHotels()">Load more hotels</button>
+      <button mat-button (click)="loadMoreHotels()">Load more hotels</button>
+    </div>
   </div>
 </div>
 
