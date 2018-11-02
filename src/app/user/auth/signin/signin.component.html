@@ -1,4 +1,16 @@
-<p>
-  signin works!
-</p>
-<button routerLink="/signin">Sign in</button>
+<div fxLayout="column" fxLayoutAlign="center center" class="signin">
+  <mat-card fxLayout="column" fxLayoutAlign="center center">
+    <h1>Letsgo123</h1>
+    <h2>Signin</h2>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Email">
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Password">
+      <mat-icon matSuffix>visibility</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button routerLink="/signin">Sign in</button>
+    <button mat-button routerLink="/signup">Sign up instead</button>
+  </mat-card>
+</div>
