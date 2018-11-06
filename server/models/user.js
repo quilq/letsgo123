@@ -45,16 +45,16 @@ userSchema.pre('save', function (next) {
 })
 
 //Check hashed password when user logged in (Use statics method for model)
-userSchema.statics.findUserByCredentials = function (emai, password) {
+userSchema.statics.findUserByCredentials = function (email, password) {
     let User = this;
 
-    return User.findOne({email}).then(user => {
-        if (!user){
+    return User.findOne({ email }).then(user => {
+        if (!user) {
             return Promise.reject();
         }
-        return new Promise((result, reject)=>{
-            bcrypt.compare(password, user.password, (err, result)=>{
-                if (result){
+        return new Promise((resolve, reject) => {
+            bcrypt.compare(password, user.password, (err, result) => {
+                if (result) {
                     resolve(user);
                 } else {
                     reject(user);
@@ -66,28 +66,33 @@ userSchema.statics.findUserByCredentials = function (emai, password) {
 
 
 //Generate auth jwt with document method (instance method)
-userSchema.methods.generateAuthToken = function(){
+userSchema.methods.generateAuthToken = function () {
     let user = this;
-    let token = jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '1d'}, (err, token)=>{
-        console.log('token', token);
-    });
+    let token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' }).toString();
     return Promise.resolve(token);
 }
 
 //Verify jwt
-userSchema.methods.findByToken = function(token){
+userSchema.methods.findByToken = function (token) {
     let user = this;
     let decoded;
 
     try {
         decoded = jwt.verify(token, process.env.JWT_SECRET);
     } catch (error) {
-        return Promise.reject(error);        
+        return Promise.reject(error);
     }
 
     return user.findOne({
         _id: decoded._id
     });
+}
+
+userSchema.methods.toJSON = function(){
+    let user = this;
+
+    let userObject = user.toObject();
+    return {_id: userObject._id, email: userObject.email, username: userObject.username}
 }
 
 const User = mongoose.model('User', userSchema);

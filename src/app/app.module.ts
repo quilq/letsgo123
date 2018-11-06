@@ -20,6 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environemnt
 import { MaterialModule } from './material/material.module';
 import { MainPageComponent } from './main-page/main-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MainPageComponent } from './main-page/main-page.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     MaterialModule,
     StoreModule.forRoot({

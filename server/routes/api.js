@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { Hotel } = require('../models/hotel');
+const { User } = require('../models/user');
+const { authenticate } = require('../middleware/authenticate');
 
 router.get('/:skip/:limit', (req, res) => {
     Hotel.findHotel(req, res);
@@ -24,22 +26,45 @@ router.get('/price/:price', (req, res) => {
 })
 
 //[User] Sign up
-router.post('/user/signup', (req, res)=>{
-
+router.post('/user/signup', (req, res) => {
+    let body = { username: req.body.username, email: req.body.email, password: req.body.password };
+    let user = new User(body);
+    user.save().then(() => {
+        return user.generateAuthToken();
+    }).then((token) => {
+        console.log('test', token);
+        res.header('x-auth', token).send(user);
+    }).catch((e) => {
+        res.status(400).send(e);
+    })
 })
 
 //[User] Sign in
-router.post('/user/signin', (req, res)=>{
+router.post('/user/signin', (req, res) => {
+    let body = { email: req.body.email, password: req.body.password };
+    console.log(body);
 
+    User.findUserByCredentials(body.email, body.password).then((user) => {
+        return user.generateAuthToken().then((token) => {
+            console.log('test', token);
+            res.header('x-auth', token).send(user);
+        });
+    }).catch((e) => {
+        res.status(400).send(e);
+    })
 })
 
 //[User] Sign out
-router.delete('/user/signout', (req, res)=>{
-
+router.delete('/user/signout', authenticate, (req, res) => {
+    if (req.user) {
+        res.status(200).send();
+    } else {
+        res.status(400).send();
+    }
 })
 
 //[User] Get user info
-router.get('/user/me', (req, res)=>{
+router.get('/user/me', (req, res) => {
 
 })
 

@@ -1,16 +1,16 @@
-<div fxLayout="column" fxLayoutAlign="center center" class="signin">
+<form fxLayout="column" fxLayoutAlign="center center" class="signin" [formGroup]="signinForm" (ngSubmit)="onSubmit()">
   <mat-card fxLayout="column" fxLayoutAlign="center center">
     <h1>Letsgo123</h1>
     <h2>Signin</h2>
     <mat-form-field>
-      <input matInput type="text" placeholder="Email">
+      <input matInput type="text" placeholder="Email" formControlName="email">
       <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="Password">
+      <input matInput type="text" placeholder="Password" formControlName="password">
       <mat-icon matSuffix>visibility</mat-icon>
     </mat-form-field>
-    <button mat-raised-button routerLink="/signin">Sign in</button>
+    <button mat-raised-button type="submit">Sign in</button>
     <button mat-button routerLink="/signup">Sign up instead</button>
   </mat-card>
-</div>
+</form>

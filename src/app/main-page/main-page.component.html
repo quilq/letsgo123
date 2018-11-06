@@ -1,12 +1,12 @@
 <div class="main-page">
 
     <div fxLayout="column" fxLayoutAlign="center center">
-        <form>
+        <div>
             <mat-form-field>
                 <input matInput placeholder="Where do you want to go?">
             </mat-form-field>
-        </form>
-        <form>
+        </div>
+        <div>
             <mat-form-field>
                 <input matInput [matDatepicker]="checkin" placeholder="Check in date">
                 <mat-datepicker-toggle matSuffix [for]="checkin"></mat-datepicker-toggle>
@@ -17,8 +17,8 @@
                 <mat-datepicker-toggle matSuffix [for]="checkout"></mat-datepicker-toggle>
                 <mat-datepicker #checkout></mat-datepicker>
             </mat-form-field>
-        </form>
-        <form>
+        </div>
+        <div>
             <mat-form-field>
                 <mat-select placeholder="Number of rooms | guests">
                     <mat-option>1 guest | 1 room</mat-option>
@@ -26,7 +26,7 @@
                     <mat-option>2 guest | 2 room</mat-option>
                 </mat-select>
             </mat-form-field>
-        </form>
+        </div>
         <button mat-raised-button color="primary">Search</button>
     </div>
     

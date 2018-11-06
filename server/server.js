@@ -11,7 +11,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/api', api);
 
-
 app.listen(port, ()=>{
     console.log(`Server is running on port ${port} !`);
 })
