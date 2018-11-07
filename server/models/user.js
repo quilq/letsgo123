@@ -73,8 +73,8 @@ userSchema.methods.generateAuthToken = function () {
 }
 
 //Verify jwt
-userSchema.methods.findByToken = function (token) {
-    let user = this;
+userSchema.statics.findByToken = function(token) {
+    let User = this;
     let decoded;
 
     try {
@@ -83,7 +83,7 @@ userSchema.methods.findByToken = function (token) {
         return Promise.reject(error);
     }
 
-    return user.findOne({
+    return User.findOne({
         _id: decoded._id
     });
 }

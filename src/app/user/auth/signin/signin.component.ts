@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpService } from 'src/app/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -14,7 +15,7 @@ export class SigninComponent implements OnInit {
     password: new FormControl('')
   });
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,6 +25,7 @@ export class SigninComponent implements OnInit {
     this.httpService.signin({ email: this.signinForm.value.email, password: this.signinForm.value.password }).subscribe(response => {
       localStorage.setItem('token', response.headers.get('x-auth'));
       console.log(response);
+      this.router.navigate(['/user']);
     });
   }
 
