@@ -16,7 +16,7 @@ export class On_Signin implements Action {
 
 export class On_Signup implements Action {
     readonly type = ON_SIGNUP;
-    constructor(public payload: any) { }
+    constructor(public payload: User) { }
 }
 
 export class On_Signout implements Action {
@@ -31,7 +31,7 @@ export class Signin implements Action {
 
 export class Signup implements Action {
     readonly type = SIGNUP;
-    constructor(public payload: any) { }
+    constructor(public payload: User) { }
 }
 
 export class Signout implements Action {
