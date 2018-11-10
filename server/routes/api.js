@@ -27,7 +27,7 @@ router.get('/price/:price', (req, res) => {
 
 //[User] Sign up
 router.post('/user/signup', (req, res) => {
-    let body = { username: req.body.username, email: req.body.email, password: req.body.password };
+    let body = { username: req.body.user.username, email: req.body.user.email, password: req.body.password };
     let user = new User(body);
     user.save().then(() => {
         return user.generateAuthToken();

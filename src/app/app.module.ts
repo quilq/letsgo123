@@ -21,6 +21,8 @@ import { environment } from '../environments/environment'; // Angular CLI enviro
 import { MaterialModule } from './material/material.module';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { authReducer } from './user/auth/store/auth.reducers';
+import { AuthEffects } from './user/auth/store/auth.effects';
 
 @NgModule({
   declarations: [
@@ -42,13 +44,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     StoreModule.forRoot({
       booking: bookingReducer,
-      hotels: hotelReducer
+      hotels: hotelReducer,
+      auth: authReducer
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 10, // Retains last 10 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([HotelEffects])
+    EffectsModule.forRoot([HotelEffects, AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

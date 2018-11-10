@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-user',
@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private httpService: HttpService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSignout() {
-    this.httpService.signout(localStorage.getItem('token')).subscribe(response => {
+    this.userService.signout(localStorage.getItem('token')).subscribe(response => {
       console.log(response);
       localStorage.removeItem('token');
       this.router.navigate(['/main']);

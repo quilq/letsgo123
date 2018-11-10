@@ -4,17 +4,25 @@ import * as AuthActions from './auth.actions';
 export interface UserState {
     user: User;
     isSignedin: boolean;
+    token: string;
 }
 
-export function authReducer(state: UserState, action: AuthActions.Action) {
+let initialState: UserState = {
+    user: null,
+    isSignedin: false,
+    token: ''
+}
+
+export function authReducer(state: UserState = initialState, action: AuthActions.Action) {
     switch (action.type) {
         case AuthActions.SIGNIN:
-            return ;
+            return;
         case AuthActions.SIGNOUT:
-            return ;
+            return;
         case AuthActions.SIGNUP:
-        
-            return ;
+            let token = action.payload.token;
+            let user = action.payload.user;
+            return { ...state, token, user, isSignedin: true };
 
         default:
             return state;

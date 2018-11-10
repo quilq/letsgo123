@@ -9,14 +9,14 @@ export const SIGNIN = 'SIGNIN';
 export const SIGNUP = 'SIGNUP';
 export const SIGNOUT = 'SIGNOUT';
 
-export class On_Signin implements Action {
-    readonly type = ON_SIGNIN;
-    constructor(public payload: any) { }
-}
-
 export class On_Signup implements Action {
     readonly type = ON_SIGNUP;
-    constructor(public payload: User) { }
+    constructor(public payload: {user: User, password: string}) { }
+}
+
+export class Signup implements Action {
+    readonly type = SIGNUP;
+    constructor(public payload: {user: User, token: string}) { }
 }
 
 export class On_Signout implements Action {
@@ -24,18 +24,18 @@ export class On_Signout implements Action {
     constructor(public payload: any) { }
 }
 
-export class Signin implements Action {
-    readonly type = SIGNIN;
+export class Signout implements Action {
+    readonly type = SIGNOUT;
     constructor(public payload: any) { }
 }
 
-export class Signup implements Action {
-    readonly type = SIGNUP;
-    constructor(public payload: User) { }
+export class On_Signin implements Action {
+    readonly type = ON_SIGNIN;
+    constructor(public payload: any) { }
 }
 
-export class Signout implements Action {
-    readonly type = SIGNOUT;
+export class Signin implements Action {
+    readonly type = SIGNIN;
     constructor(public payload: any) { }
 }
 

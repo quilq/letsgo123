@@ -20,6 +20,7 @@ export class UserService {
   }
 
   signup(user) {
+    console.log('user ', user);
     let url = 'api/user/signup';
     return this.httpClient.post(url, user, {observe: 'response'});
   }
