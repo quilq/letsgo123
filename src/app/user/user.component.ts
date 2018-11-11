@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from './user.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { AppState } from '../store/app.reducers';
+import { User } from './user.model';
+import * as AuthActions from './auth/store/auth.actions';
 
 @Component({
   selector: 'app-user',
@@ -9,17 +14,19 @@ import { UserService } from './user.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router) { }
+  user$: Observable<User>;
+
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.user$ = this.store.select('auth')
+      .pipe(
+        map(authState => authState.user)
+      );
   }
 
   onSignout() {
-    this.userService.signout(localStorage.getItem('token')).subscribe(response => {
-      console.log(response);
-      localStorage.removeItem('token');
-      this.router.navigate(['/main']);
-    })
+    this.store.dispatch(new AuthActions.On_Signout())
   }
 
 }

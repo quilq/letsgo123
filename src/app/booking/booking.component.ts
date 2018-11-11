@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { map } from 'rxjs/operators';
 
 import { Booking } from './booking.model';
-import { BookingState } from './store/booking.reducer';
+import { AppState } from '../store/app.reducers';
 import * as BookingActions from './store/booking.actions';
 
 @Component({
@@ -13,15 +14,16 @@ import * as BookingActions from './store/booking.actions';
 })
 export class BookingComponent implements OnInit {
 
-  bookings$: Observable<BookingState[]>;
+  bookings$: Observable<Booking[]>;
 
-  constructor(private store: Store<BookingState[]>) {
-    this.bookings$ = store.select('booking');
-  }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.bookings$ = this.store.select('booking').pipe(
+      map(bookingState => bookingState.booking)
+    )
   }
-  
+
   removeHotel(number: number) {
     this.store.dispatch(new BookingActions.RemoveHotel(number));
   }

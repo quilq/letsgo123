@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../../user.service';
+import { Store } from '@ngrx/store';
+import * as AuthActions from '../store/auth.actions';
+import { AppState } from 'src/app/store/app.reducers';
 
 @Component({
   selector: 'app-signin',
@@ -15,18 +16,13 @@ export class SigninComponent implements OnInit {
     password: new FormControl('')
   });
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private authStore: Store<AppState>) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    console.log(this.signinForm.value, this.signinForm.value.email, this.signinForm.value.password);
-    this.userService.signin({ email: this.signinForm.value.email, password: this.signinForm.value.password }).subscribe(response => {
-      localStorage.setItem('token', response.headers.get('x-auth'));
-      console.log(response);
-      this.router.navigate(['/user']);
-    });
+    this.authStore.dispatch(new AuthActions.On_Signin({ email: this.signinForm.value.email, password: this.signinForm.value.password }));
   }
 
 }

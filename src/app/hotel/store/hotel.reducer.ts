@@ -2,26 +2,31 @@ import { Hotel } from '../hotel.model';
 import * as HotelActions from './hotel.action';
 
 export interface HotelsState {
-    readonly hotels: Hotel[]
+    hotels: Hotel[]
 }
 
-export function hotelReducer(state: Hotel[] = [], action: HotelActions.Actions) {
+const initialState: HotelsState = {
+    hotels: []
+}
+
+export function hotelReducer(state: HotelsState = initialState, action: HotelActions.Actions) : HotelsState {
     switch (action.type) {
         case HotelActions.GET_HOTELS:
-            let newHotels: Hotel[] = [],
-                newHotelIDs: string[] = [];
+            // let newHotels: Hotel[] = [],
+            //     newHotelIDs: string[] = [];
 
-            state.forEach(hotel => {
-                newHotelIDs.push(hotel._id);
-            });
+            // state.hotels.forEach(hotel => {
+            //     newHotelIDs.push(hotel._id);
+            // });
 
-            action.payload.forEach(hotel => {
-                if (!newHotelIDs.includes(hotel._id)) {
-                    newHotelIDs.push(hotel._id);
-                    newHotels.push(hotel);
-                }
-            });
-            return [...state, ...newHotels];
+            // action.payload.forEach(hotel => {
+            //     if (!newHotelIDs.includes(hotel._id)) {
+            //         newHotelIDs.push(hotel._id);
+            //         newHotels.push(hotel);
+            //     }
+            // });
+            // return {...state, ...newHotels};
+            return {...state, hotels: [...state.hotels, ...action.payload]}
 
         default:
             return state;

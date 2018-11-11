@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../../user.service';
 import { Store } from '@ngrx/store';
-import { UserState } from '../store/auth.reducers';
-import { Observable } from 'rxjs';
-import { User } from '../../user.model';
 import * as AuthActions from '../store/auth.actions';
+import { AppState } from 'src/app/store/app.reducers';
 
 @Component({
   selector: 'app-signup',
@@ -21,10 +17,7 @@ export class SignupComponent implements OnInit {
     password: new FormControl('')
   });
 
-  isSignedin$: Observable<boolean>;
-
-  constructor(private authStore: Store<UserState>) {
-      this.isSignedin$ = this.authStore.select('isSignedin');
+  constructor(private authStore: Store<AppState>) {
   }
 
   ngOnInit() {

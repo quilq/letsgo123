@@ -75,7 +75,7 @@ router.get('/user/me', (req, res) => {
 
 //[Admin] Add hotels
 
-//[Admin] Delte hotels
+//[Admin] Delete hotels
 
 //[Admin] Update hotels
 

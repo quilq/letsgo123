@@ -21,22 +21,22 @@ export class Signup implements Action {
 
 export class On_Signout implements Action {
     readonly type = ON_SIGNOUT;
-    constructor(public payload: any) { }
+    constructor() { }
 }
 
 export class Signout implements Action {
     readonly type = SIGNOUT;
-    constructor(public payload: any) { }
+    constructor() { }
 }
 
 export class On_Signin implements Action {
     readonly type = ON_SIGNIN;
-    constructor(public payload: any) { }
+    constructor(public payload: {email: string, password: string}) { }
 }
 
 export class Signin implements Action {
     readonly type = SIGNIN;
-    constructor(public payload: any) { }
+    constructor(public payload: {user: User, token: string}) { }
 }
 
 export type Action = On_Signin | On_Signout | On_Signup | Signin | Signout | Signup;

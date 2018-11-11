@@ -1,2 +1,7 @@
 <button mat-button routerLink="/booking">Check booking</button>
 <button mat-button (click)="onSignout()">Sign out</button>
+
+<div *ngIf="((user$ | async) != null)">
+    <div>User:  {{(user$ | async).username}}</div>
+    <div>Email:  {{(user$ | async).email}} </div>
+</div>

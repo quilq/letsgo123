@@ -1,20 +1,28 @@
 <mat-sidenav-container hasBackdrop="true">
     <mat-sidenav #sidenav mode="push">
-        Menu item 1
-        Menu item 2
+        <div>
+            Menu item 1
+        </div>
+        <div>
+            Menu item 2
+        </div>
     </mat-sidenav>
 
     <mat-sidenav-content>
         <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
             <div fxLayout="row" fxLayoutAlign="start center">
-                <button mat-button (click)="sidenav.toggle()">Toggle</button>
-                <div routerLink="/"> letsgo123.xyz | </div>
-                <div> Explore | </div>
-                <div> Today's deal </div>
+                <button mat-button (click)="sidenav.toggle()">Menu</button>
+                <button mat-button routerLink="/"> letsgo123.xyz </button>
+                <button mat-button> Explore </button>
+                <button mat-button> Today's deal </button>
             </div>
-            <div fxLayout="row" fxLayoutAlign="end center">
-                <div routerLink="/signin"> Sign in | </div>
-                <div routerLink="/signup"> Create account </div>
+            <div fxLayout="row" fxLayoutAlign="end center" *ngIf="!(isAuthenticated$ | async)">
+                <button mat-button routerLink="/signin"> Sign in </button>
+                <button mat-button routerLink="/signup"> Create account </button>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" *ngIf="isAuthenticated$ | async">
+                <button mat-button routerLink="/user"> User page </button>
+                <button mat-button (click)="onSignout()"> Sign out </button>
             </div>
         </mat-toolbar>
 

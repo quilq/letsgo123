@@ -16,14 +16,12 @@ export class HotelEffects {
             if (action.payload) {
                 return this.hotelService.findHotels(action.payload.skip, action.payload.limit)
                     .pipe(
-                        map((hotels: Hotel[]) => new HotelActions.GetHotels(hotels)),
-                        tap(x => console.log('new effect state 1', x))
+                        map((hotels: Hotel[]) => new HotelActions.GetHotels(hotels))
                     )
             } else {
                 return this.hotelService.findHotels()
                     .pipe(
-                        map((hotels: Hotel[]) => new HotelActions.GetHotels(hotels)),
-                        tap(x => console.log('new effect state 2', x))
+                        map((hotels: Hotel[]) => new HotelActions.GetHotels(hotels))
                     )
             }
         })
