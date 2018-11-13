@@ -22,7 +22,7 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authStore.dispatch(new AuthActions.On_Signin({ email: this.signinForm.value.email, password: this.signinForm.value.password }));
+    this.authStore.dispatch(new AuthActions.OnSignin({ email: this.signinForm.value.email, password: this.signinForm.value.password }));
   }
 
 }

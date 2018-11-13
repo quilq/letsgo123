@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
   }
 
   onSignout() {
-    this.store.dispatch(new AuthActions.On_Signout())
+    this.store.dispatch(new AuthActions.OnSignout())
   }
 
 }

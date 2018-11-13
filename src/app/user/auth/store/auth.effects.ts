@@ -13,7 +13,7 @@ export class AuthEffects {
     @Effect()
     authSignup$: Observable<Action> = this.action$.pipe(
         ofType(AuthActions.ON_SIGNUP),
-        switchMap((action: AuthActions.On_Signup) => {
+        switchMap((action: AuthActions.OnSignup) => {
             return this.userService.signup(action.payload)
                 .pipe(
                     map((response: any) => {
@@ -31,7 +31,7 @@ export class AuthEffects {
     @Effect()
     authSignin$: Observable<Action> = this.action$.pipe(
         ofType(AuthActions.ON_SIGNIN),
-        switchMap((action: AuthActions.On_Signin) => {
+        switchMap((action: AuthActions.OnSignin) => {
             return this.userService.signin(action.payload)
                 .pipe(
                     map((response: any) => {
