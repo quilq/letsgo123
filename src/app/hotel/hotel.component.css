@@ -5,3 +5,7 @@ mat-card{
 .search-bar {
     width: 75vw;
 }
+
+.top-bottom-margin {
+    margin: 15% 0%;
+}

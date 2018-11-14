@@ -1,27 +1,56 @@
 <div fxLayout="column">
 <div fxFlexAlign="center">
-  <mat-form-field class="search-bar">
-    <input type="text" matInput placeholder="Search...">
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field>
+        <input matInput placeholder="Where?">
+    </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="checkin" placeholder="Check in date">
+            <mat-datepicker-toggle matSuffix [for]="checkin"></mat-datepicker-toggle>
+            <mat-datepicker #checkin></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="checkout" placeholder="Check out date">
+            <mat-datepicker-toggle matSuffix [for]="checkout"></mat-datepicker-toggle>
+            <mat-datepicker #checkout></mat-datepicker>
+        </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Number of rooms | guests">
+            <mat-option>1 guest | 1 room</mat-option>
+            <mat-option>2 guest | 1 room</mat-option>
+            <mat-option>2 guest | 2 room</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Search</button>
+</div>
+
 </div>
   <div fxLayout="row">
-    <div fxFlexAlign="start" fxFlex="30">
-      <section fxLayout="column">
+    <mat-card fxFlexAlign="start" fxFlex="30">
+      <mat-card-title>Filter by</mat-card-title>
+      <section fxLayout="column" class="top-bottom-margin">
         <div>Guest rating by category</div>
         <mat-checkbox>Value for money</mat-checkbox>
         <mat-checkbox>Excellent service</mat-checkbox>
         <mat-checkbox>Excellent location</mat-checkbox>
       </section>
-      <mat-divider></mat-divider>
-      <section>
+
+      <section class="top-bottom-margin">
         <div>Acommodation class</div>
         <mat-radio-group fxLayout="column">
           <mat-radio-button value="1">Budget</mat-radio-button>
           <mat-radio-button value="2">Luxary</mat-radio-button>
         </mat-radio-group>
       </section>
-    </div>
+      
+      <section fxLayout="column" class="top-bottom-margin">
+          <div>Room offers</div>
+          <mat-checkbox>Breakfast included</mat-checkbox>
+          <mat-checkbox>Airport transfer</mat-checkbox>
+          <mat-checkbox>Early check-in</mat-checkbox>
+          <mat-checkbox>Late check-out</mat-checkbox>
+        </section>
+    </mat-card>
     <div fxLayout="column" fxFlex="70">
       <mat-card *ngFor="let hotel of hotels$ | async">
         <mat-card-header>

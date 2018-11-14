@@ -1,11 +1,9 @@
 <div class="main-page">
 
     <div fxLayout="column" fxLayoutAlign="center center">
-        <div>
-            <mat-form-field>
-                <input matInput placeholder="Where do you want to go?">
-            </mat-form-field>
-        </div>
+        <mat-form-field>
+            <input matInput placeholder="Where do you want to go?">
+        </mat-form-field>
         <div>
             <mat-form-field>
                 <input matInput [matDatepicker]="checkin" placeholder="Check in date">
@@ -18,29 +16,27 @@
                 <mat-datepicker #checkout></mat-datepicker>
             </mat-form-field>
         </div>
-        <div>
-            <mat-form-field>
-                <mat-select placeholder="Number of rooms | guests">
-                    <mat-option>1 guest | 1 room</mat-option>
-                    <mat-option>2 guest | 1 room</mat-option>
-                    <mat-option>2 guest | 2 room</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+        <mat-form-field>
+            <mat-select placeholder="Number of rooms | guests">
+                <mat-option>1 guest | 1 room</mat-option>
+                <mat-option>2 guest | 1 room</mat-option>
+                <mat-option>2 guest | 2 room</mat-option>
+            </mat-select>
+        </mat-form-field>
         <button mat-raised-button color="primary">Search</button>
     </div>
-    
+
     <div fxLayout="column" class="popular-destinations">
         <p fxFlexAlign="center">Popular destinations</p>
         <div fxLayout="row" fxLayoutAlign="space-around center">
             <mat-card routerLink="/hotel">
                 Ho Chi Minh
             </mat-card>
-    
+
             <mat-card routerLink="/hotel">
                 Da Nang
             </mat-card>
-    
+
             <mat-card routerLink="/hotel">
                 Can Tho
             </mat-card>
