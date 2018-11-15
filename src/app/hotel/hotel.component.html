@@ -54,7 +54,7 @@
     <div fxLayout="column" fxFlex="70">
       <mat-card *ngFor="let hotel of hotels$ | async">
         <mat-card-header>
-          <mat-card-title>Hotel {{hotel.name}} </mat-card-title>
+          <mat-card-title routerLink="/hotel-details">Hotel {{hotel.name}} </mat-card-title>
           <mat-card-subtitle>Rating</mat-card-subtitle>
         </mat-card-header>
         <img src="." alt="Photo of hotel {{hotel.name}}">

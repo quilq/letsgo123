@@ -7,10 +7,12 @@ import { SignupComponent } from './user/auth/signup/signup.component';
 import { BookingComponent } from './booking/booking.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HotelComponent } from './hotel/hotel.component';
+import { HotelDetailsComponent } from './hotel/hotel-details/hotel-details.component';
 
 const appRoutes: Routes = [
   { path: 'main', component: MainPageComponent },
   { path: 'hotel', component: HotelComponent },
+  { path: 'hotel-details', component: HotelDetailsComponent },
   { path: 'user', component: UserComponent },
   { path: 'booking', component: BookingComponent },
   { path: 'signin', component: SigninComponent },

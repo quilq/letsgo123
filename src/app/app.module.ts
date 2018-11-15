@@ -21,6 +21,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HotelEffects } from './hotel/store/hotel.effect';
 import { AuthEffects } from './user/auth/store/auth.effects';
 import { reducers } from './store/app.reducers';
+import { HotelDetailsComponent } from './hotel/hotel-details/hotel-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { reducers } from './store/app.reducers';
     BookingComponent,
     SigninComponent,
     SignupComponent,
-    MainPageComponent
+    MainPageComponent,
+    HotelDetailsComponent
   ],
   imports: [
     BrowserModule,
