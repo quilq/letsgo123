@@ -11,11 +11,11 @@ const initialState: BookingState = {
 
 export function bookingReducer(state: BookingState = initialState, action: BookingActions.Actions): BookingState {
     switch (action.type) {
-        case BookingActions.BOOK_HOTEL: {
+        case BookingActions.BOOK_TOUR: {
             return { ...state, booking: [...state.booking, action.payload] };
         }
 
-        case BookingActions.REMOVE_HOTEL: {
+        case BookingActions.REMOVE_TOUR: {
             //Use slice instead of splice
             let newBookings = [
                 ...state.booking.slice(0, action.payload),

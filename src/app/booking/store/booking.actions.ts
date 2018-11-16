@@ -1,17 +1,17 @@
 import { Action } from '@ngrx/store';
 import { Booking } from './../booking.model';
 
-export const BOOK_HOTEL = 'BOOK_HOTEL';
-export const REMOVE_HOTEL = 'REMOVE_HOTEL';
+export const BOOK_TOUR = 'BOOK_TOUR';
+export const REMOVE_TOUR = 'REMOVE_TOUR';
 
-export class BookHotel implements Action {
-    readonly type = BOOK_HOTEL;
+export class BookTour implements Action {
+    readonly type = BOOK_TOUR;
     constructor (public payload: Booking){}
 };
 
-export class RemoveHotel implements Action{
-    readonly type = REMOVE_HOTEL;
+export class RemoveTour implements Action{
+    readonly type = REMOVE_TOUR;
     constructor (public payload: number){}
 };
 
-export type Actions = BookHotel | RemoveHotel;
+export type Actions = BookTour | RemoveTour;

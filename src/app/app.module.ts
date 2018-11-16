@@ -11,29 +11,29 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { UserComponent } from './user/user.component';
-import { HotelComponent } from './hotel/hotel.component';
+import { TourComponent } from './tour/tour.component';
 import { BookingComponent } from './booking/booking.component';
 import { SigninComponent } from './user/auth/signin/signin.component';
 import { SignupComponent } from './user/auth/signup/signup.component';
 import { MaterialModule } from './material/material.module';
 import { MainPageComponent } from './main-page/main-page.component';
 import { EffectsModule } from '@ngrx/effects';
-import { HotelEffects } from './hotel/store/hotel.effect';
+import { TourEffects } from './tour/store/tour.effect';
 import { AuthEffects } from './user/auth/store/auth.effects';
 import { reducers } from './store/app.reducers';
-import { HotelDetailsComponent } from './hotel/hotel-details/hotel-details.component';
+import { TourDetailsComponent } from './tour/tour-details/tour-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UserComponent,
-    HotelComponent,
+    TourComponent,
     BookingComponent,
     SigninComponent,
     SignupComponent,
     MainPageComponent,
-    HotelDetailsComponent
+    TourDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +47,7 @@ import { HotelDetailsComponent } from './hotel/hotel-details/hotel-details.compo
       maxAge: 10, // Retains last 10 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([HotelEffects, AuthEffects])
+    EffectsModule.forRoot([TourEffects, AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -24,7 +24,7 @@ export class BookingComponent implements OnInit {
     )
   }
 
-  removeHotel(number: number) {
-    this.store.dispatch(new BookingActions.RemoveHotel(number));
+  removeTour(number: number) {
+    this.store.dispatch(new BookingActions.RemoveTour(number));
   }
 }

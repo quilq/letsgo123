@@ -1,6 +1,6 @@
-import { Hotel } from '../hotel/hotel.model';
+import { Tour } from '../tour/tour.model';
 
 export interface Booking {
-    hotel: Hotel,
+    tour: Tour,
     dates: Date[]
 }
