@@ -3,26 +3,27 @@ const router = express.Router();
 const { Tour } = require('../models/tour');
 const { User } = require('../models/user');
 const { authenticate } = require('../middleware/authenticate');
+const moment = require('moment');
 
 router.get('/:skip/:limit', (req, res) => {
-    Hotel.findTour(req, res);
+    Tour.findTour(req, res);
 })
 
 //Find tours by name/ address/ rating/ price (with req.skip)
 router.get('/name/:name', (req, res) => {
-    Hotel.findTourByName(req, res);
+    Tour.findTourByName(req, res);
 })
 
 router.get('/address/:address', (req, res) => {
-    Hotel.findTourByAddress(req, res);
+    Tour.findTourByAddress(req, res);
 })
 
 router.get('/rating/:rating', (req, res) => {
-    Hotel.findTourByRating(req, res);
+    Tour.findTourByRating(req, res);
 })
 
 router.get('/price/:price', (req, res) => {
-    Hotel.findTourByPrice(req, res);
+    Tour.findTourByPrice(req, res);
 })
 
 //[User] Sign up
@@ -72,11 +73,44 @@ router.get('/user/me', (req, res) => {
 
 //[User] Delete user info
 
+//[Admin] Add tours
+// router.post('/tour/new', (req, res) => {
 
-//[Admin] Add hotels
+//     let tour = new Tour({
+//         name: 'Central Vietnam',
+//         journey: [
+//             {
+//                 city: 'Ho Chi Minh City',
+//                 country: 'Vietnam',
+//                 date: moment().add(6, 'days')
+//             },
+//             {
+//                 city: 'Nha Trang',
+//                 country: 'Vietnam',
+//                 date: moment().add(7, 'days')
+//             },
+//             {
+//                 city: 'Da Lat',
+//                 country: 'Vietnam',
+//                 date: moment().add(8, 'days')
+//             },
+//             {
+//                 city: 'Ho Chi Minh City',
+//                 country: 'Vietnam',
+//                 date: moment().add(9, 'days')
+//             }
+//         ],
+//         rating: 5,  //stars
+//         tourType: 'Luxary',
+//         price: 125 //$
+//     })
+    
+//     tour.save().then(err => console.log(err));
+// })
 
-//[Admin] Delete hotels
 
-//[Admin] Update hotels
+//[Admin] Delete tours
+
+//[Admin] Update tours
 
 module.exports = router;

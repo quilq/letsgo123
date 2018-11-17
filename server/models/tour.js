@@ -7,8 +7,6 @@ const tourSchema = new mongoose.Schema({
         country: String,
         date: Date
     }],
-    startDay: Date,
-    endDay: Date,
     rating: Number,
     tourType: String,
     price: Number
@@ -84,13 +82,13 @@ tourSchema.statics.findTourByPrice = function (req, res) {
     })
 }
 
-//[Admin] Add hotels
+//[Admin] Add tours
 
 
-//[Admin] Delte hotels
+//[Admin] Delte tours
 
 
-//[Admin] Update hotels
+//[Admin] Update tours
 
 const Tour = mongoose.model('Tour', tourSchema);
 

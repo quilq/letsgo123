@@ -1,30 +1,23 @@
 <div fxLayout="column">
-<div fxFlexAlign="center">
-  <div fxLayout="row" fxLayoutAlign="center center">
-    <mat-form-field>
-        <input matInput placeholder="Where?">
-    </mat-form-field>
-        <mat-form-field>
-            <input matInput [matDatepicker]="checkin" placeholder="Check in date">
-            <mat-datepicker-toggle matSuffix [for]="checkin"></mat-datepicker-toggle>
-            <mat-datepicker #checkin></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput [matDatepicker]="checkout" placeholder="Check out date">
-            <mat-datepicker-toggle matSuffix [for]="checkout"></mat-datepicker-toggle>
-            <mat-datepicker #checkout></mat-datepicker>
-        </mat-form-field>
-    <mat-form-field>
-        <mat-select placeholder="Number of rooms | guests">
-            <mat-option>1 guest | 1 room</mat-option>
-            <mat-option>2 guest | 1 room</mat-option>
-            <mat-option>2 guest | 2 room</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <button mat-raised-button color="primary">Search</button>
-</div>
+  <div fxFlexAlign="center">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field floatLabel="never">
+        <input matInput placeholder="From ?">
+      </mat-form-field>
+      <mat-form-field floatLabel="never">
+        <input matInput placeholder="To ?">
+      </mat-form-field>
+      <mat-form-field floatLabel="never">
+        <input matInput [matDatepicker]="date" placeholder="Date">
+        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+        <mat-datepicker #date></mat-datepicker>
+      </mat-form-field>
+      <button mat-icon-button>
+        <mat-icon aria-label="search icon-button">search</mat-icon>
+      </button>
+    </div>
 
-</div>
+  </div>
   <div fxLayout="row">
     <mat-card fxFlexAlign="start" fxFlex="30">
       <mat-card-title>Filter by</mat-card-title>
@@ -42,32 +35,42 @@
           <mat-radio-button value="2">Luxary</mat-radio-button>
         </mat-radio-group>
       </section>
-      
+
       <section fxLayout="column" class="top-bottom-margin">
-          <div>Room offers</div>
-          <mat-checkbox>Breakfast included</mat-checkbox>
-          <mat-checkbox>Airport transfer</mat-checkbox>
-          <mat-checkbox>Early check-in</mat-checkbox>
-          <mat-checkbox>Late check-out</mat-checkbox>
-        </section>
+        <div>Room offers</div>
+        <mat-checkbox>Breakfast included</mat-checkbox>
+        <mat-checkbox>Airport transfer</mat-checkbox>
+        <mat-checkbox>Early check-in</mat-checkbox>
+        <mat-checkbox>Late check-out</mat-checkbox>
+      </section>
     </mat-card>
     <div fxLayout="column" fxFlex="70">
-      <mat-card *ngFor="let hotel of hotels$ | async">
+      <mat-card *ngFor="let tour of tours">
         <mat-card-header>
-          <mat-card-title routerLink="/hotel-details">Hotel {{hotel.name}} </mat-card-title>
+          <mat-card-title [routerLink]="['/tour-details', tour._id]">{{tour.name}} </mat-card-title>
           <mat-card-subtitle>Rating</mat-card-subtitle>
+          <mat-card-content>
+            <p>
+              {{tour.rating}} stars
+            </p>
+            <p>
+              {{tour.price}} $
+            </p>
+          </mat-card-content>
         </mat-card-header>
-        <img src="." alt="Photo of hotel {{hotel.name}}">
+        <img src="." alt="Photo of tour {{tour.name}}">
         <mat-card-content>
           Review
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button (click)="bookHotel(hotel)"> Book Hotel {{hotel.name}} </button>
+          <button mat-button (click)="bookTour(tour)"> Book Tour {{tour.name}} </button>
+          <button mat-button (click)="printID(tour)">print Tour</button>
         </mat-card-actions>
       </mat-card>
-      <button mat-button (click)="loadMoreHotels()">Load more hotels</button>
+      <button mat-button (click)="loadMoreTours()">Load more tours</button>
+
     </div>
   </div>
 </div>
 
-<!-- <button (click)="createHotels()">Create Hotel</button> -->
+<!-- <button mat-button (click)="addTour()">Create Tour</button> -->

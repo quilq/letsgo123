@@ -4,9 +4,9 @@ export class Tour {
     journey: [{
         city: string,
         country: string,
+        date: Date,
+        formattedDate?: string
     }];
-    startDay: Date;
-    endDay: Date;
     rating: number;
     tourType: string;
     price: number

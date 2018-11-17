@@ -1,29 +1,30 @@
 <div fxLayout="row" fxLayoutAlign="center center">
-  <mat-form-field>
-      <input matInput placeholder="Where?">
-  </mat-form-field>
-      <mat-form-field>
-          <input matInput [matDatepicker]="checkin" placeholder="Check in date">
-          <mat-datepicker-toggle matSuffix [for]="checkin"></mat-datepicker-toggle>
-          <mat-datepicker #checkin></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-          <input matInput [matDatepicker]="checkout" placeholder="Check out date">
-          <mat-datepicker-toggle matSuffix [for]="checkout"></mat-datepicker-toggle>
-          <mat-datepicker #checkout></mat-datepicker>
-      </mat-form-field>
-  <mat-form-field>
-      <mat-select placeholder="Number of rooms | guests">
-          <mat-option>1 guest | 1 room</mat-option>
-          <mat-option>2 guest | 1 room</mat-option>
-          <mat-option>2 guest | 2 room</mat-option>
-      </mat-select>
-  </mat-form-field>
-  <button mat-raised-button color="primary">Search</button>
+    <mat-form-field floatLabel="never">
+        <input matInput placeholder="From ?">
+    </mat-form-field>
+    <mat-form-field floatLabel="never">
+        <input matInput placeholder="To ?">
+    </mat-form-field>
+    <mat-form-field floatLabel="never">
+        <input matInput [matDatepicker]="date" placeholder="Date">
+        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+        <mat-datepicker #date></mat-datepicker>
+    </mat-form-field>
+    <button mat-icon-button>
+        <mat-icon aria-label="search icon-button">search</mat-icon>
+    </button>
 </div>
 
-<div>
-  <div>Pics</div>
-  <div>Tour info</div>
-  <div>Similar tours</div>
-</div>
+<h1>Tour {{selectedTour.name}}</h1>
+<h2>{{selectedTour.tourType}}</h2>
+<h3>Price: {{selectedTour.price}} $</h3>
+<h3>Rating: {{selectedTour.rating}}</h3>
+
+<ul *ngFor="let place of selectedTour.journey ; let i = index">
+    <li>
+        Day {{i+1}} {{place.formattedDate}} | {{place.city}}
+    </li>
+    <div>
+        Info {{i+1}}
+    </div>
+</ul>

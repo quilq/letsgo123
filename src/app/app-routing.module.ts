@@ -12,9 +12,9 @@ import { TourDetailsComponent } from './tour/tour-details/tour-details.component
 const appRoutes: Routes = [
   { path: 'main', component: MainPageComponent },
   { path: 'tour', component: TourComponent },
-  { path: 'tour-details', component: TourDetailsComponent },
-  { path: 'user', component: UserComponent },
+  { path: 'tour-details/:id', component: TourDetailsComponent },
   { path: 'booking', component: BookingComponent },
+  { path: 'user', component: UserComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', component: MainPageComponent }
