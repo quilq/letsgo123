@@ -17,18 +17,22 @@ import { TourService } from './tour.service';
 
 export class TourComponent implements OnInit {
 
-  tours$: Observable<Tour[]>;
   tours: Tour[] = [];
 
   // constructor(private store: Store<AppState>, private tourService: TourService) { }
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.store.dispatch(new TourActions.OnGetTours());
-    this.tours$ = this.store.select('tours').pipe(
-      map(toursState => toursState.tours)
-    );
-    this.tours$.subscribe(tours => this.tours = tours);
+    this.store.select('tours').pipe(
+      map(toursState => toursState.hasLoaded)
+    ).subscribe(hasLoaded => {
+      if (!hasLoaded){
+        this.store.dispatch(new TourActions.OnGetTours());
+      }
+      this.store.select('tours').pipe(
+        map(toursState => toursState.tours)
+      ).subscribe(tours => this.tours = tours);
+    });
   }
 
   // addTour(){

@@ -32,7 +32,19 @@ tourSchema.statics.findTourByName = function (req, res) {
 
     Tour.find({ name: name }, (err, doc) => {
         if (err) {
-            console.log(err)
+            console.log(err);
+        };
+        res.send(doc);
+    })
+}
+
+tourSchema.statics.findTourByID = function(req, res){
+    const Tour = this,
+    id = req.params.id;
+
+    Tour.find({_id : id}, (err, doc) => {
+        if (err){
+            console.log(err);
         };
         res.send(doc);
     })

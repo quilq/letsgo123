@@ -26,6 +26,10 @@ router.get('/price/:price', (req, res) => {
     Tour.findTourByPrice(req, res);
 })
 
+router.get('/id/:id', (req, res) => {
+    Tour.findTourByID(req, res);
+})
+
 //[User] Sign up
 router.post('/user/signup', (req, res) => {
     let body = { username: req.body.user.username, email: req.body.user.email, password: req.body.password };

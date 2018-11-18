@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
+import * as TourActions from '../store/tour.action';
 import { Tour } from '../tour.model';
 import { AppState } from '../../store/app.reducers';
 
@@ -16,26 +17,34 @@ import { AppState } from '../../store/app.reducers';
 })
 
 export class TourDetailsComponent implements OnInit {
-  
-  tours$: Observable<Tour[]>;
+
   tours: Tour[] = [];
   selectedTour: Tour;
 
-  constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute){}
+  constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.tours$ = this.store.select('tours').pipe(
-      map(toursState => toursState.tours)
-    );
-    this.tours$.subscribe(tours => this.tours = tours);
-    let id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.selectedTour = this.findTour(id);
+    this.store.select('tours').pipe(
+      map(toursState => toursState.hasLoaded)
+    ).subscribe(hasLoaded => {
+      if (!hasLoaded) {
+        this.store.dispatch(new TourActions.OnGetTours());
+      }
+      this.store.select('tours').pipe(
+        map(toursState => toursState.tours)
+      ).subscribe(tours => {
+        this.tours = tours;
+        let id = this.activatedRoute.snapshot.paramMap.get('id');
+        this.selectedTour = this.findTour(id);
+      });
+    }
+    )
   }
 
-  findTour(id){
+  findTour(id) {
     let selectedTour: Tour;
     for (let i = 0; i < this.tours.length; i++) {
-      if (id === this.tours[i]._id){
+      if (id === this.tours[i]._id) {
         selectedTour = this.tours[i];
         break;
       }

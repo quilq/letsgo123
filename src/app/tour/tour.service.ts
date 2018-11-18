@@ -11,8 +11,12 @@ export class TourService {
 
   findTours(skip: number = 0, limit: number = 5) {
     let url = `/api/${skip}/${limit}`;
-    console.log('findTours called!');
     return this.httpClient.get<Tour[]>(url);
+  }
+
+  findTourByID(id: string){
+    let url = `/api/id/${id}`;
+    return this.httpClient.get<Tour>(url);
   }
 
   // addNewTour(){
