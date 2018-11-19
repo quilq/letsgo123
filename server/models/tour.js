@@ -5,7 +5,8 @@ const tourSchema = new mongoose.Schema({
     journey: [{
         city: String,
         country: String,
-        date: Date
+        date: Date,
+        info: String
     }],
     rating: Number,
     tourType: String,
@@ -17,11 +18,11 @@ tourSchema.statics.findTour = function (req, res) {
         skip = parseInt(req.params.skip),
         limit = parseInt(req.params.limit);
 
-    Tour.find({}, null, { skip: skip, limit: limit }, (err, doc) => {
+    Tour.find({}, null, { skip: skip, limit: limit }, (err, docs) => {
         if (err) {
             console.log(err)
         };
-        res.send(doc);
+        res.send(docs);
     })
 }
 
@@ -38,12 +39,12 @@ tourSchema.statics.findTourByName = function (req, res) {
     })
 }
 
-tourSchema.statics.findTourByID = function(req, res){
+tourSchema.statics.findTourByID = function (req, res) {
     const Tour = this,
-    id = req.params.id;
+        id = req.params.id;
 
-    Tour.find({_id : id}, (err, doc) => {
-        if (err){
+    Tour.find({ _id: id }, (err, doc) => {
+        if (err) {
             console.log(err);
         };
         res.send(doc);
@@ -91,6 +92,25 @@ tourSchema.statics.findTourByPrice = function (req, res) {
             console.log(err)
         };
         res.send(doc);
+    })
+}
+
+//Get popular destinations
+tourSchema.statics.getPopularCities = function (req, res) {
+    const Tour = this,
+        skip = 0;
+
+    Tour.find({}, 'journey', { skip: skip, limit: 1 }, (err, docs) => {
+        if (err) {
+            console.log(err)
+        };
+        console.log(docs);
+
+        // let cities = [];
+
+        //Find top 10 cities
+        //Send list to user
+
     })
 }
 

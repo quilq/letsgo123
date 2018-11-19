@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
@@ -19,7 +18,7 @@ import { AppState } from '../../store/app.reducers';
 export class TourDetailsComponent implements OnInit {
 
   tours: Tour[] = [];
-  selectedTour: Tour;
+  selectedTour: Tour = new Tour();
 
   constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
@@ -42,7 +41,7 @@ export class TourDetailsComponent implements OnInit {
   }
 
   findTour(id) {
-    let selectedTour: Tour;
+    let selectedTour: Tour = new Tour();
     for (let i = 0; i < this.tours.length; i++) {
       if (id === this.tours[i]._id) {
         selectedTour = this.tours[i];

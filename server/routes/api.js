@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
+// const moment = require('moment');
+
 const { Tour } = require('../models/tour');
 const { User } = require('../models/user');
 const { authenticate } = require('../middleware/authenticate');
-const moment = require('moment');
 
 router.get('/:skip/:limit', (req, res) => {
     Tour.findTour(req, res);

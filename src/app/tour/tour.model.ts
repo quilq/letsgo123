@@ -5,9 +5,20 @@ export class Tour {
         city: string,
         country: string,
         date: Date,
+        info: string,
         formattedDate?: string
     }];
     rating: number;
     tourType: string;
     price: number
+
+    constructor() {
+        this.name = '',
+        this.journey = [{
+            city: '', country: '', info: '', date: new Date()
+        }],
+        this.rating = 0,
+        this.tourType = '',
+        this.price = 0
+    }
 }

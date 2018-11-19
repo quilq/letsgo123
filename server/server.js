@@ -1,9 +1,9 @@
 require('./config/config');
-
 const express = require('express');
 const app = express();
-const port = process.env.PORT;
 const bodyParser = require('body-parser');
+const port = process.env.PORT;
+
 const api = require('./routes/api');
 
 app.use(bodyParser.json());
