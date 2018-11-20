@@ -6,7 +6,8 @@ const { Tour } = require('../models/tour');
 const { User } = require('../models/user');
 const { authenticate } = require('../middleware/authenticate');
 
-router.get('/:skip/:limit', (req, res) => {
+router.get('/tour/:skip/:limit', (req, res) => {
+    console.log('find tour called');
     Tour.findTour(req, res);
 })
 
@@ -25,6 +26,10 @@ router.get('/rating/:rating', (req, res) => {
 
 router.get('/price/:price', (req, res) => {
     Tour.findTourByPrice(req, res);
+})
+
+router.get('/places', (req, res)=>{
+    Tour.getPopularPlaces(req, res);
 })
 
 router.get('/id/:id', (req, res) => {

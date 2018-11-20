@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Tour } from '../tour/tour.model';
 import { AppState } from '../store/app.reducers';
 import * as TourActions from '../tour/store/tour.action';
+import { TourService } from '../tour/tour.service';
 
 @Component({
   selector: 'app-main-page',
@@ -15,7 +16,7 @@ export class MainPageComponent implements OnInit {
 
   tours: Tour[] = [];
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private tourService: TourService) { }
 
   ngOnInit() {
     this.store.select('tours').pipe(
@@ -31,7 +32,11 @@ export class MainPageComponent implements OnInit {
   }
 
   getPopularCities(){
+    this.tourService.getPopularPlaces().subscribe(res => console.log(res));
+  }
 
+  findTourByAddress(address: string){
+    this.tourService.findTourByAddress(address).subscribe(res => console.log(res));
   }
 
 }

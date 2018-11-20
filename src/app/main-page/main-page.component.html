@@ -20,17 +20,28 @@
     <div fxLayout="column" class="popular-destinations">
         <p fxFlexAlign="center">Popular destinations</p>
         <div fxLayout="row" fxLayoutAlign="space-around center">
-            <mat-card routerLink="/tour">
+            <mat-card >
                 Ho Chi Minh
+                <mat-card-actions>
+                    <button (click)="findTourByAddress('Ho Chi Minh City')">Find tour by address</button>
+                </mat-card-actions>
             </mat-card>
 
-            <mat-card routerLink="/tour">
+            <mat-card >
                 Da Nang
+                <mat-card-actions>
+                    <button (click)="findTourByAddress('Da Nang')">Find tour by address</button>
+                </mat-card-actions>
             </mat-card>
 
-            <mat-card routerLink="/tour">
+            <mat-card >
                 Can Tho
+                <mat-card-actions>
+                    <button (click)="findTourByAddress('Can Tho')">Find tour by address</button>
+                </mat-card-actions>
             </mat-card>
         </div>
     </div>
+    <button (click)="findTourByAddress('Can Tho')">Find tour by address</button>
+    <button mat-raised-button (click)="getPopularCities()">getPopularCities</button>
 </div>

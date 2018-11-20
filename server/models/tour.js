@@ -51,7 +51,7 @@ tourSchema.statics.findTourByID = function (req, res) {
     })
 }
 
-//Find tours by address
+// Find tours by address
 tourSchema.statics.findTourByAddress = function (req, res) {
     const Tour = this,
         address = req.params.address;
@@ -61,11 +61,11 @@ tourSchema.statics.findTourByAddress = function (req, res) {
             { 'journey.city': address },
             { 'journey.country': address }
         ]
-    }, (err, doc) => {
+    }, (err, docs) => {
         if (err) {
             console.log(err)
         };
-        res.send(doc);
+        res.send(docs);
     })
 }
 
@@ -96,17 +96,25 @@ tourSchema.statics.findTourByPrice = function (req, res) {
 }
 
 //Get popular destinations
-tourSchema.statics.getPopularCities = function (req, res) {
-    const Tour = this,
-        skip = 0;
+tourSchema.statics.getPopularPlaces = function (req, res) {
+    const Tour = this;
 
-    Tour.find({}, 'journey', { skip: skip, limit: 1 }, (err, docs) => {
+    Tour.find({}, 'journey.city', {'journey._id': 0 }, (err, docs) => {
         if (err) {
             console.log(err)
         };
-        console.log(docs);
 
-        // let cities = [];
+        let cities = [];
+
+        docs.forEach(element => {
+            element.journey.forEach(place => {
+                if (!cities.includes(place.city)){
+                    cities.push(place.city);
+                }
+            })
+        });
+
+        res.send(cities);
 
         //Find top 10 cities
         //Send list to user
