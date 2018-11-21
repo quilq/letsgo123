@@ -32,11 +32,9 @@ export class MainPageComponent implements OnInit {
       ).subscribe(tours => this.tours = tours);
     });
     this.store.dispatch(new DestinationsActions.OnGetDestinations());
-    console.log('1111111111111111');
     this.store.select('destinations').pipe(
-      tap(()=> console.log('destionations main page')),
-      map(destinationsState => this.popularPlaces = destinationsState.destinations)
-
+      map(destinationsState => this.popularPlaces = destinationsState.destinations),
+      tap(()=> console.log(this.popularPlaces))
     )
 
   }

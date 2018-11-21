@@ -28,9 +28,9 @@ router.get('/tour/:skip/:limit', (req, res) => {
 //     Tour.findTourByPrice(req, res);
 // })
 
-// router.get('/places', (req, res)=>{
-//     Tour.getPopularPlaces(req, res);
-// })
+router.get('/places', (req, res)=>{
+    Tour.getPopularPlaces(req, res);
+})
 
 // router.get('/id/:id', (req, res) => {
 //     Tour.findTourByID(req, res);

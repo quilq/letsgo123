@@ -18,6 +18,7 @@ export class GetTourByAddress implements Action {
 }
 export class OnGetDestinations implements Action {
     readonly type = ON_GET_DESTINATIONS;
+    constructor(){}
 }
 
 export class GetDestinations implements Action {

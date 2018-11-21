@@ -22,6 +22,7 @@ import { TourEffects } from './tour/store/tour.effect';
 import { AuthEffects } from './user/auth/store/auth.effects';
 import { reducers } from './store/app.reducers';
 import { TourDetailsComponent } from './tour/tour-details/tour-details.component';
+import { DestinationsEffect } from './main-page/store/destinations.effect';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { TourDetailsComponent } from './tour/tour-details/tour-details.component
       maxAge: 10, // Retains last 10 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([TourEffects, AuthEffects])
+    EffectsModule.forRoot([TourEffects, AuthEffects, DestinationsEffect])
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import * as TourActions from './tour.action';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { Tour } from '../tour.model';
-import { TourService } from '../tour.service';
+import { switchMap, map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Action } from '@ngrx/store';
+
+import { TourService } from '../tour.service';
+import { Tour } from '../tour.model';
 
 @Injectable()
 export class TourEffects {
@@ -15,12 +16,12 @@ export class TourEffects {
         switchMap((action: TourActions.OnGetTours) => {
             if (action.payload) {
                 return this.tourService.findTours(action.payload.skip, action.payload.limit)
-                    .pipe (
+                    .pipe(
                         map((tours: Tour[]) => new TourActions.GetTours(tours))
                     )
             } else {
                 return this.tourService.findTours()
-                    .pipe (
+                    .pipe(
                         map((tours: Tour[]) => new TourActions.GetTours(tours))
                     )
             }
