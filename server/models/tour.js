@@ -27,73 +27,73 @@ tourSchema.statics.findTour = function (req, res) {
 }
 
 //Find tours by name
-tourSchema.statics.findTourByName = function (req, res) {
-    const Tour = this,
-        name = req.params.name;
+// tourSchema.statics.findTourByName = function (req, res) {
+//     const Tour = this,
+//         name = req.params.name;
 
-    Tour.find({ name: name }, (err, doc) => {
-        if (err) {
-            console.log(err);
-        };
-        res.send(doc);
-    })
-}
+//     Tour.find({ name: name }, (err, doc) => {
+//         if (err) {
+//             console.log(err);
+//         };
+//         res.send(doc);
+//     })
+// }
 
-tourSchema.statics.findTourByID = function (req, res) {
-    const Tour = this,
-        id = req.params.id;
+// tourSchema.statics.findTourByID = function (req, res) {
+//     const Tour = this,
+//         id = req.params.id;
 
-    Tour.find({ _id: id }, (err, doc) => {
-        if (err) {
-            console.log(err);
-        };
-        res.send(doc);
-    })
-}
+//     Tour.find({ _id: id }, (err, doc) => {
+//         if (err) {
+//             console.log(err);
+//         };
+//         res.send(doc);
+//     })
+// }
 
 // Find tours by address
-tourSchema.statics.findTourByAddress = function (req, res) {
-    const Tour = this,
-        address = req.params.address;
+// tourSchema.statics.findTourByAddress = function (req, res) {
+//     const Tour = this,
+//         address = req.params.address;
 
-    Tour.find({
-        $or: [
-            { 'journey.city': address },
-            { 'journey.country': address }
-        ]
-    }, (err, docs) => {
-        if (err) {
-            console.log(err)
-        };
-        res.send(docs);
-    })
-}
+//     Tour.find({
+//         $or: [
+//             { 'journey.city': address },
+//             { 'journey.country': address }
+//         ]
+//     }, (err, docs) => {
+//         if (err) {
+//             console.log(err)
+//         };
+//         res.send(docs);
+//     })
+// }
 
 //Find tours by rating
-tourSchema.statics.findTourByRating = function (req, res) {
-    const Tour = this,
-        rating = req.params.rating;
+// tourSchema.statics.findTourByRating = function (req, res) {
+//     const Tour = this,
+//         rating = req.params.rating;
 
-    Tour.find({ rating: { $gte: rating } }, (err, doc) => {
-        if (err) {
-            console.log(err)
-        };
-        res.send(doc);
-    })
-}
+//     Tour.find({ rating: { $gte: rating } }, (err, doc) => {
+//         if (err) {
+//             console.log(err)
+//         };
+//         res.send(doc);
+//     })
+// }
 
 //Find tours by price
-tourSchema.statics.findTourByPrice = function (req, res) {
-    const Tour = this,
-        price = req.params.price;
+// tourSchema.statics.findTourByPrice = function (req, res) {
+//     const Tour = this,
+//         price = req.params.price;
 
-    Tour.find({ price: { $gte: price } }, (err, doc) => {
-        if (err) {
-            console.log(err)
-        };
-        res.send(doc);
-    })
-}
+//     Tour.find({ price: { $gte: price } }, (err, doc) => {
+//         if (err) {
+//             console.log(err)
+//         };
+//         res.send(doc);
+//     })
+// }
 
 //Get popular destinations
 tourSchema.statics.getPopularPlaces = function (req, res) {
@@ -116,9 +116,7 @@ tourSchema.statics.getPopularPlaces = function (req, res) {
 
         res.send(cities);
 
-        //Find top 10 cities
-        //Send list to user
-
+        //Find top 10 cities?
     })
 }
 

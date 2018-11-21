@@ -15,12 +15,12 @@ export class TourEffects {
         switchMap((action: TourActions.OnGetTours) => {
             if (action.payload) {
                 return this.tourService.findTours(action.payload.skip, action.payload.limit)
-                    .pipe(
+                    .pipe (
                         map((tours: Tour[]) => new TourActions.GetTours(tours))
                     )
             } else {
                 return this.tourService.findTours()
-                    .pipe(
+                    .pipe (
                         map((tours: Tour[]) => new TourActions.GetTours(tours))
                     )
             }

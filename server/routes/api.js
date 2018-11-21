@@ -12,29 +12,29 @@ router.get('/tour/:skip/:limit', (req, res) => {
 })
 
 //Find tours by name/ address/ rating/ price (with req.skip)
-router.get('/name/:name', (req, res) => {
-    Tour.findTourByName(req, res);
-})
+// router.get('/name/:name', (req, res) => {
+//     Tour.findTourByName(req, res);
+// })
 
-router.get('/address/:address', (req, res) => {
-    Tour.findTourByAddress(req, res);
-})
+// router.get('/address/:address', (req, res) => {
+//     Tour.findTourByAddress(req, res);
+// })
 
-router.get('/rating/:rating', (req, res) => {
-    Tour.findTourByRating(req, res);
-})
+// router.get('/rating/:rating', (req, res) => {
+//     Tour.findTourByRating(req, res);
+// })
 
-router.get('/price/:price', (req, res) => {
-    Tour.findTourByPrice(req, res);
-})
+// router.get('/price/:price', (req, res) => {
+//     Tour.findTourByPrice(req, res);
+// })
 
-router.get('/places', (req, res)=>{
-    Tour.getPopularPlaces(req, res);
-})
+// router.get('/places', (req, res)=>{
+//     Tour.getPopularPlaces(req, res);
+// })
 
-router.get('/id/:id', (req, res) => {
-    Tour.findTourByID(req, res);
-})
+// router.get('/id/:id', (req, res) => {
+//     Tour.findTourByID(req, res);
+// })
 
 //[User] Sign up
 router.post('/user/signup', (req, res) => {

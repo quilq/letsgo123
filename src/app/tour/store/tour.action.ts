@@ -14,4 +14,5 @@ export class GetTours implements Action {
     constructor(public payload: Tour[]) { }
 };
 
+
 export type Actions = GetTours | OnGetTours;

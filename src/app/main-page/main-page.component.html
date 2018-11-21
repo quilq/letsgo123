@@ -17,7 +17,11 @@
         </button>
     </div>
 
-    <div fxLayout="column" class="popular-destinations">
+    <ul *ngFor="let destination of destinations">
+        <li> {{destination}}</li>
+    </ul>
+
+    <!-- <div fxLayout="column" class="popular-destinations">
         <p fxFlexAlign="center">Popular destinations</p>
         <div fxLayout="row" fxLayoutAlign="space-around center">
             <mat-card >
@@ -43,5 +47,5 @@
         </div>
     </div>
     <button (click)="findTourByAddress('Can Tho')">Find tour by address</button>
-    <button mat-raised-button (click)="getPopularCities()">getPopularCities</button>
+    <button mat-raised-button (click)="getPopularPlaces()">getPopularCities</button> -->
 </div>
