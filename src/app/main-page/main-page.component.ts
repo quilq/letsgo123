@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { Tour } from '../tour/tour.model';
 import { AppState } from '../store/app.reducers';
 import * as TourActions from '../tour/store/tour.action';
 import * as DestinationsActions from '../main-page/store/destinations.action'
-import { TourService } from '../tour/tour.service';
 
 @Component({
   selector: 'app-main-page',
@@ -33,14 +32,13 @@ export class MainPageComponent implements OnInit {
     });
     this.store.dispatch(new DestinationsActions.OnGetDestinations());
     this.store.select('destinations').pipe(
-      map(destinationsState => this.popularPlaces = destinationsState.destinations),
-      tap(()=> console.log(this.popularPlaces))
-    )
+      map(destinationsState => destinationsState.destinations)
+    ).subscribe(destinations => this.popularPlaces = destinations);
 
   }
 
   findTourByAddress(address: string) {
-
+    this.store.dispatch(new DestinationsActions.OnGetTourByAddress(address));
   }
 
   // getPopularPlaces(){

@@ -24,10 +24,10 @@ export class TourService {
     return this.httpClient.get<string[]>(url);        
   }
 
-  // findTourByAddress(address: string){
-  //   let url = `/api/address/${address}`;
-  //   return this.httpClient.get<Tour[]>(url);
-  // }
+  findTourByAddress(address: string){
+    let url = `/api/address/${address}`;
+    return this.httpClient.get<Tour[]>(url);
+  }
 
   // addNewTour(){
   //   let url = `/api/tour/new`;

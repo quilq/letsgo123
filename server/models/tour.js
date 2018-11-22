@@ -52,22 +52,22 @@ tourSchema.statics.findTour = function (req, res) {
 // }
 
 // Find tours by address
-// tourSchema.statics.findTourByAddress = function (req, res) {
-//     const Tour = this,
-//         address = req.params.address;
+tourSchema.statics.findTourByAddress = function (req, res) {
+    const Tour = this,
+        address = req.params.address;
 
-//     Tour.find({
-//         $or: [
-//             { 'journey.city': address },
-//             { 'journey.country': address }
-//         ]
-//     }, (err, docs) => {
-//         if (err) {
-//             console.log(err)
-//         };
-//         res.send(docs);
-//     })
-// }
+    Tour.find({
+        $or: [
+            { 'journey.city': address },
+            { 'journey.country': address }
+        ]
+    }, (err, docs) => {
+        if (err) {
+            console.log(err)
+        };
+        res.send(docs);
+    })
+}
 
 //Find tours by rating
 // tourSchema.statics.findTourByRating = function (req, res) {

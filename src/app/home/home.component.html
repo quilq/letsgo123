@@ -13,7 +13,7 @@
             <div fxLayout="row" fxLayoutAlign="start center">
                 <button mat-button (click)="sidenav.toggle()">Menu</button>
                 <button mat-button routerLink="/"> letsgo123.xyz </button>
-                <button mat-button> Explore </button>
+                <button mat-button routerLink="/tour"> Explore </button>
                 <button mat-button> Today's deal </button>
             </div>
             <div fxLayout="row" fxLayoutAlign="end center" *ngIf="!(isAuthenticated$ | async)">

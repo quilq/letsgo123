@@ -13,7 +13,7 @@ export class OnGetTourByAddress implements Action {
 
 export class GetTourByAddress implements Action {
     readonly type = GET_TOUR_BY_ADDRESS;
-    constructor(public payload: Tour[]) { }
+    constructor(public payload: {address: string, tours: Tour[]}) { }
 
 }
 export class OnGetDestinations implements Action {

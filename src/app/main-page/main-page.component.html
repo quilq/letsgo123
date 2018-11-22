@@ -17,35 +17,13 @@
         </button>
     </div>
 
-    <ul *ngFor="let destination of popularPlaces">
-        <li> {{destination}}</li>
-    </ul>
-
-    <!-- <div fxLayout="column" class="popular-destinations">
-        <p fxFlexAlign="center">Popular destinations</p>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-            <mat-card >
-                Ho Chi Minh
-                <mat-card-actions>
-                    <button (click)="findTourByAddress('Ho Chi Minh City')">Find tour by address</button>
-                </mat-card-actions>
-            </mat-card>
-
-            <mat-card >
-                Da Nang
-                <mat-card-actions>
-                    <button (click)="findTourByAddress('Da Nang')">Find tour by address</button>
-                </mat-card-actions>
-            </mat-card>
-
-            <mat-card >
-                Can Tho
-                <mat-card-actions>
-                    <button (click)="findTourByAddress('Can Tho')">Find tour by address</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
+    <div *ngFor="let destination of popularPlaces">
+        <mat-card> 
+            {{destination}}
+            <mat-card-actions>
+                <button mat-button (click)="findTourByAddress(destination)">Find out more</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
-    <button (click)="findTourByAddress('Can Tho')">Find tour by address</button>
-    <button mat-raised-button (click)="getPopularPlaces()">getPopularCities</button> -->
+
 </div>
