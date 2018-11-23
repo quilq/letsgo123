@@ -23,6 +23,7 @@ import { AuthEffects } from './user/auth/store/auth.effects';
 import { reducers } from './store/app.reducers';
 import { TourDetailsComponent } from './tour/tour-details/tour-details.component';
 import { DestinationsEffect } from './main-page/store/destinations.effect';
+import { TourByAddressComponent } from './main-page/tour-by-address/tour-by-address.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DestinationsEffect } from './main-page/store/destinations.effect';
     SigninComponent,
     SignupComponent,
     MainPageComponent,
-    TourDetailsComponent
+    TourDetailsComponent,
+    TourByAddressComponent
   ],
   imports: [
     BrowserModule,
