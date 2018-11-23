@@ -1,3 +1,29 @@
-<p>
-  tour-by-address works!
-</p>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-form-field floatLabel="never">
+    <input matInput placeholder="From ?">
+  </mat-form-field>
+  <mat-form-field floatLabel="never">
+    <input matInput placeholder="To ?">
+  </mat-form-field>
+  <mat-form-field floatLabel="never">
+    <input matInput [matDatepicker]="date" placeholder="Date">
+    <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+    <mat-datepicker #date></mat-datepicker>
+  </mat-form-field>
+  <button mat-icon-button>
+    <mat-icon aria-label="search icon-button">search</mat-icon>
+  </button>
+</div>
+
+<h1>
+  {{loadedDestinations}}
+</h1>
+
+<mat-card *ngFor="let tour of toursByDestination">
+  <mat-card-title>{{tour.name}}</mat-card-title>
+  <mat-card-subtitle>{{tour.rating}} | {{tour.tourType}} | {{tour.price}}$ </mat-card-subtitle>
+  <mat-card-actions>
+    <button mat-button>Tour info</button>
+    <button mat-button>Book this tour</button>
+  </mat-card-actions>
+</mat-card>

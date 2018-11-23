@@ -18,10 +18,13 @@
     </div>
 
     <div *ngFor="let destination of popularPlaces">
-        <mat-card> 
+        <mat-card>
             {{destination}}
             <mat-card-actions>
-                <button mat-button (click)="findTourByAddress(destination)">Find out more</button>
+                <button 
+                mat-button [routerLink]="['/tour-by-address', destination]">
+                Find out more
+                </button>
             </mat-card-actions>
         </mat-card>
     </div>

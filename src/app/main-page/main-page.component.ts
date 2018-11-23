@@ -37,9 +37,6 @@ export class MainPageComponent implements OnInit {
 
   }
 
-  findTourByAddress(address: string) {
-    this.store.dispatch(new DestinationsActions.OnGetTourByAddress(address));
-  }
 
   // getPopularPlaces(){
   //   this.tourService.getPopularPlaces().subscribe(res => {
