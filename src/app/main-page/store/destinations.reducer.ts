@@ -16,8 +16,9 @@ const initialState: DestinationsState = {
 export function destinationsReducer(state: DestinationsState = initialState, action: DestinationsAction.Action): DestinationsState {
     switch (action.type) {
         case DestinationsAction.GET_DESTINATIONS:
-            return {...state, destinations: [...state.destinations, ...action.payload]}
-
+            return {...state, destinations: [...action.payload]}
+            //return {...state, destinations: [...state.destinations, ...action.payload]}
+//Duplicate destinations
             case DestinationsAction.GET_TOUR_BY_ADDRESS:
             return {...state, loadedDestination: action.payload.address, toursByDestination: [...action.payload.tours]}
 

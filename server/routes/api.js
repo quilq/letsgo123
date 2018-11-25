@@ -32,9 +32,9 @@ router.get('/places', (req, res)=>{
     Tour.getPopularPlaces(req, res);
 })
 
-// router.get('/id/:id', (req, res) => {
-//     Tour.findTourByID(req, res);
-// })
+router.get('/id/:id', (req, res) => {
+    Tour.findTourByID(req, res);
+})
 
 //[User] Sign up
 router.post('/user/signup', (req, res) => {

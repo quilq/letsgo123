@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as DestinationsActions from '../store/destinations.action'
 import { Store } from '@ngrx/store';
+import * as TourActions from '../../tour/store/tour.action';
 import { AppState } from '../../store/app.reducers';
 import { map } from 'rxjs/operators';
 
@@ -15,7 +16,7 @@ export class TourByAddressComponent implements OnInit {
 
   address = '';
   loadedDestinations = '';
-  toursByDestination = {};
+  toursByDestination = [];
 
   ngOnInit() {
     this.address = this.activatedRoute.snapshot.paramMap.get('address');
@@ -23,6 +24,7 @@ export class TourByAddressComponent implements OnInit {
     this.store.select('destinations').subscribe(destinations => {
         this.loadedDestinations = destinations.loadedDestination;
         this.toursByDestination = destinations.toursByDestination;
+        this.store.dispatch(new TourActions.AddTours(this.toursByDestination));
       });
   }
 

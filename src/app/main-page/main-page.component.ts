@@ -14,22 +14,22 @@ import * as DestinationsActions from '../main-page/store/destinations.action'
 })
 export class MainPageComponent implements OnInit {
 
-  tours: Tour[] = [];
+  // tours: Tour[] = [];
   popularPlaces: string[] = [];
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.store.select('tours').pipe(
-      map(toursState => toursState.hasLoaded)
-    ).subscribe(hasLoaded => {
-      if (!hasLoaded) {
-        this.store.dispatch(new TourActions.OnGetTours());
-      }
-      this.store.select('tours').pipe(
-        map(toursState => toursState.tours)
-      ).subscribe(tours => this.tours = tours);
-    });
+    // this.store.select('tours').pipe(
+    //   map(toursState => toursState.hasLoaded)
+    // ).subscribe(hasLoaded => {
+    //   if (!hasLoaded) {
+    //     this.store.dispatch(new TourActions.OnGetTours());
+    //   }
+    //   this.store.select('tours').pipe(
+    //     map(toursState => toursState.tours)
+    //   ).subscribe(tours => this.tours = tours);
+    // });
     this.store.dispatch(new DestinationsActions.OnGetDestinations());
     this.store.select('destinations').pipe(
       map(destinationsState => destinationsState.destinations)

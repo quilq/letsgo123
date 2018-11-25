@@ -23,17 +23,17 @@ export class TourDetailsComponent implements OnInit {
   constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
     this.store.select('tours').pipe(
       map(toursState => toursState.hasLoaded)
     ).subscribe(hasLoaded => {
       if (!hasLoaded) {
-        this.store.dispatch(new TourActions.OnGetTours());
+        this.store.dispatch(new TourActions.OnGetTourByID(id));
       }
       this.store.select('tours').pipe(
         map(toursState => toursState.tours)
       ).subscribe(tours => {
         this.tours = tours;
-        let id = this.activatedRoute.snapshot.paramMap.get('id');
         this.selectedTour = this.findTour(id);
       });
     }
@@ -43,6 +43,7 @@ export class TourDetailsComponent implements OnInit {
   findTour(id) {
     let selectedTour: Tour = new Tour();
     for (let i = 0; i < this.tours.length; i++) {
+
       if (id === this.tours[i]._id) {
         selectedTour = this.tours[i];
         break;
@@ -50,8 +51,8 @@ export class TourDetailsComponent implements OnInit {
     }
     selectedTour.journey.forEach(info => {
       info.formattedDate = moment(info.date).format('DD/MM/YYYY');
-    })
+    });
+
     return selectedTour;
   }
-
 }

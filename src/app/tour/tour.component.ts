@@ -39,10 +39,6 @@ export class TourComponent implements OnInit {
   //   this.tourService.addNewTour().subscribe();
   // }
 
-  printID(tour) {
-    console.log(tour);
-  }
-
   bookTour(tour: Tour) {
     let dates = [new Date()];
     this.store.dispatch(new BookingActions.BookTour({ tour: tour, dates: dates }));

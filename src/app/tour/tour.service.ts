@@ -14,10 +14,10 @@ export class TourService {
     return this.httpClient.get<Tour[]>(url);
   }
 
-  // findTourByID(id: string){
-  //   let url = `/api/id/${id}`;
-  //   return this.httpClient.get<Tour>(url);
-  // }
+  findTourByID(id: string){
+    let url = `/api/id/${id}`;
+    return this.httpClient.get<Tour>(url);
+  }
 
   getPopularPlaces(){
     let url = `/api/places`;
