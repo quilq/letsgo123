@@ -11,7 +11,8 @@ import {
   MatListModule,
   MatRadioModule,
   MatCheckboxModule,
-  MatDividerModule
+  MatDividerModule,
+  MatGridListModule
 }
   from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -32,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatListModule,
     MatRadioModule,
     MatCheckboxModule,
+    MatGridListModule,
     MatDividerModule
   ],
   exports: [
@@ -46,6 +48,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatListModule,
     MatRadioModule,
     MatCheckboxModule,
+    MatGridListModule,
     MatDividerModule
   ]
 })
