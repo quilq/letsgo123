@@ -33,7 +33,7 @@ export class MainPageComponent implements OnInit {
     this.store.dispatch(new DestinationsActions.OnGetDestinations());
     this.store.select('destinations').pipe(
       map(destinationsState => destinationsState.destinations)
-    ).subscribe(destinations => this.popularPlaces = destinations);
+    ).subscribe(destinations => this.popularPlaces = destinations.slice(0, 6)); //Get 6 (0-5) items for displaying
 
   }
 

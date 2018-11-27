@@ -1,11 +1,7 @@
-.main-page{
-    height: 81vh;
+.margin-1 {
+    margin: 1%;
 }
 
-.popular-destinations{
+.margin-2 {
     margin: 2%;
-}
-
-.popular-destinations, p {
-    margin:3%;
 }
