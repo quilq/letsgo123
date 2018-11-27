@@ -3,9 +3,11 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT;
+const helmet = require('helmet');
 
 const api = require('./routes/api');
 
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
