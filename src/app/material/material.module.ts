@@ -12,7 +12,8 @@ import {
   MatRadioModule,
   MatCheckboxModule,
   MatDividerModule,
-  MatGridListModule
+  MatGridListModule,
+  MatExpansionModule
 }
   from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -34,7 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatRadioModule,
     MatCheckboxModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule
   ],
   exports: [
     MatIconModule,
@@ -49,7 +51,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatRadioModule,
     MatCheckboxModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule { }

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
 import * as TourActions from '../store/tour.action';
+import * as DestinationsActions from '../../main-page/store/destinations.action';
 import { Tour } from '../tour.model';
 import { AppState } from '../../store/app.reducers';
 
@@ -19,11 +20,14 @@ export class TourDetailsComponent implements OnInit {
 
   tours: Tour[] = [];
   selectedTour: Tour = new Tour();
+  similarTours: Tour[] = [];
 
   constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
+
+    //Check if toursState was loaded, if not => get tour by id from server
     this.store.select('tours').pipe(
       map(toursState => toursState.hasLoaded)
     ).subscribe(hasLoaded => {
@@ -35,9 +39,27 @@ export class TourDetailsComponent implements OnInit {
       ).subscribe(tours => {
         this.tours = tours;
         this.selectedTour = this.findTour(id);
+        console.log('selected tours ', this.selectedTour);
+
+        //Find similar tours
+        this.store.select('destinations').pipe(
+          map(destinationsState => destinationsState.loadedDestination)
+        ).subscribe(loadedDestination => {
+          console.log('loaded destination ', loadedDestination);
+          if (loadedDestination === '') {
+            console.log('selected tours with loaded destinations ', this.selectedTour);
+            console.log('selected tour journey ', this.selectedTour.journey[0].city);
+            this.store.dispatch(new DestinationsActions.OnGetTourByAddress(this.selectedTour.journey[0].city));
+          }
+          this.store.select('destinations').pipe(
+            map(destinationsState => destinationsState.toursByDestination)
+          ).subscribe(tours => {
+            this.similarTours = tours;
+            console.log('similar tours ', this.similarTours);
+          });
+        });
       });
-    }
-    )
+    });
   }
 
   findTour(id) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as DestinationsActions from '../store/destinations.action'
+import * as DestinationsActions from '../store/destinations.action';
 import { Store } from '@ngrx/store';
 import * as TourActions from '../../tour/store/tour.action';
 import { AppState } from '../../store/app.reducers';

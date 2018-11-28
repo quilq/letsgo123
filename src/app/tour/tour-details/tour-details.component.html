@@ -14,17 +14,48 @@
         <mat-icon aria-label="search icon-button">search</mat-icon>
     </button>
 </div>
+<div fxLayout="row" fxLayoutAlign="space-around start">
+    <mat-card fxFlex="65%">
+        <mat-card-header>
+            <mat-card-title> {{selectedTour.name}} | {{selectedTour.price}} $ </mat-card-title>
+            <mat-card-subtitle>{{selectedTour.tourType}}</mat-card-subtitle>
+            <mat-card-subtitle>Rating: {{selectedTour.rating}} <mat-icon>star_rate</mat-icon>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-accordion multi="true">
+                <mat-expansion-panel *ngFor="let place of selectedTour.journey ; let i = index">
+                    <mat-expansion-panel-header>
+                        Day {{i+1}} | {{place.formattedDate}} | {{place.city}}
+                    </mat-expansion-panel-header>
+                    <p>
+                        Info {{i+1}}
+                    </p>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button>Book this tour</button>
+        </mat-card-actions>
 
-<h1>Tour {{selectedTour.name}}</h1>
-<h2>{{selectedTour.tourType}}</h2>
-<h3>Price: {{selectedTour.price}} $</h3>
-<h3>Rating: {{selectedTour.rating}}</h3>
-
-<ul *ngFor="let place of selectedTour.journey ; let i = index">
-    <li>
-        Day {{i+1}} {{place.formattedDate}} | {{place.city}}
-    </li>
-    <div>
-        Info {{i+1}}
-    </div>
-</ul>
+    </mat-card>
+    <mat-card fxFlex="35%">
+        <mat-card-header> 
+            <mat-card-title>
+                Other tours
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-card *ngFor="let tour of similarTours" class="margin-2" [routerLink]="['/tour-details', tour._id]">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{tour.name}} | {{tour.journey[0].formattedDate}}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{tour.tourType }} | {{tour.rating}} <mat-icon>star_rate</mat-icon> | {{tour.price}} $
+                    </mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+        </mat-card-content>
+    </mat-card>
+</div>

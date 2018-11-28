@@ -15,11 +15,11 @@
   </button>
 </div>
 
-<h1>
+<h1 class="margin-2">
   {{loadedDestinations}}
 </h1>
 
-<mat-card *ngFor="let tour of toursByDestination">
+<mat-card *ngFor="let tour of toursByDestination" class="margin-2">
   <mat-card-title>{{tour.name}}</mat-card-title>
   <mat-card-subtitle>{{tour.rating}} | {{tour.tourType}} | {{tour.price}}$ </mat-card-subtitle>
   <mat-card-actions>

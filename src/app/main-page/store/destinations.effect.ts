@@ -25,6 +25,7 @@ export class DestinationsEffect {
     getTourByAddress$: Observable<Action> = this.action$.pipe(
         ofType(DestinationsAction.ON_GET_TOUR_BY_ADDRESS),
         switchMap((action: DestinationsAction.OnGetTourByAddress)=>{
+            tap(() => console.log('ACTION PAYLOAD ',action.payload));
             return this.tourService.findTourByAddress(action.payload).pipe(
                 map((tours: Tour[]) => new DestinationsAction.GetTourByAddress({address: action.payload, tours: tours}))
             )
