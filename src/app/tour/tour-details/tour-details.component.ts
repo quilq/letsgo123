@@ -18,7 +18,6 @@ import { AppState } from '../../store/app.reducers';
 
 export class TourDetailsComponent implements OnInit {
 
-  tours: Tour[] = [];
   selectedTour: Tour = new Tour();
   similarTours: Tour[] = [];
 
@@ -31,43 +30,48 @@ export class TourDetailsComponent implements OnInit {
     this.store.select('tours').pipe(
       map(toursState => toursState.hasLoaded)
     ).subscribe(hasLoaded => {
+      console.log('Check tour !');
       if (!hasLoaded) {
+        console.log('Check tour. Hasloaded: ', hasLoaded);
         this.store.dispatch(new TourActions.OnGetTourByID(id));
       }
-      this.store.select('tours').pipe(
-        map(toursState => toursState.tours)
-      ).subscribe(tours => {
-        this.tours = tours;
-        this.selectedTour = this.findTour(id);
-        console.log('selected tours ', this.selectedTour);
+    });
 
-        //Find similar tours
-        this.store.select('destinations').pipe(
-          map(destinationsState => destinationsState.loadedDestination)
-        ).subscribe(loadedDestination => {
-          console.log('loaded destination ', loadedDestination);
-          if (loadedDestination === '') {
-            console.log('selected tours with loaded destinations ', this.selectedTour);
-            console.log('selected tour journey ', this.selectedTour.journey[0].city);
-            this.store.dispatch(new DestinationsActions.OnGetTourByAddress(this.selectedTour.journey[0].city));
-          }
-          this.store.select('destinations').pipe(
-            map(destinationsState => destinationsState.toursByDestination)
-          ).subscribe(tours => {
-            this.similarTours = tours;
-            console.log('similar tours ', this.similarTours);
-          });
-        });
-      });
+    //Find tour with id
+    this.store.select('tours').pipe(
+      map(toursState => toursState.tours)
+    ).subscribe(tours => {
+      this.selectedTour = this.findTour(tours, id);
+      console.log('Find tour with id. Selected tours: ', this.selectedTour);
+    });
+
+    //Check if a destination was loaded, if not => Get tour by address action
+    this.store.select('destinations').pipe(
+      map(destinationsState => destinationsState.loadedDestination)
+    ).subscribe(loadedDestination => {
+      console.log('Check loaded destination: ', loadedDestination);
+      if (loadedDestination === '') {
+        console.log('selected tours with loaded destinations ', this.selectedTour);
+        console.log('selected tour journey ', this.selectedTour.journey[0].city);
+        this.store.dispatch(new DestinationsActions.OnGetTourByAddress(this.selectedTour.journey[0].city));
+      }
+    });
+
+    //Find similar tours
+    this.store.select('destinations').pipe(
+      map(destinationsState => destinationsState.toursByDestination)
+    ).subscribe(tours => {
+      this.similarTours = tours;
+      console.log('Similar tours ', this.similarTours);
     });
   }
 
-  findTour(id) {
+  findTour(tours: Tour[], id: string) {
     let selectedTour: Tour = new Tour();
-    for (let i = 0; i < this.tours.length; i++) {
+    for (let i = 0; i < tours.length; i++) {
 
-      if (id === this.tours[i]._id) {
-        selectedTour = this.tours[i];
+      if (id === tours[i]._id) {
+        selectedTour = tours[i];
         break;
       }
     }
