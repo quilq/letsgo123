@@ -9,3 +9,8 @@ mat-card{
 .top-bottom-margin {
     margin: 15% 0%;
 }
+
+
+.pointer{
+    cursor: pointer;
+}

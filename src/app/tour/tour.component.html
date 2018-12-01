@@ -47,7 +47,7 @@
     <div fxLayout="column" fxFlex="70">
       <mat-card *ngFor="let tour of tours">
         <mat-card-header>
-          <mat-card-title [routerLink]="['/tour-details', tour._id]">{{tour.name}} </mat-card-title>
+          <mat-card-title [routerLink]="['/tour-details', tour._id]" class="pointer"  >{{tour.name}} </mat-card-title>
           <mat-card-subtitle>Rating</mat-card-subtitle>
           <mat-card-content>
             <p>

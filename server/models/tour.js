@@ -39,35 +39,35 @@ tourSchema.statics.findTour = function (req, res) {
 //     })
 // }
 
-tourSchema.statics.findTourByID = function (req, res) {
-    const Tour = this,
-        id = req.params.id;
+// tourSchema.statics.findTourByID = function (req, res) {
+//     const Tour = this,
+//         id = req.params.id;
 
-    Tour.findOne({ _id: id }, (err, doc) => {
-        if (err) {
-            console.log(err);
-        };
-        res.send(doc);
-    })
-}
+//     Tour.findOne({ _id: id }, (err, doc) => {
+//         if (err) {
+//             console.log(err);
+//         };
+//         res.send(doc);
+//     })
+// }
 
-// Find tours by address
-tourSchema.statics.findTourByAddress = function (req, res) {
-    const Tour = this,
-        address = req.params.address;
+// // Find tours by address
+// tourSchema.statics.findTourByAddress = function (req, res) {
+//     const Tour = this,
+//         address = req.params.address;
 
-    Tour.find({
-        $or: [
-            { 'journey.city': address },
-            { 'journey.country': address }
-        ]
-    }, (err, docs) => {
-        if (err) {
-            console.log(err)
-        };
-        res.send(docs);
-    })
-}
+//     Tour.find({
+//         $or: [
+//             { 'journey.city': address },
+//             { 'journey.country': address }
+//         ]
+//     }, (err, docs) => {
+//         if (err) {
+//             console.log(err)
+//         };
+//         res.send(docs);
+//     })
+// }
 
 //Find tours by rating
 // tourSchema.statics.findTourByRating = function (req, res) {

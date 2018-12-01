@@ -19,15 +19,15 @@ export class TourService {
   //   return this.httpClient.get<string[]>(url);        
   // }
 
-  findTourByID(id: string){
-    let url = `/api/id/${id}`;
-    return this.httpClient.get<Tour>(url);
-  }
+  // findTourByID(id: string){
+  //   let url = `/api/id/${id}`;
+  //   return this.httpClient.get<Tour>(url);
+  // }
 
-  findTourByAddress(address: string){
-    let url = `/api/address/${address}`;
-    return this.httpClient.get<Tour[]>(url);
-  }
+  // findTourByAddress(address: string){
+  //   let url = `/api/address/${address}`;
+  //   return this.httpClient.get<Tour[]>(url);
+  // }
 
   // addNewTour(){
   //   let url = `/api/tour/new`;

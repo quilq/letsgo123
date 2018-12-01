@@ -35,7 +35,7 @@
             </mat-accordion>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button>Book this tour</button>
+            <button mat-raised-button (click)="bookTour(selectedTour)">Book this tour</button>
         </mat-card-actions>
 
     </mat-card>
@@ -46,13 +46,13 @@
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <mat-card *ngFor="let tour of similarTours" class="margin-2" [routerLink]="['/tour-details', tour._id]">
+            <mat-card *ngFor="let tour of similarTours" class="margin-2">
                 <mat-card-header>
-                    <mat-card-title>
-                        {{tour.name}} | {{tour.journey[0].formattedDate}}
+                    <mat-card-title class="pointer" >
+                        {{tour.name}}
                     </mat-card-title>
                     <mat-card-subtitle>
-                        {{tour.tourType }} | {{tour.rating}} <mat-icon>star_rate</mat-icon> | {{tour.price}} $
+                        {{tour.journey[0].formattedDate}} | {{tour.tourType }} | {{tour.rating}} <mat-icon>star_rate</mat-icon> | {{tour.price}} $
                     </mat-card-subtitle>
                 </mat-card-header>
             </mat-card>

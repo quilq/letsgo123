@@ -1,8 +1,20 @@
-<button mat-button routerLink="/">Home</button>
+<div fxLayout="row" fxLayoutAlign="space-around center">
+  <div fxLayout="column">
+    <h1>
+      All Bookings
+    </h1>
+    <ul *ngFor="let booking of bookings$ | async ; let i = index">
+      <li>{{booking.tour.name}} | {{booking.tour.rating}} </li>
+      <button mat-button (click)="removeTour(i)">Remove this booking</button>
+    </ul>
+  </div>
 
-<div>All Bookings</div>
-
-<ul *ngFor="let booking of bookings$ | async ; let i = index"> 
-  <li>{{booking.tour.name}} | {{booking.tour.rating}} </li>
-  <button mat-button (click)="removeTour(i)">Remove this booking</button>
-</ul>
+  <div fxLayout="column">
+    <h1>
+      Payment process
+    </h1>
+    <div>
+      VISA - MASTERCARD - JCB
+    </div>
+  </div>
+</div>
