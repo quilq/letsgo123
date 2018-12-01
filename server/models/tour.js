@@ -96,29 +96,29 @@ tourSchema.statics.findTourByAddress = function (req, res) {
 // }
 
 //Get popular destinations
-tourSchema.statics.getPopularPlaces = function (req, res) {
-    const Tour = this;
+// tourSchema.statics.getPopularPlaces = function (req, res) {
+//     const Tour = this;
 
-    Tour.find({}, 'journey.city', {'journey._id': 0 }, (err, docs) => {
-        if (err) {
-            console.log(err)
-        };
+//     Tour.find({}, 'journey.city', {'journey._id': 0 }, (err, docs) => {
+//         if (err) {
+//             console.log(err)
+//         };
 
-        let cities = [];
+//         let cities = [];
 
-        docs.forEach(element => {
-            element.journey.forEach(place => {
-                if (!cities.includes(place.city)){
-                    cities.push(place.city);
-                }
-            })
-        });
+//         docs.forEach(element => {
+//             element.journey.forEach(place => {
+//                 if (!cities.includes(place.city)){
+//                     cities.push(place.city);
+//                 }
+//             })
+//         });
 
-        res.send(cities);
+//         res.send(cities);
 
-        //Find top 10 cities?
-    })
-}
+//         //Find top 10 cities?
+//     })
+// }
 
 //[Admin] Add tours
 

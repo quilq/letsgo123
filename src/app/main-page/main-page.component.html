@@ -31,13 +31,13 @@
         </mat-grid-tile>
     </mat-grid-list> -->
     <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" class="margin-2">
-        <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="45%" fxFlex="25%" *ngFor="let destination of popularPlaces"
+        <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="45%" fxFlex="25%" *ngFor="let place of popularPlaces"
             class="margin-1">
             <mat-card-title>
-                {{destination}}
+                {{place}}
             </mat-card-title>
             <mat-card-actions>
-                <button mat-button [routerLink]="['/tour-by-address', destination]">
+                <button mat-button [routerLink]="['/tour-by-address', place]">
                     Find out more
                 </button>
             </mat-card-actions>

@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
 import * as TourActions from '../store/tour.action';
-import * as DestinationsActions from '../../main-page/store/destinations.action';
 import { Tour } from '../tour.model';
 import { AppState } from '../../store/app.reducers';
 
@@ -30,7 +29,6 @@ export class TourDetailsComponent implements OnInit {
     this.store.select('tours').pipe(
       map(toursState => toursState.hasLoaded)
     ).subscribe(hasLoaded => {
-      console.log('Check tour !');
       if (!hasLoaded) {
         console.log('Check tour. Hasloaded: ', hasLoaded);
         this.store.dispatch(new TourActions.OnGetTourByID(id));
@@ -53,7 +51,6 @@ export class TourDetailsComponent implements OnInit {
       if (loadedDestination === '') {
         console.log('selected tours with loaded destinations ', this.selectedTour);
         console.log('selected tour journey ', this.selectedTour.journey[0].city);
-        this.store.dispatch(new DestinationsActions.OnGetTourByAddress(this.selectedTour.journey[0].city));
       }
     });
 
@@ -67,6 +64,7 @@ export class TourDetailsComponent implements OnInit {
   }
 
   findTour(tours: Tour[], id: string) {
+
     let selectedTour: Tour = new Tour();
     for (let i = 0; i < tours.length; i++) {
 

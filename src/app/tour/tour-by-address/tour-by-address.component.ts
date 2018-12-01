@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { AppState } from '../../store/app.reducers';
 import * as TourActions from '../../tour/store/tour.action';
-import * as DestinationsActions from '../store/destinations.action';
+import { Tour } from '../tour.model';
 
 @Component({
   selector: 'app-tour-by-address',
@@ -15,24 +15,28 @@ export class TourByAddressComponent implements OnInit {
   constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   address = '';
-  loadedDestinations = '';
-  toursByDestination = [];
+  toursByAddress: Tour[] = [];
 
   ngOnInit() {
     this.address = this.activatedRoute.snapshot.paramMap.get('address');
     this.findTourByAddress(this.address);
-    this.store.select('destinations').subscribe(destinations => {
-        this.loadedDestinations = destinations.loadedDestination;
-        this.toursByDestination = destinations.toursByDestination;
-        this.store.dispatch(new TourActions.AddTours(this.toursByDestination));
-      });
   }
 
-  
+
   findTourByAddress(address: string) {
-    this.store.dispatch(new DestinationsActions.OnGetTourByAddress(address));
+    this.store.select('tours').subscribe(
+      toursState => {
+        let allTour = toursState.tours;
+        for (let i = 0; i < allTour.length; i++) {
+          for (let ii = 0; ii < allTour[i].journey.length; ii++) {
+            if (allTour[i].journey[ii].city === address) {
+              this.toursByAddress.push(allTour[i]);
+              break;
+            }
+
+          }
+        }
+      })
   }
-
-
 
 }

@@ -3,7 +3,8 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import * as AuthActions from '../user/auth/store/auth.actions';
-import { AppState } from '../store/app.reducers';
+import * as TourActions from '../tour/store/tour.action';
+import { AppState, hasLoaded } from '../store/app.reducers';
 import { map} from 'rxjs/operators';
 
 @Component({

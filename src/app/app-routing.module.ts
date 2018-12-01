@@ -8,7 +8,7 @@ import { BookingComponent } from './booking/booking.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { TourComponent } from './tour/tour.component';
 import { TourDetailsComponent } from './tour/tour-details/tour-details.component';
-import { TourByAddressComponent } from './main-page/tour-by-address/tour-by-address.component';
+import { TourByAddressComponent } from './tour/tour-by-address/tour-by-address.component';
 
 const appRoutes: Routes = [
   { path: 'main', component: MainPageComponent },

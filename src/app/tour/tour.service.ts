@@ -9,19 +9,19 @@ export class TourService {
 
   constructor(private httpClient: HttpClient) { }
 
-  findTours(skip: number = 0, limit: number = 5) {
+  findTours(skip: number = 0, limit: number = 1000) {
     let url = `/api/tour/${skip}/${limit}`;
     return this.httpClient.get<Tour[]>(url);
   }
+  
+  // getPopularPlaces(){
+  //   let url = `/api/places`;
+  //   return this.httpClient.get<string[]>(url);        
+  // }
 
   findTourByID(id: string){
     let url = `/api/id/${id}`;
     return this.httpClient.get<Tour>(url);
-  }
-
-  getPopularPlaces(){
-    let url = `/api/places`;
-    return this.httpClient.get<string[]>(url);        
   }
 
   findTourByAddress(address: string){

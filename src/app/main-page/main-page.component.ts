@@ -3,9 +3,9 @@ import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 
 import { Tour } from '../tour/tour.model';
-import { AppState } from '../store/app.reducers';
+import { AppState, hasLoaded, allCities } from '../store/app.reducers';
 import * as TourActions from '../tour/store/tour.action';
-import * as DestinationsActions from '../main-page/store/destinations.action'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main-page',
@@ -15,40 +15,24 @@ import * as DestinationsActions from '../main-page/store/destinations.action'
 export class MainPageComponent implements OnInit {
 
   // tours: Tour[] = [];
-  popularPlaces: string[] = [];
+  popularPlaces: string[];
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    // this.store.select('tours').pipe(
-    //   map(toursState => toursState.hasLoaded)
-    // ).subscribe(hasLoaded => {
-    //   if (!hasLoaded) {
-    //     this.store.dispatch(new TourActions.OnGetTours());
-    //   }
-    //   this.store.select('tours').pipe(
-    //     map(toursState => toursState.tours)
-    //   ).subscribe(tours => this.tours = tours);
-    // });
-    this.store.dispatch(new DestinationsActions.OnGetDestinations());
-    this.store.select('destinations').pipe(
-      map(destinationsState => destinationsState.destinations)
-    ).subscribe(destinations => this.popularPlaces = destinations.slice(0, 6)); //Get 6 (0-5) items for displaying
+    this.store.select(hasLoaded).subscribe(
+      hasLoaded => {
+        if (!hasLoaded) {
+          this.store.dispatch(new TourActions.OnGetTours());
+        }
+      }
+    )
 
+    this.store.select(allCities).subscribe(
+      allCities => {
+        this.popularPlaces = allCities.slice(0, 6);
+      }
+    );
   }
-
-
-  // getPopularPlaces(){
-  //   this.tourService.getPopularPlaces().subscribe(res => {
-  //     this.popularPlaces = res;
-  //     console.log(res)
-  //   });
-  // }
-
-  // findTourByAddress(address: string){
-  //   this.tourService.findTourByAddress(address).subscribe(res =>       {
-  //     console.log(res)
-  //     });
-  // }
 
 }
