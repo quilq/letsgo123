@@ -15,7 +15,7 @@
     </button>
 </div>
 <div fxLayout="row" fxLayoutAlign="space-around start">
-    <mat-card fxFlex="65%">
+    <mat-card fxFlex="65">
         <mat-card-header>
             <mat-card-title> {{selectedTour.name}} | {{selectedTour.price}} $ </mat-card-title>
             <mat-card-subtitle>{{selectedTour.tourType}}</mat-card-subtitle>
@@ -39,7 +39,7 @@
         </mat-card-actions>
 
     </mat-card>
-    <mat-card fxFlex="35%">
+    <mat-card fxFlex>
         <mat-card-header> 
             <mat-card-title>
                 Other tours
@@ -48,11 +48,11 @@
         <mat-card-content>
             <mat-card *ngFor="let tour of similarTours" class="margin-2">
                 <mat-card-header>
-                    <mat-card-title class="pointer" >
+                    <mat-card-title class="pointer" (click)="viewTour(tour)">
                         {{tour.name}}
                     </mat-card-title>
                     <mat-card-subtitle>
-                        {{tour.journey[0].formattedDate}} | {{tour.tourType }} | {{tour.rating}} <mat-icon>star_rate</mat-icon> | {{tour.price}} $
+                        {{tour.tourType }} | {{tour.rating}} <mat-icon>star_rate</mat-icon> | {{tour.price}} $
                     </mat-card-subtitle>
                 </mat-card-header>
             </mat-card>

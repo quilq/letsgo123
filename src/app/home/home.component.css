@@ -1,3 +1,17 @@
-mat-toolbar, .footer{
+.header, .footer {
     background-color: rgb(165, 243, 93);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-view {
+
+}
+
+mat-sidenav-content{
+    height: 100vh;
 }

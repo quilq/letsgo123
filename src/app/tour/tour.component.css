@@ -2,14 +2,9 @@ mat-card{
     margin: 2%;
 }
 
-.search-bar {
-    width: 75vw;
-}
-
 .top-bottom-margin {
     margin: 15% 0%;
 }
-
 
 .pointer{
     cursor: pointer;

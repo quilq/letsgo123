@@ -42,7 +42,6 @@ export class TourDetailsComponent implements OnInit {
             }
           }
         }
-
       }
     });
 
@@ -66,6 +65,10 @@ export class TourDetailsComponent implements OnInit {
 
   bookTour(tour: Tour){
     this.store.dispatch(new BookingActions.BookTour({tour: tour, dates: [new Date()]}));
+  }
+
+  viewTour(tour: Tour){
+    this.selectedTour = tour;
   }
 
 }

@@ -3,9 +3,9 @@
     <h1>
       All Bookings
     </h1>
-    <ul *ngFor="let booking of bookings$ | async ; let i = index">
-      <li>{{booking.tour.name}} | {{booking.tour.rating}} </li>
-      <button mat-button (click)="removeTour(i)">Remove this booking</button>
+    <ul *ngFor="let booking of bookings ; let i = index">
+      <li>{{booking.tour.name}} | {{booking.tour.rating}} | {{booking.tour.price}} $ </li>
+      <button mat-button (click)="removeTour(i)">Cancel this booking</button>
     </ul>
   </div>
 
@@ -13,6 +13,12 @@
     <h1>
       Payment process
     </h1>
+    <p>
+      Amount: {{amount}} $
+    </p>
+    <button mat-raised-button color="primary">
+      Check out
+    </button>
     <div>
       VISA - MASTERCARD - JCB
     </div>

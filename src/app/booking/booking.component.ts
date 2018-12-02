@@ -14,14 +14,20 @@ import * as BookingActions from './store/booking.actions';
 })
 export class BookingComponent implements OnInit {
 
-  bookings$: Observable<Booking[]>;
+  bookings: Booking[];
+  amount = 0;
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.bookings$ = this.store.select('booking').pipe(
+    this.store.select('booking').pipe(
       map(bookingState => bookingState.booking)
-    )
+    ).subscribe(bookings => {
+      this.bookings = bookings
+      for (let i = 0; i < bookings.length; i++) {
+        this.amount = this.amount + this.bookings[i].tour.price;
+      }
+    });
   }
 
   removeTour(i: number) {
