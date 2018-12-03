@@ -16,7 +16,7 @@
                 <button mat-button routerLink="/tour"> Explore </button>
                 <button mat-button> Today's deal </button>
             </div>
-                        
+
             <div fxLayout="row" fxLayoutAlign="end center">
                 <button mat-button routerLink="/booking"> Check bookings </button>
             </div>
@@ -25,7 +25,7 @@
                 <button mat-button routerLink="/signin"> Sign in </button>
                 <button mat-button routerLink="/signup"> Create account </button>
             </div>
-            
+
             <div fxLayout="row" fxLayoutAlign="end center" *ngIf="isAuthenticated$ | async">
                 <button mat-button routerLink="/user"> User page </button>
                 <button mat-button (click)="onSignout()"> Sign out </button>
@@ -34,21 +34,24 @@
 
         <router-outlet class="main-view"></router-outlet>
 
-        <div fxLayout="row" fxLayoutAlign="space-around none" class="footer">
-            <div fxLayout="column">
-                <div>Contact us</div>
-                <div>FAQs</div>
-                <div>Terms of use</div>
-            </div>
-            <div fxLayout="column">
-                <div>About us</div>
-                <div>Blog</div>
-                <div>Terms of use</div>
-            </div>
-            <div fxLayout="column">
-                <div>Partner with us</div>
-                <div>Career</div>
+        <div>
+            <div fxLayout="row" fxLayoutAlign="space-around none" class="footer">
+                <div fxLayout="column">
+                    <div>Contact us</div>
+                    <div>FAQs</div>
+                    <div>Terms of use</div>
+                </div>
+                <div fxLayout="column">
+                    <div>About us</div>
+                    <div>Blog</div>
+                    <div>Terms of use</div>
+                </div>
+                <div fxLayout="column">
+                    <div>Partner with us</div>
+                    <div>Career</div>
+                </div>
             </div>
         </div>
+        
     </mat-sidenav-content>
 </mat-sidenav-container>

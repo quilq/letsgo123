@@ -1,19 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="center center">
-  <mat-form-field floatLabel="never">
-    <input matInput placeholder="From ?">
-  </mat-form-field>
-  <mat-form-field floatLabel="never">
-    <input matInput placeholder="To ?">
-  </mat-form-field>
-  <mat-form-field floatLabel="never">
-    <input matInput [matDatepicker]="date" placeholder="Date">
-    <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
-    <mat-datepicker #date></mat-datepicker>
-  </mat-form-field>
-  <button mat-icon-button>
-    <mat-icon aria-label="search icon-button">search</mat-icon>
-  </button>
-</div>
+<app-search></app-search>
 
 <h1 class="margin-2">
   {{address}}

@@ -8,10 +8,14 @@
     z-index: 1000;
 }
 
-.main-view {
-
+.footer {
+    z-index: 1000;
 }
 
-mat-sidenav-content{
+mat-sidenav-container{
     height: 100vh;
+}
+
+.main-view{
+    margin: 32px 0px;
 }
