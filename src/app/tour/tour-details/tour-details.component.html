@@ -22,10 +22,38 @@
         <mat-card-actions>
             <button mat-raised-button (click)="bookTour(selectedTour)">Book this tour</button>
         </mat-card-actions>
+        <div>
+            Notes 1
+        </div>
+        <div>
+            Notes 2
+        </div>
+        <div>
+            Notes 3
+        </div>
+        <div>
+            Notes 4
+        </div>
+        <div>
+            Notes 5
+        </div>
+        <div>
+            Notes 6
+        </div>
+        <div>
+            Notes 7
+        </div>
+        <div>
+            Notes 8
+        </div>
+        <div>
+            Notes 9
+        </div>
 
     </mat-card>
+
     <mat-card fxFlex>
-        <mat-card-header> 
+        <mat-card-header>
             <mat-card-title>
                 Other tours
             </mat-card-title>
@@ -44,3 +72,14 @@
         </mat-card-content>
     </mat-card>
 </div>
+
+<!-- <mat-accordion multi="true">
+        <mat-expansion-panel *ngFor="let place of selectedTour.journey ; let i = index">
+            <mat-expansion-panel-header>
+                Day {{i+1}} | {{place.formattedDate}} | {{place.city}}
+            </mat-expansion-panel-header>
+            <p>
+                Info {{i+1}}
+            </p>
+        </mat-expansion-panel>
+    </mat-accordion> -->
