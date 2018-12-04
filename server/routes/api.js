@@ -7,7 +7,6 @@ const { User } = require('../models/user');
 const { authenticate } = require('../middleware/authenticate');
 
 router.get('/tour/:skip/:limit', (req, res) => {
-    console.log('find tour called');
     Tour.findTour(req, res);
 })
 

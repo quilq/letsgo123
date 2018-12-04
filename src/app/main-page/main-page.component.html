@@ -2,14 +2,13 @@
 
     <app-search></app-search>
 
-    <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" class="margin-2">
-        <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="45%" fxFlex="25%" *ngFor="let place of popularPlaces"
-            class="margin-1">
+    <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" class="margin-2 transparent-75">
+        <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="45%" fxFlex="25%" *ngFor="let place of popularPlaces" class="margin-1">
             <mat-card-title>
                 {{place}}
             </mat-card-title>
             <mat-card-actions>
-                <button mat-button [routerLink]="['/tour-by-address', place]">
+                <button mat-raised-button [routerLink]="['/tour-by-address', place]">
                     Find out more
                 </button>
             </mat-card-actions>

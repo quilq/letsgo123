@@ -12,4 +12,8 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
+  searchTour(from, to, date){
+    console.log(from, to, date);
+  }
+
 }

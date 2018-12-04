@@ -3,24 +3,26 @@
     <h1>
       All Bookings
     </h1>
-    <ul *ngFor="let booking of bookings ; let i = index">
-      <li>{{booking.tour.name}} | {{booking.tour.rating}} | {{booking.tour.price}} $ </li>
+    <div *ngFor="let booking of bookings ; let i = index">
+      <h3>{{booking.tour.name}} | {{booking.tour.rating}} | {{booking.tour.price}} $ </h3>
       <button mat-button (click)="removeTour(i)">Cancel this booking</button>
-    </ul>
+    </div>
   </div>
 
   <div fxLayout="column">
-    <h1>
-      Payment process
-    </h1>
-    <p>
-      Amount: {{amount}} $
-    </p>
+    <mat-card>
+      <h1>
+        Payment process
+      </h1>
+      <h2>
+        Amount: {{amount}} $
+      </h2>
+    </mat-card>
     <button mat-raised-button color="primary">
       Check out
     </button>
     <div>
-      VISA - MASTERCARD - JCB
+      We accept: VISA - MASTERCARD - JCB
     </div>
   </div>
 </div>

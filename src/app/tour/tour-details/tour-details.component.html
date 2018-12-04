@@ -8,6 +8,7 @@
             </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
+            <img src="../../../assets/da-lat-2.jpg" alt="image">
             <mat-accordion multi="true">
                 <mat-expansion-panel *ngFor="let place of selectedTour.journey ; let i = index">
                     <mat-expansion-panel-header>
@@ -23,31 +24,32 @@
             <button mat-raised-button (click)="bookTour(selectedTour)">Book this tour</button>
         </mat-card-actions>
         <div>
-            Notes 1
+            <div>
+                Tour price includes:
+            </div>
+            <p>...</p>
+            <p>...</p>
         </div>
         <div>
-            Notes 2
+            <div>
+                Tour price does not include:
+            </div>
+            <p>...</p>
+            <p>...</p>
         </div>
         <div>
-            Notes 3
+            <div>
+                Cancelation policies:
+            </div>
+            <p>...</p>
+            <p>...</p>
         </div>
         <div>
-            Notes 4
-        </div>
-        <div>
-            Notes 5
-        </div>
-        <div>
-            Notes 6
-        </div>
-        <div>
-            Notes 7
-        </div>
-        <div>
-            Notes 8
-        </div>
-        <div>
-            Notes 9
+            <div>
+                Other info:
+            </div>
+            <p>...</p>
+            <p>...</p>
         </div>
 
     </mat-card>
