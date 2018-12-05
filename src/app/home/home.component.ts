@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
       );
   }
 
+
   onSignout() {
     this.store.dispatch(new AuthActions.OnSignout())
   }

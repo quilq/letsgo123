@@ -31,8 +31,10 @@
                 <button mat-button (click)="onSignout()"> Sign out </button>
             </div>
         </mat-toolbar>
-
-        <router-outlet class="main-view"></router-outlet>
+        
+        <main>
+            <router-outlet></router-outlet>
+        </main>
 
         <div>
             <div fxLayout="row" fxLayoutAlign="space-around none" class="footer">
@@ -52,6 +54,6 @@
                 </div>
             </div>
         </div>
-        
+
     </mat-sidenav-content>
 </mat-sidenav-container>
