@@ -6,12 +6,13 @@
     margin: 2%;
 }
 
-.transparent-75 {
-    opacity: 0.75;
-    filter: alpha(opacity=75); /* For IE8 and earlier */
+.transparent-80 {
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
 }
 
 .main-page {
     background: url(./../../assets/cover.jpeg);
     background-size: cover;
+    min-height: 100%; /*full height image => with fxFlex*/
 }

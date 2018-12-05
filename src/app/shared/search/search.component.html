@@ -1,15 +1,26 @@
 <div fxLayout="row" fxLayoutAlign="center center">
-    <mat-form-field floatLabel="never">
-        <input matInput placeholder="From ?" #from>
+    <mat-form-field>
+        <mat-select placeholder="Departure">
+            <mat-option *ngFor="let departure of departures" [value]="departure.value">
+                {{departure.viewValue}}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
-    <mat-form-field floatLabel="never">
-        <input matInput placeholder="To ?" #to>
+
+    <mat-form-field>
+        <mat-select placeholder="Arrival">
+            <mat-option *ngFor="let arrival of arrivals" [value]="arrival.value">
+                {{arrival.viewValue}}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
+
     <mat-form-field floatLabel="never">
         <input matInput [matDatepicker]="date" placeholder="Date">
         <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
         <mat-datepicker #date></mat-datepicker>
     </mat-form-field>
+
     <button mat-icon-button>
         <mat-icon aria-label="search icon-button" (click)="searchTour(from.value, to.value, date.value)">
             search
