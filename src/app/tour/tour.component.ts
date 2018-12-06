@@ -18,6 +18,7 @@ import { TourService } from './tour.service';
 export class TourComponent implements OnInit {
 
   tours: Tour[] = [];
+  priceRange = '';
 
   // constructor(private store: Store<AppState>, private tourService: TourService) { }
   constructor(private store: Store<AppState>) { }

@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environemnt
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -24,6 +24,7 @@ import { reducers } from './store/app.reducers';
 import { TourDetailsComponent } from './tour/tour-details/tour-details.component';
 import { TourByAddressComponent } from './tour/tour-by-address/tour-by-address.component';
 import { SearchComponent } from './shared/search/search.component';
+import { MatSelectModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SearchComponent } from './shared/search/search.component';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     FlexLayoutModule,
     MaterialModule,
     StoreModule.forRoot(reducers),

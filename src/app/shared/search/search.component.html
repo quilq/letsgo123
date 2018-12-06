@@ -1,29 +1,30 @@
-<div fxLayout="row" fxLayoutAlign="center center">
-    <mat-form-field>
-        <mat-select placeholder="Departure">
-            <mat-option *ngFor="let departure of departures" [value]="departure.value">
-                {{departure.viewValue}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-select placeholder="Arrival">
-            <mat-option *ngFor="let arrival of arrivals" [value]="arrival.value">
-                {{arrival.viewValue}}
+<form fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-fiel floatLabel="never"d>
+        <mat-select placeholder="from where?" [(ngModel)]="from" name="fromPlace">
+            <mat-option *ngFor="let fromPlace of fromWhere" [value]="fromPlace.value">
+                {{fromPlace.viewValue}}
             </mat-option>
         </mat-select>
     </mat-form-field>
 
     <mat-form-field floatLabel="never">
-        <input matInput [matDatepicker]="date" placeholder="Date">
-        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
-        <mat-datepicker #date></mat-datepicker>
+        <mat-select placeholder="to where?"  [(ngModel)]="to" name="toPlace">
+            <mat-option *ngFor="let toPlace of toWhere" [value]="toPlace.value">
+                {{toPlace.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="never">
+        <input matInput [matDatepicker]="datepicker" 
+        placeholder="choose your date" 
+        [(ngModel)]="date" 
+        name="ofDate">
+        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker></mat-datepicker>
     </mat-form-field>
 
     <button mat-icon-button>
-        <mat-icon aria-label="search icon-button" (click)="searchTour(from.value, to.value, date.value)">
-            search
-        </mat-icon>
+        <mat-icon aria-label="search icon-button" (click)="searchTour(from, to, date)">search</mat-icon>
     </button>
-</div>
+</form>

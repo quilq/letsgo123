@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-search',
@@ -9,25 +10,28 @@ export class SearchComponent implements OnInit {
 
   constructor() { }
 
-  date: Date;
+  from = '';
+  to = '';
+  date = moment();
 
   ngOnInit() {
   }
 
-  searchTour(from, to, date){
-    console.log(from, to, date);
+  searchTour(from, to, date) {
+    //todo: implement search function
+    console.log(from, to, moment(date).format('dddd, MMMM Do YYYY'));
   }
 
-  departures = [
-    {value: 'Citi 11', viewValue: 'Citi 12'},
-    {value: 'Citi 21', viewValue: 'Citi 22'},
-    {value: 'Citi 31', viewValue: 'Citi 32'}
+  fromWhere = [
+    { value: 'HN', viewValue: 'Ha Noi' },
+    { value: 'SG', viewValue: 'Ho Chi Minh City' },
+    { value: 'CT', viewValue: 'Can Tho' },
   ];
 
-  arrivals = [
-    {value: 'Citi 41', viewValue: 'Citi 42'},
-    {value: 'Citi 51', viewValue: 'Citi 52'},
-    {value: 'Citi 61', viewValue: 'Citi 62'}
+  toWhere = [
+    { value: 'HN', viewValue: 'Ha Noi' },
+    { value: 'SG', viewValue: 'Ho Chi Minh City' },
+    { value: 'CT', viewValue: 'Can Tho' },
   ];
 
 }
