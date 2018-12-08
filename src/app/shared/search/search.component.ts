@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { Tour } from 'src/app/tour/tour.model';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.reducers';
 
 @Component({
   selector: 'app-search',
@@ -8,30 +11,46 @@ import * as moment from 'moment';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   from = '';
   to = '';
   date = moment();
 
+  tours: Tour[] = [];
+
   ngOnInit() {
+    this.store.select('tours').subscribe(toursState =>
+      this.tours = toursState.tours
+    )
   }
 
   searchTour(from, to, date) {
-    //todo: implement search function
-    console.log(from, to, moment(date).format('dddd, MMMM Do YYYY'));
+    let searchResult = [];
+    this.tours.forEach(tour => {
+      if ((tour.journey[0].city === from)
+        && (moment(tour.journey[0].date).format('MMM Do YYYY') >= moment(date).format('MMM Do YYYY'))) {
+        for (let i = 1; i < tour.journey.length; i++) {
+          if (tour.journey[i].city === to) {
+            searchResult.push(tour);
+            break;
+          }
+        }
+      }
+    })
+    console.log(searchResult);
   }
 
   fromWhere = [
-    { value: 'HN', viewValue: 'Ha Noi' },
-    { value: 'SG', viewValue: 'Ho Chi Minh City' },
-    { value: 'CT', viewValue: 'Can Tho' },
+    { value: 'Ha Noi', viewValue: 'Ha Noi' },
+    { value: 'Ho Chi Minh City', viewValue: 'Ho Chi Minh City' },
+    { value: 'Can Tho', viewValue: 'Can Tho' },
   ];
 
   toWhere = [
-    { value: 'HN', viewValue: 'Ha Noi' },
-    { value: 'SG', viewValue: 'Ho Chi Minh City' },
-    { value: 'CT', viewValue: 'Can Tho' },
+    { value: 'Ha Noi', viewValue: 'Ha Noi' },
+    { value: 'Ho Chi Minh City', viewValue: 'Ho Chi Minh City' },
+    { value: 'Can Tho', viewValue: 'Can Tho' },
   ];
 
 }

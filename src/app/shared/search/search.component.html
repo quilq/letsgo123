@@ -1,5 +1,5 @@
 <form fxLayout="row" fxLayoutAlign="center center">
-    <mat-form-fiel floatLabel="never"d>
+    <mat-form-field floatLabel="never"d>
         <mat-select placeholder="from where?" [(ngModel)]="from" name="fromPlace">
             <mat-option *ngFor="let fromPlace of fromWhere" [value]="fromPlace.value">
                 {{fromPlace.viewValue}}

@@ -19,6 +19,9 @@ export class TourComponent implements OnInit {
 
   tours: Tour[] = [];
   priceRange = '';
+  daysNumber = '';
+  luxary = false;
+  economy = false;
 
   // constructor(private store: Store<AppState>, private tourService: TourService) { }
   constructor(private store: Store<AppState>) { }
@@ -39,6 +42,15 @@ export class TourComponent implements OnInit {
   // addTour(){
   //   this.tourService.addNewTour().subscribe();
   // }
+  filterByType(){
+    console.log('123')
+  }
+
+  filterByPrice(){
+  }
+
+  filterByDays(){
+  }
 
   bookTour(tour: Tour) {
     let dates = [new Date()];
