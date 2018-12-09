@@ -18,7 +18,7 @@
         <section fxLayout="column" class="top-bottom-margin" >
           <mat-checkbox [(ngModel)]="luxary" (change)="filterByType()">Luxary</mat-checkbox>
           {{luxary}}
-          <mat-checkbox [(ngModel)]="economy">Economy</mat-checkbox>
+          <mat-checkbox [(ngModel)]="economy" (change)="filterByType()">Economy</mat-checkbox>
           {{economy}}
         </section>
       </mat-card>
@@ -27,11 +27,10 @@
         <mat-card-title>
           Tour price
         </mat-card-title>
-        <mat-radio-group class="top-bottom-margin" fxLayout="column" [(ngModel)]="priceRange">
-          <mat-radio-button value="all">All </mat-radio-button>
+        <mat-radio-group class="top-bottom-margin" fxLayout="column" [(ngModel)]="priceRange" (change)="filterByPrice()">
           <mat-radio-button value="under100">Under 100$</mat-radio-button>
-          <mat-radio-button value="100to300">100$ - 300$</mat-radio-button>
-          <mat-radio-button value="over300">Over 300$ </mat-radio-button>
+          <mat-radio-button value="over100">Over 100$ </mat-radio-button>
+          <mat-radio-button value="any">Any </mat-radio-button>
         </mat-radio-group>
         {{priceRange}}
       </mat-card>
@@ -40,9 +39,10 @@
         <mat-card-title>
           Number of days
         </mat-card-title>
-        <mat-radio-group fxLayout="column" class="top-bottom-margin" [(ngModel)]="daysNumber" >
-          <mat-radio-button value="1to3" >1 - 3 days</mat-radio-button>
-          <mat-radio-button value="4to7" >4 - 7 days</mat-radio-button>
+        <mat-radio-group fxLayout="column" class="top-bottom-margin" [(ngModel)]="daysNumber" (change)="filterByDays()">
+          <mat-radio-button value="lessthan3" >1 - 3 days</mat-radio-button>
+          <mat-radio-button value="from3" >4+ days</mat-radio-button>
+          <mat-radio-button value="any" >Any</mat-radio-button>
         </mat-radio-group>
         {{daysNumber}}
       </mat-card>
@@ -54,7 +54,7 @@
           Popular tours
         </h1>
       </div>
-      <mat-card *ngFor="let tour of tours">
+      <mat-card *ngFor="let tour of toursToShow">
         <mat-card-header>
           <mat-card-title [routerLink]="['/tour-details', tour._id]" class="pointer">{{tour.name}} </mat-card-title>
           <mat-card-subtitle>Rating</mat-card-subtitle>

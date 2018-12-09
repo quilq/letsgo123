@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import { Tour } from 'src/app/tour/tour.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.reducers';
+import * as TourActions from '../../tour/store/tour.action';
 
 @Component({
   selector: 'app-search',
@@ -39,6 +40,7 @@ export class SearchComponent implements OnInit {
       }
     })
     console.log(searchResult);
+    this.store.dispatch(new TourActions.UpdateToursToShow(searchResult));
   }
 
   fromWhere = [

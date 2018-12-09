@@ -38,6 +38,9 @@ export function tourReducer(state: ToursState = initialState, action: TourAction
         // case TourActions.GET_TOUR_BY_ID:
         //     return { ...state, tours: [...state.tours, action.payload], hasLoaded: true }
 
+        case TourActions.UPDATE_TOURS_TO_SHOW:
+            return { ...state, toursToShow: [...state.toursToShow, ...action.payload] };
+
         default:
             return state;
     }

@@ -6,6 +6,7 @@ export const GET_TOURS = 'GET_TOURS';
 // export const ON_GET_TOUR_BY_ID = 'ON_GET_TOURS_BY_ID';
 // export const GET_TOUR_BY_ID = 'GET_TOURS_BY_ID';
 export const ADD_TOURS = 'ADD_TOURS';
+export const UPDATE_TOURS_TO_SHOW = 'UPDATE_TOURS_TO_SHOW';
 
 export class OnGetTours implements Action {
     readonly type = ON_GET_TOURS;
@@ -32,6 +33,12 @@ export class AddTours implements Action {
     constructor(public payload: Tour[]) { }
 }
 
+export class UpdateToursToShow implements Action {
+    readonly type = UPDATE_TOURS_TO_SHOW;
+    constructor(public payload: Tour[]) { }
+}
 
-export type Actions = GetTours | OnGetTours | AddTours ;
+
+
+export type Actions = GetTours | OnGetTours | AddTours | UpdateToursToShow ;
 // | OnGetTourByID | GetTourByID;

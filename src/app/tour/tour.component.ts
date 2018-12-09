@@ -18,6 +18,7 @@ import { TourService } from './tour.service';
 export class TourComponent implements OnInit {
 
   tours: Tour[] = [];
+  toursToShow: Tour[] = [];
   priceRange = '';
   daysNumber = '';
   luxary = false;
@@ -30,26 +31,49 @@ export class TourComponent implements OnInit {
     this.store.select('tours').pipe(
       map(toursState => toursState.hasLoaded)
     ).subscribe(hasLoaded => {
-      if (!hasLoaded){
+      if (!hasLoaded) {
         this.store.dispatch(new TourActions.OnGetTours());
       }
       this.store.select('tours').pipe(
         map(toursState => toursState.tours)
-      ).subscribe(tours => this.tours = tours);
+      ).subscribe(tours => {
+        this.toursToShow = tours;
+        this.tours = tours;
+      });
     });
   }
 
   // addTour(){
   //   this.tourService.addNewTour().subscribe();
   // }
-  filterByType(){
-    console.log('123')
+  filterByType() {
+    if (this.economy && this.luxary) {
+      this.toursToShow = this.tours;
+    } else if (this.luxary) {
+      this.toursToShow = this.tours.filter(tour => tour.tourType.toLowerCase() === 'luxary');
+    } else if (this.economy) {
+      this.toursToShow = this.tours.filter(tour => tour.tourType.toLowerCase() === 'economy');
+    }
   }
 
-  filterByPrice(){
+  filterByPrice() {
+    if (this.priceRange === 'under100') {
+      this.toursToShow = this.tours.filter(tour => tour.price < 100)
+    } else if (this.priceRange === 'under100') {
+      this.toursToShow = this.tours.filter(tour => tour.price >= 100)
+    } else {
+      this.toursToShow = this.tours;
+    }
   }
 
-  filterByDays(){
+  filterByDays() {
+    if (this.daysNumber === "lessthan3") {
+      this.toursToShow = this.tours.filter(tour => tour.journey.length < 3);
+    } else if (this.daysNumber === "from3") {
+      this.toursToShow = this.tours.filter(tour => tour.journey.length >= 3);
+    } else {
+      this.toursToShow = this.tours;
+    }
   }
 
   bookTour(tour: Tour) {
