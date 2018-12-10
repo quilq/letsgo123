@@ -24,6 +24,9 @@ export class TourComponent implements OnInit {
   luxary = false;
   economy = false;
 
+  address = '';
+  toursByAddress: Tour[] = [];
+
   // constructor(private store: Store<AppState>, private tourService: TourService) { }
   constructor(private store: Store<AppState>) { }
 
@@ -41,11 +44,11 @@ export class TourComponent implements OnInit {
         this.tours = tours;
       });
     });
+    this.address = this.activatedRoute.snapshot.paramMap.get('address');
+    
+    this.findTourByAddress(this.address);
   }
 
-  // addTour(){
-  //   this.tourService.addNewTour().subscribe();
-  // }
   filterByType() {
     if (this.economy && this.luxary) {
       this.toursToShow = this.tours;
@@ -76,12 +79,33 @@ export class TourComponent implements OnInit {
     }
   }
 
-  bookTour(tour: Tour) {
-    let dates = [new Date()];
-    this.store.dispatch(new BookingActions.BookTour({ tour: tour, dates: dates }));
-  }
 
   loadMoreTours() {
     this.store.dispatch(new TourActions.OnGetTours({ skip: this.tours.length, limit: 5 }));
   }
+
+  bookTour(tour: Tour){
+    this.store.dispatch(new BookingActions.BookTour({tour: tour, dates: [new Date()]}));
+  }
+
+  findTourByAddress(address: string) {
+    this.store.select('tours').subscribe(
+      toursState => {
+        if (!toursState.hasLoaded){
+          this.store.dispatch(new TourActions.OnGetTours());
+        } else {
+          let allTour = toursState.tours;
+          for (let i = 0; i < allTour.length; i++) {
+            for (let ii = 0; ii < allTour[i].journey.length; ii++) {
+              if (allTour[i].journey[ii].city === address) {
+                this.toursByAddress.push(allTour[i]);
+                break;
+              }
+  
+            }
+          }
+        }
+      })
+  }
+
 }

@@ -16,7 +16,7 @@ import { BookingComponent } from './booking/booking.component';
 import { SigninComponent } from './user/auth/signin/signin.component';
 import { SignupComponent } from './user/auth/signup/signup.component';
 import { MaterialModule } from './material/material.module';
-import { MainPageComponent } from './main-page/main-page.component';
+import { MainPageComponent } from './main-page/common-cities.component';
 import { EffectsModule } from '@ngrx/effects';
 import { TourEffects } from './tour/store/tour.effect';
 import { AuthEffects } from './user/auth/store/auth.effects';

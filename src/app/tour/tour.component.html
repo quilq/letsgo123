@@ -5,47 +5,7 @@
 
   <div fxLayout="row">
     <div fxFlex="30">
-      <div fxLayoutAlign="center">
-        <h1>
-          Filter by
-        </h1>
-      </div>
-
-      <mat-card>
-        <mat-card-title>
-          Tour type
-        </mat-card-title>
-        <section fxLayout="column" class="top-bottom-margin" >
-          <mat-checkbox [(ngModel)]="luxary" (change)="filterByType()">Luxary</mat-checkbox>
-          {{luxary}}
-          <mat-checkbox [(ngModel)]="economy" (change)="filterByType()">Economy</mat-checkbox>
-          {{economy}}
-        </section>
-      </mat-card>
-
-      <mat-card>
-        <mat-card-title>
-          Tour price
-        </mat-card-title>
-        <mat-radio-group class="top-bottom-margin" fxLayout="column" [(ngModel)]="priceRange" (change)="filterByPrice()">
-          <mat-radio-button value="under100">Under 100$</mat-radio-button>
-          <mat-radio-button value="over100">Over 100$ </mat-radio-button>
-          <mat-radio-button value="any">Any </mat-radio-button>
-        </mat-radio-group>
-        {{priceRange}}
-      </mat-card>
-
-      <mat-card>
-        <mat-card-title>
-          Number of days
-        </mat-card-title>
-        <mat-radio-group fxLayout="column" class="top-bottom-margin" [(ngModel)]="daysNumber" (change)="filterByDays()">
-          <mat-radio-button value="lessthan3" >1 - 3 days</mat-radio-button>
-          <mat-radio-button value="from3" >4+ days</mat-radio-button>
-          <mat-radio-button value="any" >Any</mat-radio-button>
-        </mat-radio-group>
-        {{daysNumber}}
-      </mat-card>
+      <app-filter></app-filter>
     </div>
 
     <div fxLayout="column" fxFlex="70">
@@ -67,7 +27,7 @@
             </p>
           </mat-card-content>
         </mat-card-header>
-        <img src="../../assets/da-lat-2.jpg" alt="Photo of tour {{tour.name}}">
+        <img src="" alt="Photo of tour {{tour.name}}">
         <mat-card-content>
           Review
         </mat-card-content>

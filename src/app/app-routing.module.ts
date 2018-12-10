@@ -5,7 +5,7 @@ import { UserComponent } from './user/user.component';
 import { SigninComponent } from './user/auth/signin/signin.component';
 import { SignupComponent } from './user/auth/signup/signup.component';
 import { BookingComponent } from './booking/booking.component';
-import { MainPageComponent } from './main-page/main-page.component';
+import { MainPageComponent } from './main-page/common-cities.component';
 import { TourComponent } from './tour/tour.component';
 import { TourDetailsComponent } from './tour/tour-details/tour-details.component';
 import { TourByAddressComponent } from './tour/tour-by-address/tour-by-address.component';
