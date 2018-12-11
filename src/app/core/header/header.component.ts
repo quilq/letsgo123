@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs/operators';
+
+import { AppState } from '../../store/app.reducers';
+import * as AuthActions from '../../user/auth/store/auth.actions';
 
 @Component({
   selector: 'app-header',

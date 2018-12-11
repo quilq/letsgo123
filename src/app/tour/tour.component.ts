@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 import { Tour } from './tour.model';
 import { AppState } from '../store/app.reducers';
@@ -24,7 +25,7 @@ export class TourComponent implements OnInit {
   toursByAddress: Tour[] = [];
 
   // constructor(private store: Store<AppState>, private tourService: TourService) { }
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.store.select('tours').pipe(

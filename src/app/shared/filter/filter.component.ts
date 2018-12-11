@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Tour } from '../../tour/tour.model';
+
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',

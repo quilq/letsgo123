@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
-
-import { Tour } from '../tour/tour.model';
-import { AppState, hasLoaded, allCities } from '../store/app.reducers';
-import * as TourActions from '../tour/store/tour.action';
 import { Observable } from 'rxjs';
 
+import { Tour } from '../../tour/tour.model';
+import { AppState, hasLoaded, allCities } from '../../store/app.reducers';
+import * as TourActions from '../../tour/store/tour.action';
+
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  selector: 'app-common-places',
+  templateUrl: './app-common-places.component.html',
+  styleUrls: ['./app-common-places.component.css']
 })
-export class MainPageComponent implements OnInit {
+export class CommonPlaces implements OnInit {
 
   // tours: Tour[] = [];
   popularPlaces: string[];

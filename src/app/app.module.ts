@@ -16,15 +16,13 @@ import { BookingComponent } from './booking/booking.component';
 import { SigninComponent } from './user/auth/signin/signin.component';
 import { SignupComponent } from './user/auth/signup/signup.component';
 import { MaterialModule } from './material/material.module';
-import { MainPageComponent } from './main-page/common-cities.component';
+import { CommonPlaces } from './core/common-places/common-places.component';
 import { EffectsModule } from '@ngrx/effects';
 import { TourEffects } from './tour/store/tour.effect';
 import { AuthEffects } from './user/auth/store/auth.effects';
 import { reducers } from './store/app.reducers';
 import { TourDetailsComponent } from './tour/tour-details/tour-details.component';
-import { TourByAddressComponent } from './tour/tour-by-address/tour-by-address.component';
 import { SearchComponent } from './shared/search/search.component';
-import { MatSelectModule } from '@angular/material';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 
@@ -37,9 +35,8 @@ import { FooterComponent } from './core/footer/footer.component';
     BookingComponent,
     SigninComponent,
     SignupComponent,
-    MainPageComponent,
     TourDetailsComponent,
-    TourByAddressComponent,
+    CommonPlaces,
     SearchComponent,
     HeaderComponent,
     FooterComponent
