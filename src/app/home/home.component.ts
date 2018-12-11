@@ -14,19 +14,8 @@ import { map} from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
-  isAuthenticated$: Observable<boolean>;
-  
-  constructor(private store: Store<AppState>) { }
-
   ngOnInit() {
-    this.isAuthenticated$ = this.store.select('auth')
-    .pipe(
-      map(authState => authState.isAuthenticated)
-      );
+
   }
 
-
-  onSignout() {
-    this.store.dispatch(new AuthActions.OnSignout())
-  }
 }

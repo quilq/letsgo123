@@ -1,0 +1,22 @@
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" class="header">
+  <div fxLayout="row" fxLayoutAlign="start center">
+      <button mat-button (click)="sidenav.toggle()">Menu</button>
+      <button mat-button routerLink="/"> letsgo123.xyz </button>
+      <button mat-button routerLink="/tour"> Explore </button>
+      <button mat-button> Today's deal </button>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="end center">
+      <button mat-button routerLink="/booking"> Check bookings </button>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="end center" *ngIf="!(isAuthenticated$ | async)">
+      <button mat-button routerLink="/signin"> Sign in </button>
+      <button mat-button routerLink="/signup"> Create account </button>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="end center" *ngIf="isAuthenticated$ | async">
+      <button mat-button routerLink="/user"> User page </button>
+      <button mat-button (click)="onSignout()"> Sign out </button>
+  </div>
+</mat-toolbar>

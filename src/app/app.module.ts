@@ -25,6 +25,8 @@ import { TourDetailsComponent } from './tour/tour-details/tour-details.component
 import { TourByAddressComponent } from './tour/tour-by-address/tour-by-address.component';
 import { SearchComponent } from './shared/search/search.component';
 import { MatSelectModule } from '@angular/material';
+import { HeaderComponent } from './core/header/header.component';
+import { FooterComponent } from './core/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { MatSelectModule } from '@angular/material';
     MainPageComponent,
     TourDetailsComponent,
     TourByAddressComponent,
-    SearchComponent
+    SearchComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
