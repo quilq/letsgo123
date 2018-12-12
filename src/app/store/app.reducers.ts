@@ -41,4 +41,18 @@ export const allCities = createSelector(
     }
 )
 
+export const allTours = createSelector(
+    selectTours,
+    (tours: fromTours.ToursState) => {
+        return tours.tours;
+    }
+)
+
+export const toursToShow = createSelector(
+    selectTours,
+    (tours: fromTours.ToursState) => {
+        return tours.toursToShow;
+    }
+)
+
 

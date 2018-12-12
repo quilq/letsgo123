@@ -9,7 +9,7 @@ export class TourService {
 
   constructor(private httpClient: HttpClient) { }
 
-  findTours(skip: number = 0, limit: number = 1000) {
+  findTours(skip: number = 0, limit: number = 100) {
     let url = `/api/tour/${skip}/${limit}`;
     return this.httpClient.get<Tour[]>(url);
   }

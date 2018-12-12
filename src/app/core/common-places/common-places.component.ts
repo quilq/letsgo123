@@ -12,10 +12,10 @@ import * as TourActions from '../../tour/store/tour.action';
   templateUrl: './app-common-places.component.html',
   styleUrls: ['./app-common-places.component.css']
 })
-export class CommonPlaces implements OnInit {
+export class CommonPlacesComponent implements OnInit {
 
   // tours: Tour[] = [];
-  popularPlaces: string[];
+  commonPlaces: string[];
 
   constructor(private store: Store<AppState>) { }
 
@@ -30,7 +30,7 @@ export class CommonPlaces implements OnInit {
 
     this.store.select(allCities).subscribe(
       allCities => {
-        this.popularPlaces = allCities.slice(0, 6);
+        this.commonPlaces = allCities.slice(0, 6);
       }
     );
   }

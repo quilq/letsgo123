@@ -5,21 +5,19 @@ import { UserComponent } from './user/user.component';
 import { SigninComponent } from './user/auth/signin/signin.component';
 import { SignupComponent } from './user/auth/signup/signup.component';
 import { BookingComponent } from './booking/booking.component';
-import { MainPageComponent } from './main-page/common-cities.component';
+import { CommonPlacesComponent } from './core/common-places/common-places.component';
 import { TourComponent } from './tour/tour.component';
 import { TourDetailsComponent } from './tour/tour-details/tour-details.component';
-import { TourByAddressComponent } from './tour/tour-by-address/tour-by-address.component';
 
 const appRoutes: Routes = [
-  { path: 'main', component: MainPageComponent },
-  { path: 'tour', component: TourComponent },
-  { path: 'tour-by-address/:address', component: TourByAddressComponent },
+  { path: 'common-places', component: CommonPlacesComponent },
+  { path: 'tour/:place', component: TourComponent },
   { path: 'tour-details/:id', component: TourDetailsComponent },
   { path: 'booking', component: BookingComponent },
   { path: 'user', component: UserComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
-  { path: '**', component: MainPageComponent }
+  { path: '**', component: CommonPlacesComponent }
 ]
 
 @NgModule({
