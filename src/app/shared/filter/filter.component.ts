@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState, allTours } from 'src/app/store/app.reducers';
 
 import { Tour } from '../../tour/tour.model';
+import * as TourActions from '../../tour/store/tour.action';
 
 @Component({
   selector: 'app-filter',
@@ -9,20 +12,20 @@ import { Tour } from '../../tour/tour.model';
 })
 export class FilterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   priceRange = '';
   daysNumber = '';
   luxary = false;
   economy = false;
+
   tours: Tour[] = [];
   toursToShow: Tour[] = [];
   
-
   ngOnInit() {
+    this.store.select(allTours).subscribe(tours => this.tours = tours);
   }
 
-  
   filterByType() {
     if (this.economy && this.luxary) {
       this.toursToShow = this.tours;
@@ -31,6 +34,7 @@ export class FilterComponent implements OnInit {
     } else if (this.economy) {
       this.toursToShow = this.tours.filter(tour => tour.tourType.toLowerCase() === 'economy');
     }
+    this.store.dispatch(new TourActions.UpdateToursToShow(this.toursToShow));
   }
 
   filterByPrice() {
@@ -41,6 +45,7 @@ export class FilterComponent implements OnInit {
     } else {
       this.toursToShow = this.tours;
     }
+    this.store.dispatch(new TourActions.UpdateToursToShow(this.toursToShow));
   }
 
   filterByDays() {
@@ -51,6 +56,7 @@ export class FilterComponent implements OnInit {
     } else {
       this.toursToShow = this.tours;
     }
+    this.store.dispatch(new TourActions.UpdateToursToShow(this.toursToShow));
   }
 
 

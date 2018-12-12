@@ -22,19 +22,26 @@ export class TourComponent implements OnInit {
   tours: Tour[] = [];
   toursToShow: Tour[] = [];
 
-  toursByAddress: Tour[] = [];
-
   // constructor(private store: Store<AppState>, private tourService: TourService) { }
   constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.store.select(hasLoaded).subscribe(
-      hasLoaded => {
+    this.place = this.activatedRoute.snapshot.paramMap.get('place');
+
+    this.store.select(hasLoaded).subscribe(hasLoaded => {
         if (!hasLoaded) {
           this.store.dispatch(new TourActions.OnGetTours());
         }
         this.store.select(allTours).subscribe(tours => {
           this.tours = tours;
+
+          if (this.place === 'search-result') {
+            return;
+          } else if (this.place === 'all') {
+            this.store.dispatch(new TourActions.UpdateToursToShow(tours));
+          } else {
+            this.findTourByAddress(this.place);
+          }
         });
 
         this.store.select(toursToShow).subscribe(toursToShow => {
@@ -56,15 +63,11 @@ export class TourComponent implements OnInit {
     //     this.tours = tours;
     //   });
     // });
-
-    this.place = this.activatedRoute.snapshot.paramMap.get('place');
-
-    this.findTourByAddress(this.place);
   }
 
 
   loadMoreTours() {
-    this.store.dispatch(new TourActions.OnGetTours({ skip: this.tours.length, limit: 100 }));
+    this.store.dispatch(new TourActions.OnGetTours({ skip: this.tours.length, limit: 20 }));
   }
 
   bookTour(tour: Tour) {
@@ -76,14 +79,16 @@ export class TourComponent implements OnInit {
       hasLoaded => {
         if (hasLoaded) {
           let allTour = this.tours;
+          let toursByAddress: Tour[] = [];
           for (let i = 0; i < allTour.length; i++) {
             for (let ii = 0; ii < allTour[i].journey.length; ii++) {
               if (allTour[i].journey[ii].city === place) {
-                this.toursByAddress.push(allTour[i]);
+                toursByAddress.push(allTour[i]);
                 break;
               }
             }
           }
+          this.store.dispatch(new TourActions.UpdateToursToShow(toursByAddress));
         } else {
           console.log('\'tours\' were not loaded !');
         }

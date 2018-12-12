@@ -16,7 +16,7 @@ import { BookingComponent } from './booking/booking.component';
 import { SigninComponent } from './user/auth/signin/signin.component';
 import { SignupComponent } from './user/auth/signup/signup.component';
 import { MaterialModule } from './material/material.module';
-import { CommonPlaces } from './core/common-places/common-places.component';
+import { CommonPlacesComponent } from './core/common-places/common-places.component';
 import { EffectsModule } from '@ngrx/effects';
 import { TourEffects } from './tour/store/tour.effect';
 import { AuthEffects } from './user/auth/store/auth.effects';
@@ -25,6 +25,7 @@ import { TourDetailsComponent } from './tour/tour-details/tour-details.component
 import { SearchComponent } from './shared/search/search.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
+import { FilterComponent } from './shared/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +37,11 @@ import { FooterComponent } from './core/footer/footer.component';
     SigninComponent,
     SignupComponent,
     TourDetailsComponent,
-    CommonPlaces,
+    CommonPlacesComponent,
     SearchComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { Tour } from 'src/app/tour/tour.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.reducers';
 import * as TourActions from '../../tour/store/tour.action';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,7 @@ import * as TourActions from '../../tour/store/tour.action';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private router: Router) { }
 
   from = '';
   to = '';
@@ -41,6 +42,7 @@ export class SearchComponent implements OnInit {
     })
     console.log(searchResult);
     this.store.dispatch(new TourActions.UpdateToursToShow(searchResult));
+    this.router.navigate(['/tour/search-result']);
   }
 
   fromWhere = [

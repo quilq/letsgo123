@@ -9,8 +9,8 @@ import * as TourActions from '../../tour/store/tour.action';
 
 @Component({
   selector: 'app-common-places',
-  templateUrl: './app-common-places.component.html',
-  styleUrls: ['./app-common-places.component.css']
+  templateUrl: './common-places.component.html',
+  styleUrls: ['./common-places.component.css']
 })
 export class CommonPlacesComponent implements OnInit {
 
