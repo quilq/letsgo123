@@ -1,5 +1,5 @@
-<form fxLayout="row" fxLayoutAlign="center center">
-    <mat-form-field floatLabel="never"d>
+<form fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
+    <mat-form-field floatLabel="never">
         <mat-select placeholder="from where?" [(ngModel)]="from" name="fromPlace">
             <mat-option *ngFor="let fromPlace of fromWhere" [value]="fromPlace.value">
                 {{fromPlace.viewValue}}
@@ -24,7 +24,12 @@
         <mat-datepicker #datepicker></mat-datepicker>
     </mat-form-field>
 
-    <button mat-icon-button>
-        <mat-icon aria-label="search icon-button" (click)="searchTour(from, to, date)">search</mat-icon>
-    </button>
+    <div>
+        <button mat-icon-button fxHide.lt-md="true">
+            <mat-icon aria-label="search icon-button" (click)="searchTour(from, to, date)">search</mat-icon>
+        </button>
+        <button mat-button fxHide.gt-sm="true">
+            Search
+        </button>
+    </div>
 </form>

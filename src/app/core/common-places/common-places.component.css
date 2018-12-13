@@ -13,6 +13,10 @@
 
 .main-page {
     /* background: url(./../../assets/cover.jpeg); */
-    background-size: cover;
+    /* background-size: cover; */
     min-height: 100%; /*full height image => with fxFlex*/
+}
+
+.pointer{
+    cursor: pointer;
 }

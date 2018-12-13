@@ -19,6 +19,7 @@ import { TourService } from './tour.service';
 export class TourComponent implements OnInit {
 
   place = '';
+  title = '';
   tours: Tour[] = [];
   toursToShow: Tour[] = [];
 
@@ -29,25 +30,28 @@ export class TourComponent implements OnInit {
     this.place = this.activatedRoute.snapshot.paramMap.get('place');
 
     this.store.select(hasLoaded).subscribe(hasLoaded => {
-        if (!hasLoaded) {
-          this.store.dispatch(new TourActions.OnGetTours());
-        }
-        this.store.select(allTours).subscribe(tours => {
-          this.tours = tours;
-
-          if (this.place === 'search-result') {
-            return;
-          } else if (this.place === 'all') {
-            this.store.dispatch(new TourActions.UpdateToursToShow(tours));
-          } else {
-            this.findTourByAddress(this.place);
-          }
-        });
-
-        this.store.select(toursToShow).subscribe(toursToShow => {
-          this.toursToShow = toursToShow;
-        })
+      if (!hasLoaded) {
+        this.store.dispatch(new TourActions.OnGetTours());
       }
+      this.store.select(allTours).subscribe(tours => {
+        this.tours = tours;
+
+        if (this.place === 'search-result') {
+          this.title = 'Tours to ' + this.activatedRoute.snapshot.paramMap.get('to');
+          return;
+        } else if (this.place === 'all') {
+          this.title = 'Popular tours';
+          this.store.dispatch(new TourActions.UpdateToursToShow(tours));
+        } else {
+          this.title = 'Tours to ' + this.place;
+          this.findTourByAddress(this.place);
+        }
+      });
+
+      this.store.select(toursToShow).subscribe(toursToShow => {
+        this.toursToShow = toursToShow;
+      })
+    }
     )
 
     // this.store.select('tours').pipe(

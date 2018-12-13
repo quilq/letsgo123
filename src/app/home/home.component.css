@@ -1,4 +1,4 @@
-.header, .footer {
+/* .header, .footer {
     background-color: rgb(165, 243, 93);
 }
 
@@ -10,12 +10,12 @@
 
 .footer {
     z-index: 1000;
-}
+} */
 
 mat-sidenav-container{
     height: 100vh;
 }
-
+/* 
 main {
     margin-top: 64px;
-}
+} */

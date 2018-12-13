@@ -1,16 +1,15 @@
 <mat-sidenav-container hasBackdrop="true">
     <mat-sidenav #sidenav mode="push">
-        <div>
-            Menu item 1
-        </div>
-        <div>
-            Menu item 2
-        </div>
+        <app-header fxHide.gt-sm="true"></app-header>
     </mat-sidenav>
 
     <mat-sidenav-content fxLayout="column" fxLayoutAlign="space-between none">
-        
-        <app-header></app-header>
+        <mat-toolbar fxLayout="row" fxHide.gt-sm="true" fxLayoutAlign="start center">
+            <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+            <button mat-button routerLink="/"> letsgo123.xyz </button>
+        </mat-toolbar>
+
+        <app-header fxHide.lt-md="true"></app-header>
 
         <!-- for full page layout -->
         <main fxFlex>

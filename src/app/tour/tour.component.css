@@ -2,15 +2,10 @@ mat-card{
     margin: 2%;
 }
 
-.top-bottom-margin {
-    margin: 15% 0%;
-}
-
 .pointer{
     cursor: pointer;
 }
 
-img{
-    width: 200px;
-    height: 200px;
+.search-bar{
+    margin-bottom: 5%;
 }

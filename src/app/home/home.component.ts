@@ -1,11 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-
-import * as AuthActions from '../user/auth/store/auth.actions';
-import * as TourActions from '../tour/store/tour.action';
-import { AppState, hasLoaded } from '../store/app.reducers';
-import { map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',

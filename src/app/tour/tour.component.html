@@ -1,5 +1,5 @@
-<div fxLayout="column">
-  <div fxFlexAlign="center">
+<div fxLayout="column" fxLayoutAlign="space-between ">
+  <div fxFlexAlign="center" class="search-bar">
     <app-search></app-search>
   </div>
 
@@ -9,9 +9,9 @@
     </div>
 
     <div fxLayout="column" fxFlex="70">
-      <div fxLayoutAlign="center">
+      <div fxLayoutAlign="start">
         <h1>
-          Popular tours
+          {{title}}
         </h1>
       </div>
       <mat-card *ngFor="let tour of toursToShow">
