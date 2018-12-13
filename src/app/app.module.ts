@@ -6,10 +6,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environemnt
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { UserComponent } from './user/user.component';
 import { TourComponent } from './tour/tour.component';
 import { BookingComponent } from './booking/booking.component';
@@ -17,7 +18,6 @@ import { SigninComponent } from './user/auth/signin/signin.component';
 import { SignupComponent } from './user/auth/signup/signup.component';
 import { MaterialModule } from './material/material.module';
 import { CommonPlacesComponent } from './core/common-places/common-places.component';
-import { EffectsModule } from '@ngrx/effects';
 import { TourEffects } from './tour/store/tour.effect';
 import { AuthEffects } from './user/auth/store/auth.effects';
 import { reducers } from './store/app.reducers';

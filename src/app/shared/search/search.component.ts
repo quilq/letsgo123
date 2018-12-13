@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
-import { Tour } from 'src/app/tour/tour.model';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/store/app.reducers';
-import * as TourActions from '../../tour/store/tour.action';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
+
+import { AppState } from '../../store/app.reducers';
+import { Tour } from '../../tour/tour.model';
+import * as TourActions from '../../tour/store/tour.action';
 
 @Component({
   selector: 'app-search',

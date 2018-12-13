@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { Tour } from './tour.model';
 
 @Injectable({
@@ -34,8 +35,5 @@ export class TourService {
   //   console.log('findTours called!');
   //   return this.httpClient.post(url, '');
   // }
-
-  // show date
-  // format('dddd, MMM Do YYYY')
 
 }

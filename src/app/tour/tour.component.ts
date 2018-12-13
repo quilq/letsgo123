@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 
 import { Tour } from './tour.model';
 import { AppState, hasLoaded, allTours, toursToShow } from '../store/app.reducers';
 import * as BookingActions from '../booking/store/booking.actions';
 import * as TourActions from './store/tour.action';
-import { TourService } from './tour.service';
 
 @Component({
   selector: 'app-tour',

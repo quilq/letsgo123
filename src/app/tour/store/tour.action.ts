@@ -38,7 +38,5 @@ export class UpdateToursToShow implements Action {
     constructor(public payload: Tour[]) { }
 }
 
-
-
 export type Actions = GetTours | OnGetTours | AddTours | UpdateToursToShow ;
 // | OnGetTourByID | GetTourByID;

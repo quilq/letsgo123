@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState, allTours } from 'src/app/store/app.reducers';
 
+import { AppState, allTours } from '../../store/app.reducers';
 import { Tour } from '../../tour/tour.model';
 import * as TourActions from '../../tour/store/tour.action';
 

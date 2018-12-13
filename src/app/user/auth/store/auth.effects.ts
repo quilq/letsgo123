@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Effect, Actions, ofType } from "@ngrx/effects";
 import { Observable } from "rxjs";
-import { UserService } from "../../user.service";
 import { Action } from "@ngrx/store";
-import * as AuthActions from './auth.actions';
-import { switchMap, map} from "rxjs/operators";
 import { Router } from "@angular/router";
+import { switchMap, map} from "rxjs/operators";
+
+import { UserService } from "../../user.service";
+import * as AuthActions from './auth.actions';
 
 @Injectable()
 

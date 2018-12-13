@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
-import * as TourActions from '../store/tour.action';
-import * as BookingActions from '../../booking/store/booking.actions';
 import { Tour } from '../tour.model';
 import { AppState, hasLoaded, allTours } from '../../store/app.reducers';
+import * as TourActions from '../store/tour.action';
+import * as BookingActions from '../../booking/store/booking.actions';
 
 
 @Component({

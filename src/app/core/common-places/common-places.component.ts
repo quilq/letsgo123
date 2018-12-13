@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
-import { Tour } from '../../tour/tour.model';
 import { AppState, hasLoaded, allCities } from '../../store/app.reducers';
 import * as TourActions from '../../tour/store/tour.action';
 
@@ -14,7 +11,6 @@ import * as TourActions from '../../tour/store/tour.action';
 })
 export class CommonPlacesComponent implements OnInit {
 
-  // tours: Tour[] = [];
   commonPlaces: string[];
 
   constructor(private store: Store<AppState>) { }

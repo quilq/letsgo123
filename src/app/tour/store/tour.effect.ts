@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import * as TourActions from './tour.action';
-import { switchMap, map, tap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Action } from '@ngrx/store';
 
 import { TourService } from '../tour.service';
 import { Tour } from '../tour.model';
+import * as TourActions from './tour.action';
 
 @Injectable()
 export class TourEffects {
