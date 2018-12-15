@@ -49,10 +49,10 @@ export class FilterComponent implements OnInit {
   }
 
   filterByDays() {
-    if (this.daysNumber === "lessthan3") {
-      this.toursToShow = this.tours.filter(tour => tour.journey.length < 3);
-    } else if (this.daysNumber === "from3") {
-      this.toursToShow = this.tours.filter(tour => tour.journey.length >= 3);
+    if (this.daysNumber === "1to3") {
+      this.toursToShow = this.tours.filter(tour => tour.journey.length <= 3);
+    } else if (this.daysNumber === "from4") {
+      this.toursToShow = this.tours.filter(tour => tour.journey.length > 3);
     } else {
       this.toursToShow = this.tours;
     }
