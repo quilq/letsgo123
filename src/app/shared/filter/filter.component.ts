@@ -16,48 +16,49 @@ export class FilterComponent implements OnInit {
 
   priceRange = '';
   daysNumber = '';
-  luxary = false;
-  economy = false;
+  type = '';
 
-  tours: Tour[] = [];
+  allTours: Tour[] = [];
   toursToShow: Tour[] = [];
-  
+  filterTours: Tour[] = [];
+
   ngOnInit() {
-    this.store.select(allTours).subscribe(tours => this.tours = tours);
+    this.store.select(allTours).subscribe(tours => {
+      this.allTours = tours;
+    });
   }
 
-  filterByType() {
-    if (this.economy && this.luxary) {
-      this.toursToShow = this.tours;
-    } else if (this.luxary) {
-      this.toursToShow = this.tours.filter(tour => tour.tourType.toLowerCase() === 'luxary');
-    } else if (this.economy) {
-      this.toursToShow = this.tours.filter(tour => tour.tourType.toLowerCase() === 'economy');
+  filter() {
+    this.filterTours = this.allTours;
+    
+    if (this.type === 'luxary') {
+      this.toursToShow = this.filterTours.filter(tour => tour.tourType.toLowerCase() === 'luxary');
+    } else if (this.type === 'economy') {
+      this.toursToShow = this.filterTours.filter(tour => tour.tourType.toLowerCase() === 'economy');
+    } else {
+      this.toursToShow = this.filterTours;
     }
-    this.store.dispatch(new TourActions.UpdateToursToShow(this.toursToShow));
-  }
 
-  filterByPrice() {
+    this.filterTours = this.toursToShow;
+
     if (this.priceRange === 'under100') {
-      this.toursToShow = this.tours.filter(tour => tour.price < 100)
-    } else if (this.priceRange === 'under100') {
-      this.toursToShow = this.tours.filter(tour => tour.price >= 100)
+      this.toursToShow = this.filterTours.filter(tour => tour.price < 100);
+    } else if (this.priceRange === 'over100') {
+      this.toursToShow = this.filterTours.filter(tour => tour.price >= 100);
     } else {
-      this.toursToShow = this.tours;
+      this.toursToShow = this.filterTours;
     }
-    this.store.dispatch(new TourActions.UpdateToursToShow(this.toursToShow));
-  }
 
-  filterByDays() {
+    this.filterTours = this.toursToShow;
+
     if (this.daysNumber === "1to3") {
-      this.toursToShow = this.tours.filter(tour => tour.journey.length <= 3);
+      this.toursToShow = this.filterTours.filter(tour => tour.journey.length <= 3);
     } else if (this.daysNumber === "from4") {
-      this.toursToShow = this.tours.filter(tour => tour.journey.length > 3);
+      this.toursToShow = this.filterTours.filter(tour => tour.journey.length > 3);
     } else {
-      this.toursToShow = this.tours;
+      this.toursToShow = this.filterTours;
     }
+
     this.store.dispatch(new TourActions.UpdateToursToShow(this.toursToShow));
   }
-
-
 }

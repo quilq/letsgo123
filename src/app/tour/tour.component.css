@@ -9,3 +9,7 @@ mat-card{
 .search-bar{
     margin-bottom: 5%;
 }
+
+.container{
+    background-image: linear-gradient(to right, rgb(82, 196, 235), rgb(243, 236, 236));
+}
