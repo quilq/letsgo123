@@ -14,6 +14,7 @@ import * as AuthActions from '../../user/auth/store/auth.actions';
 export class HeaderComponent implements OnInit {
 
   isAuthenticated$: Observable<boolean>;
+  loading = true;
   
   constructor(private store: Store<AppState>) { }
 

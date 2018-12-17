@@ -1,76 +1,78 @@
-<app-search></app-search>
-<div fxLayout="row" fxLayoutAlign="space-around start">
-    <mat-card fxFlex="65">
-        <mat-card-header>
-            <mat-card-title> {{selectedTour.name}} | {{selectedTour.price}} $ </mat-card-title>
-            <mat-card-subtitle>{{selectedTour.tourType}}</mat-card-subtitle>
-            <mat-card-subtitle>Rating: {{selectedTour.rating}} <mat-icon>star_rate</mat-icon>
-            </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <img src="" alt="image">
-            <mat-accordion multi="true">
-                <mat-expansion-panel *ngFor="let place of selectedTour.journey ; let i = index">
-                    <mat-expansion-panel-header>
-                        Day {{i+1}} | {{place.formattedDate}} | {{place.city}}
-                    </mat-expansion-panel-header>
-                    <p>
-                        Info {{i+1}}
-                    </p>
-                </mat-expansion-panel>
-            </mat-accordion>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button (click)="bookTour(selectedTour)">Book this tour</button>
-        </mat-card-actions>
-        <div>
+<div>
+    <app-search></app-search>
+    <div fxLayout="row" fxLayoutAlign="space-around start">
+        <mat-card fxFlex="65">
+            <mat-card-header>
+                <mat-card-title> {{selectedTour.name}} | {{selectedTour.price}} $ </mat-card-title>
+                <mat-card-subtitle>{{selectedTour.tourType}}</mat-card-subtitle>
+                <mat-card-subtitle>Rating: {{selectedTour.rating}} <mat-icon>star_rate</mat-icon>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <img src="" alt="image">
+                <mat-accordion multi="true">
+                    <mat-expansion-panel *ngFor="let place of selectedTour.journey ; let i = index">
+                        <mat-expansion-panel-header>
+                            Day {{i+1}} | {{place.formattedDate}} | {{place.city}}
+                        </mat-expansion-panel-header>
+                        <p>
+                            Info {{i+1}}
+                        </p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button (click)="bookTour(selectedTour)">Book this tour</button>
+            </mat-card-actions>
             <div>
-                Tour price includes:
+                <div>
+                    Tour price includes:
+                </div>
+                <p>...</p>
+                <p>...</p>
             </div>
-            <p>...</p>
-            <p>...</p>
-        </div>
-        <div>
             <div>
-                Tour price does not include:
+                <div>
+                    Tour price does not include:
+                </div>
+                <p>...</p>
+                <p>...</p>
             </div>
-            <p>...</p>
-            <p>...</p>
-        </div>
-        <div>
             <div>
-                Cancelation policies:
+                <div>
+                    Cancelation policies:
+                </div>
+                <p>...</p>
+                <p>...</p>
             </div>
-            <p>...</p>
-            <p>...</p>
-        </div>
-        <div>
             <div>
-                Other info:
+                <div>
+                    Other info:
+                </div>
+                <p>...</p>
+                <p>...</p>
             </div>
-            <p>...</p>
-            <p>...</p>
-        </div>
-
-    </mat-card>
-
-    <mat-card fxFlex>
-        <mat-card-header>
-            <mat-card-title>
-                Other tours
-            </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-card *ngFor="let tour of similarTours" class="margin-2">
-                <mat-card-header>
-                    <mat-card-title class="pointer" (click)="viewTour(tour)">
-                        {{tour.name}}
-                    </mat-card-title>
-                    <mat-card-subtitle>
-                        {{tour.tourType }} | {{tour.rating}} <mat-icon>star_rate</mat-icon> | {{tour.price}} $
-                    </mat-card-subtitle>
-                </mat-card-header>
-            </mat-card>
-        </mat-card-content>
-    </mat-card>
+    
+        </mat-card>
+    
+        <mat-card fxFlex>
+            <mat-card-header>
+                <mat-card-title>
+                    Other tours
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-card *ngFor="let tour of similarTours" class="margin-2">
+                    <mat-card-header>
+                        <mat-card-title class="pointer" (click)="viewTour(tour)">
+                            {{tour.name}}
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            {{tour.tourType }} | {{tour.rating}} <mat-icon>star_rate</mat-icon> | {{tour.price}} $
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                </mat-card>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>

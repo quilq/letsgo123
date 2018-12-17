@@ -28,15 +28,15 @@ export class TourEffects {
         })
     );
 
-    // @Effect()
-    // getTourByID$: Observable<Action> = this.actions$.pipe(
-    //     ofType(TourActions.ON_GET_TOUR_BY_ID),
-    //     switchMap((action: TourActions.OnGetTourByID) => this.tourService.findTourByID(action.payload)
-    //         .pipe(
-    //             map((tour: Tour) => new TourActions.GetTourByID(tour))
-    //         )
-    //     )
-    // )
+    @Effect()
+    getTourByID$: Observable<Action> = this.actions$.pipe(
+        ofType(TourActions.ON_GET_TOUR_BY_ID),
+        switchMap((action: TourActions.OnGetTourByID) => this.tourService.findTourByID(action.payload)
+            .pipe(
+                map((tour: Tour) => new TourActions.GetTourByID(tour))
+            )
+        )
+    )
 
     constructor(private actions$: Actions,
         private tourService: TourService) { }
