@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { AppState, allTours, toursToShow } from '../../store/app.reducers';
@@ -14,23 +14,31 @@ export class FilterComponent implements OnInit {
 
   constructor(private store: Store<AppState>) { }
 
-  priceRange = '';
-  daysNumber = '';
-  type = '';
+  priceRange = 'any';
+  daysNumber = 'any';
+  type = 'any';
 
+  notLoaded = true;
+  temp: Tour[] = [];
   allTours: Tour[] = [];
   toursToShow: Tour[] = [];
   filterTours: Tour[] = [];
 
   ngOnInit() {
     this.store.select(toursToShow).subscribe(tours => {
-      this.allTours = tours;
+      this.temp = tours;
     });
   }
 
   filter() {
+
+    if (this.notLoaded) {
+      this.allTours = this.temp;
+      this.notLoaded = false;
+    }
+
     this.filterTours = this.allTours;
-    
+
     if (this.type === 'luxary') {
       this.toursToShow = this.filterTours.filter(tour => tour.tourType.toLowerCase() === 'luxary');
     } else if (this.type === 'economy') {
