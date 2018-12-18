@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { AppState, allTours } from '../../store/app.reducers';
+import { AppState, allTours, toursToShow } from '../../store/app.reducers';
 import { Tour } from '../../tour/tour.model';
 import * as TourActions from '../../tour/store/tour.action';
 
@@ -23,7 +23,7 @@ export class FilterComponent implements OnInit {
   filterTours: Tour[] = [];
 
   ngOnInit() {
-    this.store.select(allTours).subscribe(tours => {
+    this.store.select(toursToShow).subscribe(tours => {
       this.allTours = tours;
     });
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
@@ -14,7 +14,6 @@ import * as AuthActions from '../../user/auth/store/auth.actions';
 export class HeaderComponent implements OnInit {
 
   isAuthenticated$: Observable<boolean>;
-  loading = true;
   
   constructor(private store: Store<AppState>) { }
 
@@ -24,7 +23,6 @@ export class HeaderComponent implements OnInit {
       map(authState => authState.isAuthenticated)
       );
   }
-
 
   onSignout() {
     this.store.dispatch(new AuthActions.OnSignout())
