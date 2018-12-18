@@ -17,7 +17,7 @@ export class TourComponent implements OnInit {
 
   place = '';
   title = '';
-  tours: Tour[] = [];
+  allTours: Tour[] = [];
   toursToShow: Tour[] = [];
 
   // constructor(private store: Store<AppState>, private tourService: TourService) { }
@@ -31,7 +31,7 @@ export class TourComponent implements OnInit {
         this.store.dispatch(new TourActions.OnGetTours());
       }
       this.store.select(allTours).subscribe(tours => {
-        this.tours = tours;
+        this.allTours = tours;
 
         if (this.place === 'search-result') {
           this.title = 'Tours to ' + this.activatedRoute.snapshot.paramMap.get('to');
@@ -39,6 +39,9 @@ export class TourComponent implements OnInit {
         } else if (this.place === 'all') {
           this.title = 'Popular tours';
           this.store.dispatch(new TourActions.UpdateToursToShow(tours));
+        } else if (this.place === 'discount') {
+          this.title = 'Tours with best prices';
+          this.findDiscountedTour();
         } else {
           this.title = 'Tours to ' + this.place;
           this.findTourByAddress(this.place);
@@ -68,7 +71,7 @@ export class TourComponent implements OnInit {
 
 
   loadMoreTours() {
-    this.store.dispatch(new TourActions.OnGetTours({ skip: this.tours.length, limit: 20 }));
+    this.store.dispatch(new TourActions.OnGetTours({ skip: this.allTours.length, limit: 20 }));
   }
 
   bookTour(tour: Tour) {
@@ -79,7 +82,7 @@ export class TourComponent implements OnInit {
     this.store.select(hasLoaded).subscribe(
       hasLoaded => {
         if (hasLoaded) {
-          let allTour = this.tours;
+          let allTour = this.allTours;
           let toursByAddress: Tour[] = [];
           for (let i = 0; i < allTour.length; i++) {
             for (let ii = 0; ii < allTour[i].journey.length; ii++) {
@@ -95,6 +98,12 @@ export class TourComponent implements OnInit {
         }
       }
     )
+
+  }
+  
+  findDiscountedTour(){
+      this.toursToShow = this.allTours.filter(tour => tour.discount > 0);
+      this.store.dispatch(new TourActions.UpdateToursToShow(this.toursToShow));
   }
 
 }

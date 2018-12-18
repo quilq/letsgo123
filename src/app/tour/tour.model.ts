@@ -10,7 +10,8 @@ export class Tour {
     }];
     rating: number;
     tourType: string;
-    price: number
+    price: number;
+    discount: number;
 
     constructor() {
         this.name = '',
@@ -19,6 +20,7 @@ export class Tour {
         }],
         this.rating = 0,
         this.tourType = '',
-        this.price = 0
+        this.price = 0,
+        this.discount = 0
     }
 }
