@@ -9,11 +9,12 @@
     </div>
 
     <div fxLayout="column" fxFlex>
-      <div fxLayoutAlign="center center">
-        <h1>
+      <div fxLayout="column" fxLayoutAlign="space-between none" class="no-margin">
+        <mat-card>
           {{title}}
-        </h1>
+        </mat-card>
       </div>
+    
       <mat-card *ngFor="let tour of toursToShow">
         <mat-card-header>
           <mat-card-title [routerLink]="['/tour-details', tour._id]" class="pointer">{{tour.name}} </mat-card-title>
