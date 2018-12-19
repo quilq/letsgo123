@@ -1,5 +1,5 @@
 <form fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
-    <mat-form-field floatLabel="never">
+    <mat-form-field appearance="fill">
         <mat-select placeholder="from where?" [(ngModel)]="from" name="fromPlace">
             <mat-option *ngFor="let fromPlace of fromWhere" [value]="fromPlace.value">
                 {{fromPlace.viewValue}}
@@ -7,24 +7,21 @@
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field floatLabel="never">
-        <mat-select placeholder="to where?"  [(ngModel)]="to" name="toPlace">
+    <mat-form-field appearance="fill">
+        <mat-select placeholder="to where?" [(ngModel)]="to" name="toPlace">
             <mat-option *ngFor="let toPlace of toWhere" [value]="toPlace.value">
                 {{toPlace.viewValue}}
             </mat-option>
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field floatLabel="never">
-        <input matInput [matDatepicker]="datepicker" 
-        placeholder="choose your date" 
-        [(ngModel)]="date" 
-        name="ofDate">
+    <mat-form-field floatLabel="never" appearance="fill">
+        <input matInput [matDatepicker]="datepicker" placeholder="choose your date" [(ngModel)]="date" name="ofDate">
         <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
         <mat-datepicker #datepicker></mat-datepicker>
     </mat-form-field>
 
-    <div>
+    <div fxLayout="row">
         <button mat-icon-button fxHide.lt-md="true">
             <mat-icon aria-label="search icon-button" (click)="searchTour(from, to, date)">search</mat-icon>
         </button>
@@ -32,4 +29,12 @@
             Search
         </button>
     </div>
+
+    <mat-form-field>
+        <input matInput type="search">
+        <button mat-button matPrefix mat-icon-button>
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+
 </form>
