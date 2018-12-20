@@ -1,5 +1,6 @@
 mat-card {
-    margin: 2%;
+    margin: 0% 2% 2% 2%;
+    background-image: linear-gradient(to right, rgb(211, 240, 250), rgb(247, 241, 241));
 }
 
 .pointer {
@@ -7,13 +8,15 @@ mat-card {
 }
 
 .search-bar {
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 
 .container {
-    background-image: linear-gradient(to right, rgb(82, 196, 235), rgb(243, 236, 236));
+    background-image: linear-gradient(to right, rgb(212, 229, 235), rgb(255, 255, 255));
+    height: 100%;
+    padding-top: 3%;
 }
 
 .no-margin {
-     margin: 0%;
+    margin: 0%;
 }

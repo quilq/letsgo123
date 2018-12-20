@@ -11,7 +11,9 @@ const tourSchema = new mongoose.Schema({
     rating: Number,
     tourType: String,
     price: Number,
-    discount: Number
+    discount: Number,
+    allSeats: Number,
+    availableSeats: Number
 })
 
 tourSchema.statics.findTour = function (req, res) {

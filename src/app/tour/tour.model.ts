@@ -12,6 +12,8 @@ export class Tour {
     tourType: string;
     price: number;
     discount: number;
+    allSeats: number;
+    availableSeats: number
 
     constructor() {
         this.name = '',
@@ -21,6 +23,8 @@ export class Tour {
         this.rating = 0,
         this.tourType = '',
         this.price = 0,
-        this.discount = 0
+        this.discount = 0,
+        this.allSeats = 0,
+        this.availableSeats = 0
     }
 }

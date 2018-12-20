@@ -1,5 +1,5 @@
-<div fxLayout="column" fxLayoutAlign="space-between " class="container">
-  <div fxFlexAlign="center" class="search-bar">
+<div fxLayout="column" class="container">
+  <div class="search-bar">
     <app-search></app-search>
   </div>
 
@@ -18,7 +18,7 @@
       <mat-card *ngFor="let tour of toursToShow">
         <mat-card-header>
           <mat-card-title [routerLink]="['/tour-details', tour._id]" class="pointer">{{tour.name}} </mat-card-title>
-          <mat-card-subtitle>Rating</mat-card-subtitle>
+          <mat-card-subtitle>Available seats: </mat-card-subtitle>
           <mat-card-content>
             <p>
               {{tour.rating}} stars

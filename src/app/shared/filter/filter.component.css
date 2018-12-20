@@ -6,6 +6,12 @@
     padding: 2%;
 }
 
-.container{
-    background-image: linear-gradient(to bottom, rgb(140, 203, 245), rgb(206, 226, 241));
+.filter-bar {
+    padding-left: 3%;
 }
+
+.filter-area {
+    background-image: linear-gradient(to bottom, rgb(212, 234, 248), rgb(239, 247, 253));
+    margin-bottom: 6%;
+}
+

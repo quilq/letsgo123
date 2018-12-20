@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
@@ -10,7 +10,8 @@ import * as TourActions from '../../tour/store/tour.action';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SearchComponent implements OnInit {
 

@@ -1,3 +1,4 @@
-form {
-    padding: 3% 0%;
+mat-form-field .mat-form-field-wrapper .mat-form-field-flex {
+    border-radius: 0%;
+    background-color: rgba(255, 255, 255, 0.8)
 }
