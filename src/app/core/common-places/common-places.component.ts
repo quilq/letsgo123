@@ -31,4 +31,6 @@ export class CommonPlacesComponent implements OnInit {
     );
   }
 
+  
+
 }

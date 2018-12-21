@@ -1,21 +1,15 @@
 <div class="main-page" fxLayout="column" fxLayoutAlign="space-around center">
 
     <app-search></app-search>
-    
+
     <h1 fxLayoutAlign="center" routerLink="/tour/all" class="pointer" fxHide.lt-md="true">
         Explore most popular destinations now !
     </h1>
 
     <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" class="margin-2 transparent-80">
-        <mat-card fxFlex.lt-sm="100%" fxFlex.lt-md="45%" fxFlex="25%" *ngFor="let place of commonPlaces" class="margin-1">
-            <mat-card-title>
+        <mat-card [routerLink]="['/tour', place]" fxFlex.lt-sm="100%" fxFlex.lt-md="45%" fxFlex="25%" *ngFor="let place of commonPlaces"
+            class="margin-1 pointer">
                 {{place}}
-            </mat-card-title>
-            <mat-card-actions>
-                <button mat-raised-button [routerLink]="['/tour', place]">
-                    Find out more
-                </button>
-            </mat-card-actions>
         </mat-card>
     </div>
 </div>
