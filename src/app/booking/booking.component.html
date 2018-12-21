@@ -1,27 +1,34 @@
-<div fxLayout="row" fxLayoutAlign="space-around center">
-  <div fxLayout="column">
-    <h1>
-      All Bookings
-    </h1>
-    <div *ngFor="let booking of bookings ; let i = index">
-      <h3>{{booking.tour.name}} | {{booking.tour.rating}} | {{booking.tour.price}} $ </h3>
-      <button mat-button (click)="removeTour(i)">Cancel this booking</button>
-    </div>
+<div fxLayout="row" fxLayoutAlign="space-around start">
+  <div fxLayout="column" fxLayoutAlign="start " class="margin-top-3">
+    <h1> All Bookings </h1>
+    <mat-card fxLayout="column" 
+    fxLayoutAlign="start " 
+    class="margin-top-3"  
+    *ngFor="let booking of bookings ; let i = index">
+      <mat-card-title>
+        {{booking.tour.name}}
+      </mat-card-title>
+      <mat-card-content>
+        <div> Ratings: {{booking.tour.rating}} </div>
+        <div> Price: {{booking.tour.price}} $ </div>
+        <button mat-raised-button (click)="removeTour(i)">Cancel this booking</button>
+      </mat-card-content>
+    </mat-card>
   </div>
 
-  <div fxLayout="column">
+  <div fxLayout="column" fxLayoutAlign="start " class="margin-top-3">
     <mat-card>
-      <h1>
+      <mat-card-title>
         Payment process
-      </h1>
-      <h2>
+      </mat-card-title>
+      <mat-card-subtitle>
         Amount: {{amount}} $
-      </h2>
+      </mat-card-subtitle>
     </mat-card>
-    <button mat-raised-button color="primary">
+    <button mat-raised-button color="primary" class="margin-top-3">
       Check out
     </button>
-    <div>
+    <div class="margin-top-3">
       We accept: VISA - MASTERCARD - JCB
     </div>
   </div>

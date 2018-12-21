@@ -6,15 +6,15 @@
     <div fxLayout="row" fxLayoutAlign="space-around start">
         <div fxFlex="65">
             <div>
-                <div> {{selectedTour.name}} | {{selectedTour.price}} $ </div>
+                <h1> {{selectedTour.name}} | {{selectedTour.price}} $ </h1>
                 <div> {{selectedTour.tourType}}</div>
                 <div> Rating: {{selectedTour.rating}} <mat-icon>star_rate</mat-icon>
                 </div>
                 <div> Available seats: </div>
             </div>
             <div>
-                <img src="" alt="image">
-                <mat-accordion multi="true">
+                <img src="" alt="image" class="margin-bottom-2">
+                <mat-accordion multi="true" class="margin-bottom-2">
                     <mat-expansion-panel *ngFor="let place of selectedTour.journey ; let i = index">
                         <mat-expansion-panel-header>
                             Day {{i+1}} | {{place.formattedDate}} | {{place.city}}
@@ -25,7 +25,7 @@
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
-            <div>
+            <div class="margin-bottom-2 margin-top-2">
                 <button mat-raised-button (click)="bookTour(selectedTour)">Book this tour</button>
             </div>
             <div>
@@ -61,9 +61,9 @@
 
         <div fxFlex>
             <div>
-                <div>
+                <h2>
                     Other tours
-                </div>
+                </h2>
             </div>
             <div>
                 <div *ngFor="let tour of similarTours" class="margin-2">

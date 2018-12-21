@@ -13,7 +13,8 @@ export class Tour {
     price: number;
     discount: number;
     allSeats: number;
-    availableSeats: number
+    availableSeats: number;
+    note: string;
 
     constructor() {
         this.name = '',
@@ -25,6 +26,7 @@ export class Tour {
         this.price = 0,
         this.discount = 0,
         this.allSeats = 0,
-        this.availableSeats = 0
+        this.availableSeats = 0,
+        this.note = ''
     }
 }
