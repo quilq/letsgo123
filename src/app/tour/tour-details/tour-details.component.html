@@ -15,7 +15,7 @@
             <div>
                 <img src="" alt="image" class="margin-bottom-2">
                 <mat-accordion multi="true" class="margin-bottom-2">
-                    <mat-expansion-panel *ngFor="let place of selectedTour.journey ; let i = index">
+                    <mat-expansion-panel *ngFor="let place of selectedTour.journey ; let i = index" class="tour-info">
                         <mat-expansion-panel-header>
                             Day {{i+1}} | {{place.formattedDate}} | {{place.city}}
                         </mat-expansion-panel-header>
@@ -67,7 +67,7 @@
             </div>
             <div>
                 <div *ngFor="let tour of similarTours" class="margin-2">
-                    <mat-card>
+                    <mat-card class="tour-info">
                         <mat-card-header class="pointer" (click)="viewTour(tour)">
                             {{tour.name}}
                         </mat-card-header>

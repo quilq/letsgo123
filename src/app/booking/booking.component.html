@@ -1,6 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="space-around start">
   <div fxLayout="column" fxLayoutAlign="start " class="margin-top-3">
     <h1> All Bookings </h1>
+    <p *ngIf="bookings.length === 0">You don't have any bookings! </p>
     <mat-card fxLayout="column" 
     fxLayoutAlign="start " 
     class="margin-top-3"  
@@ -19,7 +20,7 @@
   <div fxLayout="column" fxLayoutAlign="start " class="margin-top-3">
     <mat-card>
       <mat-card-title>
-        Payment process
+        Payment
       </mat-card-title>
       <mat-card-subtitle>
         Amount: {{amount}} $

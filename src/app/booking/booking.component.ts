@@ -24,6 +24,7 @@ export class BookingComponent implements OnInit {
       map(bookingState => bookingState.booking)
     ).subscribe(bookings => {
       this.bookings = bookings
+      this.amount = 0;
       for (let i = 0; i < bookings.length; i++) {
         this.amount = this.amount + this.bookings[i].tour.price;
       }
