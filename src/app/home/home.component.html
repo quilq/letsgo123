@@ -9,14 +9,14 @@
             <button mat-button routerLink="/"> letsgo123.xyz </button>
         </mat-toolbar>
 
-        <app-header fxHide.lt-md="true"></app-header>
+        <app-header fxHide.lt-md="true" *ngIf="!onLoginPage"></app-header>
 
         <!-- for full page layout -->
         <main fxFlex>
-            <router-outlet></router-outlet>
+            <router-outlet (activate)="onActivate()"></router-outlet>
         </main>
 
-        <app-footer></app-footer>
+        <app-footer *ngIf="!onLoginPage"></app-footer>
 
     </mat-sidenav-content>
 </mat-sidenav-container>

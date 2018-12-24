@@ -14,18 +14,14 @@
           {{title}}
         </mat-card>
       </div>
-    
+
       <mat-card *ngFor="let tour of toursToShow">
         <mat-card-header>
           <mat-card-title [routerLink]="['/tour-details', tour._id]" class="pointer">{{tour.name}} </mat-card-title>
           <mat-card-subtitle>Available seats: </mat-card-subtitle>
           <mat-card-content>
-            <p>
-              {{tour.rating}} stars
-            </p>
-            <p>
-              {{tour.price}} $
-            </p>
+            <p> {{tour.rating}} stars </p>
+            <p> {{tour.price}} $ </p>
           </mat-card-content>
         </mat-card-header>
         <img src="" alt="Photo of tour {{tour.name}}">

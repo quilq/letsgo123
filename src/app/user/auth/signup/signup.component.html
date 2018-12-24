@@ -1,20 +1,27 @@
-<form fxLayout="column" fxLayoutAlign="center center" class="signup" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-  <mat-card fxLayout="column" fxLayoutAlign="center center">
-    <h1>Letsgo123</h1>
+<form fxLayout="column" fxLayoutAlign="center center" [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+ 
+  <mat-card fxLayout="column" fxLayoutAlign="center center" class="signup" >
+    <a routerLink="/">Letsgo123</a>
     <h2>Create your account</h2>
+
     <mat-form-field>
       <input matInput type="text" placeholder="Username" formControlName="username">
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
+
     <mat-form-field>
       <input matInput type="text" placeholder="Email" formControlName="email">
       <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
+
     <mat-form-field>
       <input matInput type="text" placeholder="Password" formControlName="password">
       <mat-icon matSuffix>visibility</mat-icon>
     </mat-form-field>
+    
     <button mat-raised-button type="submit">Sign up</button>
-    <button mat-button routerLink="/signin">Sign in instead</button>
+    <a routerLink="/signin">Sign in instead</a>
   </mat-card>
+
+  <a routerLink="" >Forgot password</a>
 </form>

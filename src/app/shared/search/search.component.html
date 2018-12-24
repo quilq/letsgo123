@@ -1,4 +1,5 @@
 <form fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign="center">
+
     <mat-form-field appearance="fill">
         <mat-label>from where?</mat-label>
         <mat-select [(ngModel)]="from" name="fromPlace">
@@ -30,6 +31,5 @@
     <button mat-button fxHide.gt-sm="true" (click)="searchTour(from, to, date)">
         Search
     </button>
-
 
 </form>

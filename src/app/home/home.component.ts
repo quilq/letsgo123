@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  constructor(private router: Router){}
+
+  onLoginPage = false;
+
   ngOnInit() { }
+
+  onActivate(){
+    let url = this.router.url;
+    if (url === '/signin' || url === '/signup'){
+      this.onLoginPage = true;
+    } else {
+      this.onLoginPage = false;
+    }
+  }
 
 }

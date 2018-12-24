@@ -2,6 +2,7 @@
   <div fxLayout="column" fxLayoutAlign="start " class="margin-top-3">
     <h1> All Bookings </h1>
     <p *ngIf="bookings.length === 0">You don't have any bookings! </p>
+
     <mat-card fxLayout="column" 
     fxLayoutAlign="start " 
     class="margin-top-3"  
@@ -15,6 +16,7 @@
         <button mat-raised-button (click)="removeTour(i)">Cancel this booking</button>
       </mat-card-content>
     </mat-card>
+
   </div>
 
   <div fxLayout="column" fxLayoutAlign="start " class="margin-top-3">
