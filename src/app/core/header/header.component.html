@@ -43,7 +43,7 @@
       
         <nav fxLayout="column" fxLayoutAlign="end center" *ngIf="isAuthenticated$ | async">
             <button mat-button routerLink="/user"> User page </button>
-            <button mat-button (click)="onSignout()"> Sign out </button>
+            <button mat-stroked-button (click)="onSignout()"> Sign out </button>
         </nav>
     </div>
     

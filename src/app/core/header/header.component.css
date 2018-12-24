@@ -1,3 +1,5 @@
 mat-toolbar {
     padding: 0.5%;
+    background-color: rgb(236, 146, 7);
+    color: rgb(255, 255, 255);
 }
