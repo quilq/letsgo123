@@ -4,13 +4,15 @@ import * as TourActions from './tour.action';
 export interface ToursState {
     hasLoaded: boolean,
     tours: Tour[],
-    toursToShow: Tour[]
+    toursToShow: Tour[],
+    selectedTour: Tour
 }
 
 const initialState: ToursState = {
     hasLoaded: false,
     tours: [],
-    toursToShow: []
+    toursToShow: [],
+    selectedTour: new Tour()
 }
 
 export function tourReducer(state: ToursState = initialState, action: TourActions.Actions): ToursState {
