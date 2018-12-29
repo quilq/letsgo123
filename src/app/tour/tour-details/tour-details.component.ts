@@ -4,9 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
 import { Tour } from '../tour.model';
-import { AppState, hasLoaded, allTours } from '../../store/app.reducers';
+import { AppState, hasLoaded, allTours, selectTours, selectedTour } from '../../store/app.reducers';
 import * as TourActions from '../store/tour.action';
 import * as BookingActions from '../../booking/store/booking.actions';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -18,34 +19,36 @@ import * as BookingActions from '../../booking/store/booking.actions';
 export class TourDetailsComponent implements OnInit {
 
   selectedTour: Tour = new Tour();
-  similarTours: Tour[] = [];
+  similarTour: Tour[] = [];
 
   constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.store.dispatch(new TourActions.OnGetTourByID(id));
+    this.store.select(selectedTour).subscribe(selectedTour => this.selectedTour = selectedTour);
 
-    this.store.select(hasLoaded).subscribe(
-      hasLoaded => {
-        if (!hasLoaded) {
-          this.store.dispatch(new TourActions.OnGetTours());
-        } else {
-          this.store.select(allTours).subscribe(tours => {
-            this.selectedTour = this.findTourByID(tours, id);
-            let address = this.selectedTour.journey[0].city;
+    // this.store.select(hasLoaded).subscribe(
+    //   hasLoaded => {
+    //     if (!hasLoaded) {
+    //       this.store.dispatch(new TourActions.OnGetTours());
+    //     } else {
+    //       this.store.select(allTours).subscribe(tours => {
+    //         this.selectedTour = this.findTourByID(tours, id);
+    //         let address = this.selectedTour.journey[0].city;
 
-            for (let i = 0; i < tours.length; i++) {
-              for (let ii = 0; ii < tours[i].journey.length; ii++) {
-                if (tours[i].journey[ii].city === address) {
-                  this.similarTours.push(tours[i]);
-                  break;
-                }
-              }
-            }
-          })
-        }
-      }
-    )
+    //         for (let i = 0; i < tours.length; i++) {
+    //           for (let ii = 0; ii < tours[i].journey.length; ii++) {
+    //             if (tours[i].journey[ii].city === address) {
+    //               this.similarTours.push(tours[i]);
+    //               break;
+    //             }
+    //           }
+    //         }
+    //       })
+    //     }
+    //   }
+    // )
 
     // this.store.select('tours').subscribe(toursState => {
     //   if (!toursState.hasLoaded) {
@@ -68,28 +71,28 @@ export class TourDetailsComponent implements OnInit {
 
   }
 
-  findTourByID(tours: Tour[], id: string) {
-    let selectedTour: Tour = new Tour();
-    for (let i = 0; i < tours.length; i++) {
+  // findTourByID(tours: Tour[], id: string) {
+  //   let selectedTour: Tour = new Tour();
+  //   for (let i = 0; i < tours.length; i++) {
 
-      if (id === tours[i]._id) {
-        selectedTour = tours[i];
-        break;
-      }
-    }
-    selectedTour.journey.forEach(info => {
-      info.formattedDate = moment(info.date).format('DD/MM/YYYY');
-    });
+  //     if (id === tours[i]._id) {
+  //       selectedTour = tours[i];
+  //       break;
+  //     }
+  //   }
+  //   selectedTour.journey.forEach(info => {
+  //     info.formattedDate = moment(info.date).format('DD/MM/YYYY');
+  //   });
 
-    return selectedTour;
-  }
+  //   return selectedTour;
+  // }
 
   bookTour(tour: Tour) {
     this.store.dispatch(new BookingActions.BookTour({ tour: tour, dates: [new Date()] }));
   }
 
   viewTour(tour: Tour) {
-    this.selectedTour = tour;
+    this.store.dispatch(new TourActions.GetTourByID(tour));
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Action } from '@ngrx/store';
 
@@ -33,6 +33,7 @@ export class TourEffects {
         ofType(TourActions.ON_GET_TOUR_BY_ID),
         switchMap((action: TourActions.OnGetTourByID) => this.tourService.findTourByID(action.payload)
             .pipe(
+                tap(() => console.log(action.payload)),
                 map((tour: Tour) => new TourActions.GetTourByID(tour))
             )
         )

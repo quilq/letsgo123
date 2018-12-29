@@ -55,4 +55,11 @@ export const toursToShow = createSelector(
     }
 )
 
+export const selectedTour = createSelector(
+    selectTours,
+    (tours: fromTours.ToursState) => {
+        return tours.selectedTour;
+    }
+)
+
 
