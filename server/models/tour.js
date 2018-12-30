@@ -45,7 +45,6 @@ tourSchema.statics.findTour = function (req, res) {
 
 // Find tour by ID
 tourSchema.statics.findTourByID = function (req, res) {
-    console.log('find tour called');
     const Tour = this,
         id = req.params.id;
 

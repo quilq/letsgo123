@@ -5,11 +5,11 @@ import { AppState, hasLoaded, allCities } from '../../store/app.reducers';
 import * as TourActions from '../../tour/store/tour.action';
 
 @Component({
-  selector: 'app-common-places',
-  templateUrl: './common-places.component.html',
-  styleUrls: ['./common-places.component.css']
+  selector: 'app-popular-places',
+  templateUrl: './popular-places.component.html',
+  styleUrls: ['./popular-places.component.css']
 })
-export class CommonPlacesComponent implements OnInit {
+export class PopularPlacesComponent implements OnInit {
 
   commonPlaces: string[];
 

@@ -17,7 +17,7 @@ import { BookingComponent } from './booking/booking.component';
 import { SigninComponent } from './user/auth/signin/signin.component';
 import { SignupComponent } from './user/auth/signup/signup.component';
 import { MaterialModule } from './material/material.module';
-import { CommonPlacesComponent } from './core/common-places/common-places.component';
+import { PopularPlacesComponent } from './core/popular-places/popular-places.component';
 import { TourEffects } from './tour/store/tour.effect';
 import { AuthEffects } from './user/auth/store/auth.effects';
 import { reducers } from './store/app.reducers';
@@ -37,7 +37,7 @@ import { FilterComponent } from './shared/filter/filter.component';
     SigninComponent,
     SignupComponent,
     TourDetailsComponent,
-    CommonPlacesComponent,
+    PopularPlacesComponent,
     SearchComponent,
     HeaderComponent,
     FooterComponent,

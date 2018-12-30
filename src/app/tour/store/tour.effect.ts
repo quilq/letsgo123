@@ -31,9 +31,7 @@ export class TourEffects {
     @Effect()
     getTourByID$: Observable<Action> = this.actions$.pipe(
         ofType(TourActions.ON_GET_TOUR_BY_ID),
-        switchMap((action: TourActions.OnGetTourByID) => this.tourService.findTourByID(action.payload)
-            .pipe(
-                tap(() => console.log(action.payload)),
+        switchMap((action: TourActions.OnGetTourByID) => this.tourService.findTourByID(action.payload).pipe(
                 map((tour: Tour) => new TourActions.GetTourByID(tour))
             )
         )
