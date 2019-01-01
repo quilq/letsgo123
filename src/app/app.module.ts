@@ -26,6 +26,7 @@ import { SearchComponent } from './shared/search/search.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { FilterComponent } from './shared/filter/filter.component';
+import { PopularPlacesEffects } from './core/popular-places/store/popular-places.effect';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { FilterComponent } from './shared/filter/filter.component';
       maxAge: 10, // Retains last 10 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([TourEffects, AuthEffects])
+    EffectsModule.forRoot([TourEffects, AuthEffects, PopularPlacesEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

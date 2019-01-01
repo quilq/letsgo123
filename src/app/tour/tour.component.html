@@ -15,7 +15,7 @@
         </mat-card>
       </div>
 
-      <mat-card *ngFor="let tour of toursToShow">
+      <mat-card *ngFor="let tour of (toursToShow$ | async)">
         <mat-card-header>
           <mat-card-title [routerLink]="['/tour-details', tour._id]" class="pointer">{{tour.name}} </mat-card-title>
           <mat-card-subtitle>Available seats: </mat-card-subtitle>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { Tour } from './tour.model';
 import { AppState, hasLoaded, allTours, toursToShow } from '../store/app.reducers';
@@ -17,8 +18,8 @@ export class TourComponent implements OnInit {
 
   place = '';
   title = '';
-  allTours: Tour[] = [];
-  toursToShow: Tour[] = [];
+  // allTours: Tour[] = [];
+  toursToShow$: Observable<Tour[]>;
 
   // constructor(private store: Store<AppState>, private tourService: TourService) { }
   constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
@@ -26,84 +27,44 @@ export class TourComponent implements OnInit {
   ngOnInit() {
     this.place = this.activatedRoute.snapshot.paramMap.get('place');
 
-    this.store.select(hasLoaded).subscribe(hasLoaded => {
-      if (!hasLoaded) {
-        this.store.dispatch(new TourActions.OnGetTours());
-      }
-      this.store.select(allTours).subscribe(tours => {
-        this.allTours = tours;
+    //Search
+    if (this.place === 'search-result') {
+      this.title = 'Tours to ' + this.activatedRoute.snapshot.paramMap.get('to');
+      return;
 
-        if (this.place === 'search-result') {
-          this.title = 'Tours to ' + this.activatedRoute.snapshot.paramMap.get('to');
-          return;
-        } else if (this.place === 'all') {
-          this.title = 'Popular tours';
-          this.store.dispatch(new TourActions.UpdateToursToShow(tours));
-        } else if (this.place === 'discount') {
-          this.title = 'Tours with best prices';
-          this.findDiscountedTour();
-        } else {
-          this.title = 'Tours to ' + this.place;
-          this.findTourByAddress(this.place);
-        }
-      });
+    //Explore
+    } else if (this.place === 'all') {
+      this.title = 'Popular tours';
+      this.loadTours();
+          //this.store.dispatch(new TourActions.UpdateToursToShow(tours));
 
-      this.store.select(toursToShow).subscribe(toursToShow => {
-        this.toursToShow = toursToShow;
-      })
+    //Today's deal
+    } else if (this.place === 'discount') {
+      this.title = 'Tours with best prices';
+      this.findDiscountedTour();
+          //this.store.dispatch(new TourActions.UpdateToursToShow(tours));
+
+    //Tours to 'places'
+    } else {
+      this.title = 'Tours to ' + this.place;
+      this.findTourByAddress(this.place);
+          //this.store.dispatch(new TourActions.UpdateToursToShow(tours));
     }
-    )
 
-    // this.store.select('tours').pipe(
-    //   map(toursState => toursState.hasLoaded)
-    // ).subscribe(hasLoaded => {
-    //   if (!hasLoaded) {
-    //     this.store.dispatch(new TourActions.OnGetTours());
-    //   }
-    //   this.store.select('tours').pipe(
-    //     map(toursState => toursState.tours)
-    //   ).subscribe(tours => {
-    //     this.toursToShow = tours;
-    //     this.tours = tours;
-    //   });
-    // });
+    this.toursToShow$ = this.store.select(toursToShow);
   }
 
+  loadTours() {
+  }
 
-  loadMoreTours() {
-    this.store.dispatch(new TourActions.OnGetTours({ skip: this.allTours.length, limit: 20 }));
+  findTourByAddress(place: string) {
+  }
+
+  findDiscountedTour(){
   }
 
   bookTour(tour: Tour) {
     this.store.dispatch(new BookingActions.BookTour({ tour: tour, dates: [new Date()] }));
-  }
-
-  findTourByAddress(place: string) {
-    this.store.select(hasLoaded).subscribe(
-      hasLoaded => {
-        if (hasLoaded) {
-          let allTour = this.allTours;
-          let toursByAddress: Tour[] = [];
-          for (let i = 0; i < allTour.length; i++) {
-            for (let ii = 0; ii < allTour[i].journey.length; ii++) {
-              if (allTour[i].journey[ii].city === place) {
-                toursByAddress.push(allTour[i]);
-                break;
-              }
-            }
-          }
-          this.store.dispatch(new TourActions.UpdateToursToShow(toursByAddress));
-        } else {
-          console.log('\'tours\' were not loaded !');
-        }
-      }
-    )
-
-  }
-  
-  findDiscountedTour(){
-      this.toursToShow = this.allTours.filter(tour => tour.discount > 0);
-      this.store.dispatch(new TourActions.UpdateToursToShow(this.toursToShow));
   }
 
 }

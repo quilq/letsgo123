@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { AppState, hasLoaded, allCities } from '../../store/app.reducers';
-import * as TourActions from '../../tour/store/tour.action';
+import { AppState, popularPlaces} from '../../store/app.reducers';
+import * as PopularPlacesAction from './store/popular-places.action';
 
 @Component({
   selector: 'app-popular-places',
@@ -11,22 +11,22 @@ import * as TourActions from '../../tour/store/tour.action';
 })
 export class PopularPlacesComponent implements OnInit {
 
-  commonPlaces: string[];
+  popularPlaces: string[];
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.store.select(hasLoaded).subscribe(
-      hasLoaded => {
-        if (!hasLoaded) {
-          this.store.dispatch(new TourActions.OnGetTours());
+    this.store.select('popularPlaces').subscribe(
+      popularPlaces => {
+        if (!popularPlaces.hasLoaded) {
+          this.store.dispatch(new PopularPlacesAction.OnGetPopularPlaces());
         }
       }
     )
 
-    this.store.select(allCities).subscribe(
-      allCities => {
-        this.commonPlaces = allCities.slice(0, 6);
+    this.store.select(popularPlaces).subscribe(
+      places => {
+        this.popularPlaces = places.slice(0, 6);
       }
     );
   }

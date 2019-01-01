@@ -14,11 +14,6 @@ export class TourService {
     let url = `/api/tour/${skip}/${limit}`;
     return this.httpClient.get<Tour[]>(url);
   }
-  
-  getPopularPlaces(){
-    let url = `/api/places`;
-    return this.httpClient.get<string[]>(url);        
-  }
 
   findTourByID(id: string){
     let url = `/api/id/${id}`;
