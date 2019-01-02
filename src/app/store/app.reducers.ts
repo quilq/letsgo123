@@ -21,7 +21,7 @@ export const reducers: ActionReducerMap<AppState> = {
 export const selectTours = (state: AppState) => state.tours;
 export const selectPopularPlaces = (state: AppState) => state.popularPlaces;
 
-export const hasLoaded = createSelector(
+export const toursLoaded = createSelector(
     selectTours,
     (tours: fromTours.ToursState) => {
         return tours.hasLoaded
