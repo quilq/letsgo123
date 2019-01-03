@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
 import { Tour } from '../tour.model';
-import { AppState, hasLoaded, allTours, selectTours, selectedTour } from '../../store/app.reducers';
+import { AppState, allTours, selectTours, selectedTour } from '../../store/app.reducers';
 import * as TourActions from '../store/tour.action';
 import * as BookingActions from '../../booking/store/booking.actions';
 import { Observable } from 'rxjs';

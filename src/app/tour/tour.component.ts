@@ -64,9 +64,7 @@ export class TourComponent implements OnInit {
   }
 
   findTourByAddress(place: string) {
-    //add action/ effect/ reducer for getting tours by address: getToursByAddress
-    //dispatch actions => return tours => update tours to show:
-    //this.store.dispatch(new TourActions.UpdateToursToShow(tours));
+    this.store.dispatch(new TourActions.OnGetTourByAddress(place));
   }
 
   findDiscountedTour() {

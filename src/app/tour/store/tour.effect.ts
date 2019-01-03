@@ -37,6 +37,15 @@ export class TourEffects {
         )
     )
 
+    @Effect()
+    getTourByAddress$: Observable<Action> = this.actions$.pipe(
+        ofType(TourActions.ON_GET_TOUR_BY_ADDRESS),
+        switchMap((action: TourActions.OnGetTourByAddress) => this.tourService.findTourByAddress(action.payload).pipe(
+                map((tour: Tour[]) => new TourActions.GetTourByAddress(tour))
+            )
+        )
+    )
+
     constructor(private actions$: Actions,
         private tourService: TourService) { }
 }

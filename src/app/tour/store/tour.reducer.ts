@@ -41,7 +41,11 @@ export function tourReducer(state: ToursState = initialState, action: TourAction
         //     return { ...state, tours: [...state.tours, action.payload], hasLoaded: true }
 
         case TourActions.GET_TOUR_BY_ID:
-            return {...state, selectedTour: action.payload}
+            return { ...state, selectedTour: action.payload };
+
+
+        case TourActions.GET_TOUR_BY_ADDRESS:
+            return { ...state, toursToShow: action.payload };
 
         case TourActions.UPDATE_TOURS_TO_SHOW:
             return { ...state, toursToShow: [...action.payload] };
