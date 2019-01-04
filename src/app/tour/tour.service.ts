@@ -15,6 +15,11 @@ export class TourService {
     return this.httpClient.get<Tour[]>(url);
   }
 
+  findDiscountedTours() {
+    let url = `/api/discount`;
+    return this.httpClient.get<Tour[]>(url);
+  }
+
   findTourByID(id: string){
     let url = `/api/id/${id}`;
     return this.httpClient.get<Tour>(url);

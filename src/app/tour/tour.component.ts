@@ -68,10 +68,7 @@ export class TourComponent implements OnInit {
   }
 
   findDiscountedTour() {
-    //add service find discountedTour
-    //add action/ effect/ reducer for getting discounted tour
-    //dispath action => update tours to show:
-    //this.store.dispatch(new TourActions.UpdateToursToShow(tours));
+    this.store.dispatch(new TourActions.OnGetDiscountedTours());
   }
 
   bookTour(tour: Tour) {

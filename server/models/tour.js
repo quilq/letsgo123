@@ -100,6 +100,18 @@ tourSchema.statics.findTourByAddress = function (req, res) {
 //     })
 // }
 
+//Find discounted tours
+tourSchema.statics.findDiscountedTours = function (req, res) {
+    const Tour = this;
+
+    Tour.find({ discount: {$gt: 0} }, (err, docs) => {
+        if (err) {
+            console.log(err)
+        };
+        res.send(docs);
+    })
+}
+
 //Get popular destinations
 tourSchema.statics.getPopularPlaces = function (req, res) {
     const Tour = this;

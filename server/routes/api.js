@@ -19,6 +19,10 @@ router.get('/address/:address', (req, res) => {
     Tour.findTourByAddress(req, res);
 })
 
+router.get('/discount', (req, res) => {
+    Tour.findDiscountedTours(req, res);
+})
+
 // router.get('/rating/:rating', (req, res) => {
 //     Tour.findTourByRating(req, res);
 // })

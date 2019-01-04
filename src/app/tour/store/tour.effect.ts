@@ -46,6 +46,15 @@ export class TourEffects {
         )
     )
 
+    @Effect()
+    getDiscountedTour$: Observable<Action> = this.actions$.pipe(
+        ofType(TourActions.ON_GET_DISCOUNTED_TOURS),
+        switchMap(() => this.tourService.findDiscountedTours().pipe(
+                map((tour: Tour[]) => new TourActions.GetDiscountedTours(tour))
+            )
+        )
+    )
+
     constructor(private actions$: Actions,
         private tourService: TourService) { }
 }
