@@ -23,28 +23,32 @@ export class TourComponent implements OnInit {
   constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.place = this.activatedRoute.snapshot.paramMap.get('place');
+    this.activatedRoute.url.subscribe(url => {
+      // console.log('url: ', url);
 
-    //Search
-    if (this.place === 'search-result') {
-      this.title = 'Tours to ' + this.activatedRoute.snapshot.paramMap.get('to');
-      return;
+      this.place = this.activatedRoute.snapshot.paramMap.get('place');
 
-      //Explore
-    } else if (this.place === 'all') {
-      this.title = 'Popular tours';
-      this.loadTours();
+      //Search
+      if (this.place === 'search-result') {
+        this.title = 'Tours to ' + this.activatedRoute.snapshot.paramMap.get('to');
+        return;
 
-      //Today's deal
-    } else if (this.place === 'discount') {
-      this.title = 'Tours with best prices';
-      this.findDiscountedTour();
+        //Explore
+      } else if (this.place === 'all') {
+        this.title = 'Popular tours';
+        this.loadTours();
 
-      //Tours to 'places'
-    } else {
-      this.title = 'Tours to ' + this.place;
-      this.findTourByAddress(this.place);
-    }
+        //Today's deal
+      } else if (this.place === 'discount') {
+        this.title = 'Tours with best prices';
+        this.findDiscountedTour();
+
+        //Tours to 'places'
+      } else {
+        this.title = 'Tours to ' + this.place;
+        this.findTourByAddress(this.place);
+      }
+    });
 
     this.toursToShow$ = this.store.select(toursToShow);
   }
