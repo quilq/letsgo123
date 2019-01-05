@@ -37,18 +37,15 @@ export function tourReducer(state: ToursState = initialState, action: TourAction
         //     }
         //     return { ...state, tours: nonDuplicateTours, hasLoaded: true };
 
-        // case TourActions.GET_TOUR_BY_ID:
-        //     return { ...state, tours: [...state.tours, action.payload], hasLoaded: true }
-
         case TourActions.GET_TOUR_BY_ID:
-            return { ...state, selectedTour: action.payload, hasLoaded: true };
+            return { ...state, selectedTour: action.payload };
 
         case TourActions.GET_TOUR_BY_ADDRESS:
         case TourActions.GET_DISCOUNTED_TOURS:
-            return { ...state, toursToShow: action.payload, hasLoaded: true };
+            return { ...state, toursToShow: action.payload };
 
         case TourActions.UPDATE_TOURS_TO_SHOW:
-            return { ...state, toursToShow: [...action.payload], hasLoaded: true };
+            return { ...state, toursToShow: [...action.payload] };
 
         default:
             return state;
