@@ -35,7 +35,7 @@
         </mat-card-actions>
       </mat-card>
       
-      <button mat-button (click)="loadMoreTours()">Load more tours</button>
+      <button *ngIf="onLoadMoreTour" mat-button (click)="loadMoreTours()">Load more tours</button>
 
     </div>
   </div>

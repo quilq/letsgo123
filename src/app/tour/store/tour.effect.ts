@@ -17,7 +17,11 @@ export class TourEffects {
             if (action.payload) {
                 return this.tourService.findTours(action.payload.skip, action.payload.limit)
                     .pipe(
-                        map((tours: Tour[]) => new TourActions.GetTours(tours))
+                        map((tours: Tour[]) => {
+                            if (tours.length > 0){
+                                return new TourActions.GetTours(tours)
+                            }
+                        })
                     )
             } else {
                 return this.tourService.findTours()

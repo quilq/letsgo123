@@ -18,6 +18,8 @@ export class TourComponent implements OnInit {
 
   place = '';
   title = '';
+  onLoadMoreTour = false;
+  numberOfTours = 0;
   toursToShow$: Observable<Tour[]>;
 
   constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
@@ -27,6 +29,7 @@ export class TourComponent implements OnInit {
       // console.log('url: ', url);
 
       this.place = this.activatedRoute.snapshot.paramMap.get('place');
+      this.onLoadMoreTour = false;
 
       //Search
       if (this.place === 'search-result') {
@@ -60,11 +63,15 @@ export class TourComponent implements OnInit {
           this.store.dispatch(new TourActions.OnGetTours());
         } else {
           this.store.select(allTours).subscribe(
-            tours => this.store.dispatch(new TourActions.UpdateToursToShow(tours))
+            tours => {
+              this.store.dispatch(new TourActions.UpdateToursToShow(tours));
+              this.numberOfTours = this.numberOfTours + tours.length;
+            }
           )
         }
       }
-    )
+    );
+    this.onLoadMoreTour = true;
   }
 
   findTourByAddress(place: string) {
@@ -77,6 +84,10 @@ export class TourComponent implements OnInit {
 
   bookTour(tour: Tour) {
     this.store.dispatch(new BookingActions.BookTour({ tour: tour, dates: [new Date()] }));
+  }
+
+  loadMoreTours() {
+    this.store.dispatch(new TourActions.OnGetTours({ skip: this.numberOfTours }));
   }
 
 }
