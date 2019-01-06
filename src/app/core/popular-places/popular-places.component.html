@@ -8,7 +8,7 @@
 
     <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" class="margin-2 transparent-80">
         <mat-card [routerLink]="['/tour', place]" fxFlex.lt-sm="100%" fxFlex.lt-md="45%" fxFlex="25%" *ngFor="let place of popularPlaces"
-            class="margin-1 pointer common-place">
+            class="margin-1 pointer common-place hightlight">
                 {{place}}
         </mat-card>
     </div>
