@@ -1,4 +1,5 @@
 const { mongoose } = require('../database/mongoose');
+const moment = require('moment');
 
 const tourSchema = new mongoose.Schema({
     name: String,
@@ -57,6 +58,40 @@ tourSchema.statics.findTourByID = function (req, res) {
 }
 
 // Find tours by address
+tourSchema.statics.searchTourByAddressAndDate = function (req, res) {
+    const Tour = this,
+        from = req.params.from,
+        to = req.params.to,
+        date = req.params.date;
+
+    Tour.find({
+        $and: [{
+            $or: [
+                { 'journey.0.city': from },
+                { 'journey.0.country': from }
+            ]
+        }, {
+            'journey.0.date': { $gt: moment(+date).format() }
+        }, {
+            $or: [
+                { 'journey.city': to },
+                { 'journey.country': to }
+            ]
+        }, {
+            $and: [
+                { 'journey.0.city': { $ne: to } },
+                { 'journey.0.country': { $ne: to } }
+            ]
+        }]
+    }, (err, docs) => {
+        if (err) {
+            console.log(err)
+        };
+        res.send(docs);
+    })
+}
+
+// Find tours by address and date
 tourSchema.statics.findTourByAddress = function (req, res) {
     const Tour = this,
         address = req.params.address;
@@ -104,7 +139,7 @@ tourSchema.statics.findTourByAddress = function (req, res) {
 tourSchema.statics.findDiscountedTours = function (req, res) {
     const Tour = this;
 
-    Tour.find({ discount: {$gt: 0} }, (err, docs) => {
+    Tour.find({ discount: { $gt: 0 } }, (err, docs) => {
         if (err) {
             console.log(err)
         };
@@ -116,7 +151,7 @@ tourSchema.statics.findDiscountedTours = function (req, res) {
 tourSchema.statics.getPopularPlaces = function (req, res) {
     const Tour = this;
 
-    Tour.find({}, 'journey.city', {'journey._id': 0 }, (err, docs) => {
+    Tour.find({}, 'journey.city', { 'journey._id': 0 }, (err, docs) => {
         if (err) {
             console.log(err)
         };
@@ -125,7 +160,7 @@ tourSchema.statics.getPopularPlaces = function (req, res) {
 
         docs.forEach(element => {
             element.journey.forEach(place => {
-                if (!cities.includes(place.city)){
+                if (!cities.includes(place.city)) {
                     cities.push(place.city);
                 }
             })

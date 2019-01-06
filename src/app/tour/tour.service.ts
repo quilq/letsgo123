@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Tour } from './tour.model';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,11 @@ export class TourService {
 
   findTourByAddress(address: string){
     let url = `/api/address/${address}`;
+    return this.httpClient.get<Tour[]>(url);
+  }
+
+  searchTourByAddressAndDate(from: string, to: string, date: Date){
+    let url = `/api/search/${from}/${to}/${date}`;
     return this.httpClient.get<Tour[]>(url);
   }
 

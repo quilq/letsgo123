@@ -31,9 +31,19 @@ export class TourDetailsComponent implements OnInit {
       this.store.dispatch(new TourActions.OnGetTourByAddress(this.selectedTour.journey[0].city));
     });
 
-    //Todo: exclude the current tour
     this.store.select(toursToShow).subscribe(
-      toursToShow => this.similarTours = toursToShow.slice(0, 5)
+      toursToShow => {
+        this.similarTours = [];
+        for (let i = 0; i < toursToShow.length; i++) {
+          //Exclude the selected tour
+          if (toursToShow[i]._id !== this.selectedTour._id){
+            this.similarTours.push(toursToShow[i]);
+          }
+          if (this.similarTours.length > 5){
+            break;
+          }
+        }
+      }
     )
   }
 

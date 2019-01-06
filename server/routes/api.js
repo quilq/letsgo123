@@ -19,6 +19,10 @@ router.get('/address/:address', (req, res) => {
     Tour.findTourByAddress(req, res);
 })
 
+router.get('/search/:from/:to/:date', (req, res) => {
+    Tour.searchTourByAddressAndDate(req, res);
+})
+
 router.get('/discount', (req, res) => {
     Tour.findDiscountedTours(req, res);
 })

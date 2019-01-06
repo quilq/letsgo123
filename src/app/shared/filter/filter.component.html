@@ -9,7 +9,7 @@
         <mat-radio-button value="any">Any </mat-radio-button>
       </mat-radio-group>
     </div>
-
+    <mat-divider></mat-divider>
     <div class="margin-2 padding-2">
       <div> Tour price </div>
       <mat-radio-group class="margin-2" fxLayout="column" [(ngModel)]="priceRange" (change)="filter()">
@@ -18,7 +18,7 @@
         <mat-radio-button value="any">Any </mat-radio-button>
       </mat-radio-group>
     </div>
-
+    <mat-divider></mat-divider>
     <div class="margin-2 padding-2">
       <div> Number of days </div>
       <mat-radio-group fxLayout="column" class="margin-2" [(ngModel)]="daysNumber" (change)="filter()">

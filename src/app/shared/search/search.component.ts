@@ -3,9 +3,13 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 
-import { AppState } from '../../store/app.reducers';
-import { Tour } from '../../tour/tour.model';
+import { AppState, allTours, popularPlaces } from '../../store/app.reducers';
 import * as TourActions from '../../tour/store/tour.action';
+
+export interface Place {
+  value: string,
+  viewValue: string
+}
 
 @Component({
   selector: 'app-search',
@@ -21,41 +25,24 @@ export class SearchComponent implements OnInit {
   to = '';
   date = moment();
 
-  tours: Tour[] = [];
+  fromWhere: Place[] = [];
+  toWhere: Place[] = [];
 
   ngOnInit() {
-    this.store.select('tours').subscribe(toursState =>
-      this.tours = toursState.tours
-    )
-  }
-
-  searchTour(from, to, date) {
-    let searchResult = [];
-    this.tours.forEach(tour => {
-      if ((tour.journey[0].city === from)
-        && (moment(tour.journey[0].date).format('MMM Do YYYY') >= moment(date).format('MMM Do YYYY'))) {
-        for (let i = 1; i < tour.journey.length; i++) {
-          if (tour.journey[i].city === to) {
-            searchResult.push(tour);
-            break;
-          }
+    this.store.select(popularPlaces).subscribe(places => {
+      if (places){
+        for (let i = 0; i < places.length; i++) {
+          let place = {value: places[i], viewValue: places[i]}
+          this.fromWhere[i] = place;
+          this.toWhere[i] = place;
         }
       }
     })
-    this.store.dispatch(new TourActions.UpdateToursToShow(searchResult));
-    this.router.navigate(['/tour/search-result', {from, to, date}]);
   }
 
-  fromWhere = [
-    { value: 'Ha Noi', viewValue: 'Ha Noi' },
-    { value: 'Ho Chi Minh City', viewValue: 'Ho Chi Minh City' },
-    { value: 'Can Tho', viewValue: 'Can Tho' },
-  ];
-
-  toWhere = [
-    { value: 'Ha Noi', viewValue: 'Ha Noi' },
-    { value: 'Ho Chi Minh City', viewValue: 'Ho Chi Minh City' },
-    { value: 'Can Tho', viewValue: 'Can Tho' },
-  ];
+  searchTour(from, to, date) {
+    this.store.dispatch(new TourActions.OnSearchTourByAddressAndDate({from, to, date}));
+    this.router.navigate(['/tour/search-result', {from, to, date}]);
+  }
 
 }
