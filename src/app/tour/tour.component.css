@@ -20,3 +20,8 @@ mat-card {
 .no-margin {
     margin: 0%;
 }
+
+img {
+    width: 150px;
+    height: 150px;
+}

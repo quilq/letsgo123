@@ -7,6 +7,7 @@ import { Tour } from './tour.model';
 import { AppState, toursToShow, toursLoaded, allTours } from '../store/app.reducers';
 import * as BookingActions from '../booking/store/booking.actions';
 import * as TourActions from './store/tour.action';
+import { TourService } from './tour.service';
 
 @Component({
   selector: 'app-tour',
@@ -22,7 +23,7 @@ export class TourComponent implements OnInit {
   numberOfTours = 0;
   toursToShow$: Observable<Tour[]>;
 
-  constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
+  constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute, private tourService: TourService) { }
 
   ngOnInit() {
     this.activatedRoute.url.subscribe(url => {
@@ -89,5 +90,9 @@ export class TourComponent implements OnInit {
   loadMoreTours() {
     this.store.dispatch(new TourActions.OnGetTours({ skip: this.numberOfTours }));
   }
+
+  // addTour(){
+  //   this.tourService.addNewTour().subscribe(res => console.log(res));
+  // }
 
 }

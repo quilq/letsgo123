@@ -36,10 +36,10 @@ export class TourService {
     return this.httpClient.get<Tour[]>(url);
   }
 
-  // addNewTour(){
-  //   let url = `/api/tour/new`;
-  //   console.log('findTours called!');
-  //   return this.httpClient.post(url, '');
-  // }
+  addNewTour(){
+    let url = `/api/tour/new`;
+    console.log('findTours called!');
+    return this.httpClient.post(url, '');
+  }
 
 }

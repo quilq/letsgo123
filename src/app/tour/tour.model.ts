@@ -15,6 +15,7 @@ export class Tour {
     allSeats: number;
     availableSeats: number;
     note: string;
+    imageUrl: string
 
     constructor() {
         this.name = '',
@@ -27,6 +28,7 @@ export class Tour {
         this.discount = 0,
         this.allSeats = 0,
         this.availableSeats = 0,
-        this.note = ''
+        this.note = '',
+        this.imageUrl = ''
     }
 }

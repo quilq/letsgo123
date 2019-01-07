@@ -13,7 +13,7 @@
                 <div> Available seats: </div>
             </div>
             <div>
-                <img src="" alt="image" class="margin-bottom-2">
+                <img src="{{tour.image}}" alt="image" class="margin-bottom-2">
                 <mat-accordion multi="true" class="margin-bottom-2">
                     <mat-expansion-panel *ngFor="let place of selectedTour.journey ; let i = index" class="tour-info">
                         <mat-expansion-panel-header>
