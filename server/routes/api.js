@@ -91,55 +91,55 @@ router.get('/user/me', (req, res) => {
 //[User] Delete user info
 
 //[Admin] Add tours
-router.post('/tour/new', (req, res) => {
+// router.post('/tour/new', (req, res) => {
 
-    let tour = new Tour({
-        name: 'Ha Noi - Da Lat',
-        journey: [  //1 - 5 days
-            {
-                city: 'Ha Noi',
-                country: 'Vietnam',
-                date: moment().add(56, 'days'),
-                info: ''
-            },
-            {
-                city: 'Nha Trang',
-                country: 'Vietnam',
-                date: moment().add(57, 'days'),
-                info: ''
-            },
-            {
-                city: 'Da Lat',
-                country: 'Vietnam',
-                date: moment().add(58, 'days'),
-                info: ''
-            },
-            {
-                city: 'Da Lat',
-                country: 'Vietnam',
-                date: moment().add(59, 'days'),
-                info: ''
-            },
-            {
-                city: 'Ha Noi',
-                country: 'Vietnam',
-                date: moment().add(60, 'days'),
-                info: ''
-            }
+//     let tour = new Tour({
+//         name: 'Ha Noi - Da Lat',
+//         journey: [  //1 - 5 days
+//             {
+//                 city: 'Ha Noi',
+//                 country: 'Vietnam',
+//                 date: moment().add(56, 'days'),
+//                 info: ''
+//             },
+//             {
+//                 city: 'Nha Trang',
+//                 country: 'Vietnam',
+//                 date: moment().add(57, 'days'),
+//                 info: ''
+//             },
+//             {
+//                 city: 'Da Lat',
+//                 country: 'Vietnam',
+//                 date: moment().add(58, 'days'),
+//                 info: ''
+//             },
+//             {
+//                 city: 'Da Lat',
+//                 country: 'Vietnam',
+//                 date: moment().add(59, 'days'),
+//                 info: ''
+//             },
+//             {
+//                 city: 'Ha Noi',
+//                 country: 'Vietnam',
+//                 date: moment().add(60, 'days'),
+//                 info: ''
+//             }
 
-        ],
-        rating: 5,  //stars 4* 5*
-        tourType: 'Economy',  //Luxary vs Economy
-        price: 130, //$  50$ - 200$
-        discount: 5, //%  0% - 30% 
-        allSeats: 25,  
-        availableSeats: 10,
-        note: '',
-        imageUrl: '' //image url
-    })
+//         ],
+//         rating: 5,  //stars 4* 5*
+//         tourType: 'Economy',  //Luxary vs Economy
+//         price: 130, //$  50$ - 200$
+//         discount: 5, //%  0% - 30% 
+//         allSeats: 25,  
+//         availableSeats: 10,
+//         note: '',
+//         imageUrl: '' //image url
+//     })
     
-    tour.save().then(err => console.log(err));
-})
+//     tour.save().then(err => console.log(err));
+// })
 
 
 //[Admin] Delete tours
