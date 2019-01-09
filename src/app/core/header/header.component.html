@@ -1,6 +1,6 @@
 <div>
     <!-- for big screen -->
-    <mat-toolbar fxLayout="row" fxHide.lt-md="true" fxLayoutAlign="space-between center">
+    <mat-toolbar class="header" fxLayout="row" fxHide.lt-md="true" fxLayoutAlign="space-between center">
       <nav fxLayout="row" fxLayoutAlign="start center">
           <button mat-button routerLink="/"> letsgo123.xyz </button>
           <button mat-button routerLink="/tour/all"> Explore </button>
@@ -23,26 +23,26 @@
     </mat-toolbar>
     
     <!-- for small screen -->
-    <div fxLayout="column" fxHide.gt-sm="true">
-        <nav fxLayout="column" fxLayoutAlign="start center">
-            <button mat-button routerLink="/tour/all"> Explore </button>
-            <button mat-button> Today's deal </button>
+    <div fxLayout="column" fxHide.gt-sm="true" >
+        <nav fxLayout="column" fxLayoutAlign="center " class="margin-1">
+            <button mat-button routerLink="/tour/all" (click)="closeSideNav()"> Explore </button>
+            <button mat-button routerLink="/tour/discount" (click)="closeSideNav()"> Today's deal </button>
         </nav>
         <mat-divider></mat-divider>
       
-        <nav fxLayout="column" fxLayoutAlign="end center">
-            <button mat-button routerLink="/booking"> Check bookings </button>
+        <nav fxLayout="column" fxLayoutAlign="center " class="margin-1">
+            <button mat-button routerLink="/booking" (click)="closeSideNav()"> Check bookings </button>
         </nav>
         <mat-divider></mat-divider>
       
-        <nav fxLayout="column" fxLayoutAlign="end center" *ngIf="!(isAuthenticated$ | async)">
-            <button mat-button routerLink="/signin"> Sign in </button>
-            <button mat-button routerLink="/signup"> Create account </button>
+        <nav fxLayout="column" fxLayoutAlign="center " *ngIf="!(isAuthenticated$ | async)" class="margin-1">
+            <button mat-button routerLink="/signin" (click)="closeSideNav()"> Sign in </button>
+            <button mat-button routerLink="/signup" (click)="closeSideNav()"> Create account </button>
         </nav>
         <mat-divider></mat-divider>
       
-        <nav fxLayout="column" fxLayoutAlign="end center" *ngIf="isAuthenticated$ | async">
-            <button mat-button routerLink="/user"> User page </button>
+        <nav fxLayout="column" fxLayoutAlign="center " *ngIf="isAuthenticated$ | async" class="margin-1">
+            <button mat-button routerLink="/user"  (click)="closeSideNav()"> User page </button>
             <button mat-stroked-button (click)="onSignout()"> Sign out </button>
         </nav>
     </div>

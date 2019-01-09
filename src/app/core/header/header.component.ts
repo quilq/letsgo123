@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
@@ -14,18 +14,22 @@ import * as AuthActions from '../../user/auth/store/auth.actions';
 export class HeaderComponent implements OnInit {
 
   isAuthenticated$: Observable<boolean>;
-  
+  @Output() openedSideNav = new EventEmitter<boolean>();
+
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
     this.isAuthenticated$ = this.store.select('auth')
-    .pipe(
-      map(authState => authState.isAuthenticated)
-      );
+      .pipe(map(authState => authState.isAuthenticated));
   }
 
   onSignout() {
-    this.store.dispatch(new AuthActions.OnSignout())
+    this.store.dispatch(new AuthActions.OnSignout());
+    this.closeSideNav();
   }
-  
+
+  closeSideNav() {
+    this.openedSideNav.emit(false);
+  }
+
 }

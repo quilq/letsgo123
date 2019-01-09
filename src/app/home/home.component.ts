@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router){}
 
   onLoginPage = false;
+  sideNavOpen = false;
 
   ngOnInit() { }
 
@@ -21,6 +22,10 @@ export class HomeComponent implements OnInit {
     } else {
       this.onLoginPage = false;
     }
+  }
+
+  onOpenedSideNav(opened: boolean){
+    this.sideNavOpen = opened;
   }
 
 }

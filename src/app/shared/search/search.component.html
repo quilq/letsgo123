@@ -1,4 +1,4 @@
-<form fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign="center">
+<form fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
 
     <mat-form-field appearance="fill">
         <mat-label>from where?</mat-label>
@@ -28,7 +28,7 @@
         </button>
     </mat-form-field>
 
-    <button mat-button fxHide.gt-sm="true" (click)="searchTour(from, to, date)">
+    <button mat-raised-button fxHide.gt-sm="true" (click)="searchTour(from, to, date)">
         Search
     </button>
 
