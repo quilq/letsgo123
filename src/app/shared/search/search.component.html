@@ -1,6 +1,7 @@
-<form fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
+<form fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" 
+fxLayout.lt-md="column" fxLayoutAlign.lt-md="center ">
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" ngClass.lt-md="margin-1" >
         <mat-label>from where?</mat-label>
         <mat-select [(ngModel)]="from" name="fromPlace">
             <mat-option *ngFor="let fromPlace of fromWhere" [value]="fromPlace.value">
@@ -9,7 +10,7 @@
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" >
+    <mat-form-field appearance="fill" ngClass.lt-md="margin-1">
         <mat-label>to where?</mat-label>
         <mat-select [(ngModel)]="to" name="toPlace">
             <mat-option *ngFor="let toPlace of toWhere" [value]="toPlace.value">
@@ -18,7 +19,7 @@
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" ngClass.lt-md="margin-1">
         <mat-label>choose your date</mat-label>
         <input matInput [matDatepicker]="datepicker" [(ngModel)]="date" name="ofDate">
         <mat-datepicker-toggle matPrefix [for]="datepicker"></mat-datepicker-toggle>
@@ -28,7 +29,7 @@
         </button>
     </mat-form-field>
 
-    <button mat-raised-button fxHide.gt-sm="true" (click)="searchTour(from, to, date)">
+    <button mat-raised-button fxHide.gt-sm="true" (click)="searchTour(from, to, date)" ngClass.lt-md="margin-1">
         Search
     </button>
 
