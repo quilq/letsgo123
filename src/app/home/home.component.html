@@ -1,10 +1,10 @@
 <mat-sidenav-container hasBackdrop="true">
     <mat-sidenav #sidenav [(opened)]="sideNavOpen" mode="push">
-        <app-header (openedSideNav)="onOpenedSideNav($event)" fxHide.gt-sm="true"></app-header>
+        <app-header (openedSideNav)="onOpenedSideNav($event)" fxHide.gt-sm="true" *ngIf="!onLoginPage"></app-header>
     </mat-sidenav>
 
     <mat-sidenav-content fxLayout="column" fxLayoutAlign="space-between none">
-        <mat-toolbar fxLayout="row" fxHide.gt-sm="true" fxLayoutAlign="start center">
+        <mat-toolbar fxLayout="row" fxHide.gt-sm="true" fxLayoutAlign="start center" *ngIf="!onLoginPage">
             <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
             <button mat-button routerLink="/"> letsgo123.xyz </button>
         </mat-toolbar>

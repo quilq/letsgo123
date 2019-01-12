@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 
-import { AppState, allTours, popularPlaces, departurePlaces, destinations } from '../../store/app.reducers';
+import { AppState, departurePlaces, destinations } from '../../store/app.reducers';
 import * as TourActions from '../../tour/store/tour.action';
 import * as PopularPlacesAction from '../../core/popular-places/store/popular-places.action';
 
@@ -16,7 +16,7 @@ export interface Place {
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None //to modify search bar style
 })
 export class SearchComponent implements OnInit {
 

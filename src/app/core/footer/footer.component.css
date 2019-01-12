@@ -2,3 +2,7 @@
     padding: 1%;
     background-color: rgb(252, 220, 160);
 }
+
+.subtitle {
+    font-weight: bold;
+}

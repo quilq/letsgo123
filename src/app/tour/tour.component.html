@@ -10,14 +10,14 @@
 
     <div fxLayout="column" fxFlex>
       <div fxLayout="column" fxLayoutAlign="space-between none" class="no-margin">
-        <mat-card>
+        <mat-card class="title">
           {{title}}
         </mat-card>
       </div>
 
       <mat-card *ngFor="let tour of (toursToShow$ | async)">
         <mat-card-header>
-          <mat-card-title [routerLink]="['/tour-details', tour._id]" class="pointer">{{tour.name}} </mat-card-title>
+          <mat-card-title [routerLink]="['/tour-details', tour._id]" class="tour-name">{{tour.name}} </mat-card-title>
           <mat-card-subtitle>Available seats: {{tour.availableSeats}}  </mat-card-subtitle>
           <mat-card-content>
             <p> {{tour.rating}} stars </p>

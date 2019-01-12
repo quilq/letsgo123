@@ -1,13 +1,21 @@
-mat-form-field .mat-form-field-wrapper .mat-form-field-flex {
+.search-bar mat-form-field .mat-form-field-wrapper .mat-form-field-flex {
     border-radius: 0%;
     background-color: rgba(255, 255, 255, 0.8)
 }
 
-div.mat-form-field-flex {
+.search-bar div.mat-form-field-flex {
     height: 60px;
 }
 
-.margin-1 {
-    margin-left: 1%;
-    margin-right: 1%;
+.margin-2 {
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.margin-2 .mat-form-field-wrapper {
+    padding-bottom: 1em
+}
+
+.margin-2 .mat-form-field-underline {
+    width: 0%;
 }

@@ -1,7 +1,8 @@
-<form fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" 
-fxLayout.lt-md="column" fxLayoutAlign.lt-md="center ">
+<form fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="center center" 
+fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="center " class="search-bar"
+ngClass.lt-sm="margin-2">
 
-    <mat-form-field appearance="fill" ngClass.lt-md="margin-1" >
+    <mat-form-field appearance="fill" >
         <mat-label>from where?</mat-label>
         <mat-select [(ngModel)]="from" name="fromPlace">
             <mat-option *ngFor="let fromPlace of fromWhere" [value]="fromPlace.value">
@@ -10,7 +11,7 @@ fxLayout.lt-md="column" fxLayoutAlign.lt-md="center ">
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" ngClass.lt-md="margin-1">
+    <mat-form-field appearance="fill" >
         <mat-label>to where?</mat-label>
         <mat-select [(ngModel)]="to" name="toPlace">
             <mat-option *ngFor="let toPlace of toWhere" [value]="toPlace.value">
@@ -19,17 +20,17 @@ fxLayout.lt-md="column" fxLayoutAlign.lt-md="center ">
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" ngClass.lt-md="margin-1">
+    <mat-form-field appearance="fill">
         <mat-label>choose your date</mat-label>
         <input matInput [matDatepicker]="datepicker" [(ngModel)]="date" name="ofDate">
         <mat-datepicker-toggle matPrefix [for]="datepicker"></mat-datepicker-toggle>
         <mat-datepicker #datepicker></mat-datepicker>
-        <button mat-button matSuffix mat-icon-button fxHide.lt-md="true">
+        <button mat-button matSuffix mat-icon-button fxHide.lt-sm="true">
             <mat-icon aria-label="search icon-button" (click)="searchTour(from, to, date)">search</mat-icon>
         </button>
     </mat-form-field>
 
-    <button mat-raised-button fxHide.gt-sm="true" (click)="searchTour(from, to, date)" ngClass.lt-md="margin-1">
+    <button mat-raised-button fxHide.gt-xs="true" (click)="searchTour(from, to, date)" >
         Search
     </button>
 

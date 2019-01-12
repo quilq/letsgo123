@@ -19,12 +19,17 @@
     /* background-color: rgb(250, 186, 66); */
 }
 
-.pointer{
+.intro{
     cursor: pointer;
+    margin-bottom: 5%;
 }
 
 .common-place{
     height: 4em;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 /* .hightlight:hover {

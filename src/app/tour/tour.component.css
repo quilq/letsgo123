@@ -3,7 +3,7 @@ mat-card {
     /* background-image: linear-gradient(to right, rgb(137, 217, 241), rgb(233, 250, 255)); */
 }
 
-.pointer {
+.tour-name {
     cursor: pointer;
 }
 
@@ -24,4 +24,8 @@ mat-card {
 img {
     width: 150px;
     height: 150px;
+}
+
+.title {
+    background-color: rgb(252, 220, 160);
 }
