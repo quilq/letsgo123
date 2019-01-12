@@ -3,8 +3,9 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 
-import { AppState, allTours, popularPlaces } from '../../store/app.reducers';
+import { AppState, allTours, popularPlaces, departurePlaces, destinations } from '../../store/app.reducers';
 import * as TourActions from '../../tour/store/tour.action';
+import * as PopularPlacesAction from '../../core/popular-places/store/popular-places.action';
 
 export interface Place {
   value: string,
@@ -29,20 +30,32 @@ export class SearchComponent implements OnInit {
   toWhere: Place[] = [];
 
   ngOnInit() {
-    this.store.select(popularPlaces).subscribe(places => {
-      if (places){
+    this.store.select(departurePlaces).subscribe(places => {
+      if (places.length === 0) {
+        this.store.dispatch(new PopularPlacesAction.OnGetDeparturePlaces());
+      } else {
         for (let i = 0; i < places.length; i++) {
-          let place = {value: places[i], viewValue: places[i]}
+          let place = { value: places[i], viewValue: places[i] }
           this.fromWhere[i] = place;
+        }
+      }
+    });
+
+    this.store.select(destinations).subscribe(places => {
+      if (places.length === 0) {
+        this.store.dispatch(new PopularPlacesAction.OnGetDestinations());
+      } else {
+        for (let i = 0; i < places.length; i++) {
+          let place = { value: places[i], viewValue: places[i] }
           this.toWhere[i] = place;
         }
       }
-    })
+    });
   }
 
   searchTour(from, to, date) {
-    this.store.dispatch(new TourActions.OnSearchTourByAddressAndDate({from, to, date}));
-    this.router.navigate(['/tour/search-result', {from, to, date}]);
+    this.store.dispatch(new TourActions.OnSearchTourByAddressAndDate({ from, to, date }));
+    this.router.navigate(['/tour/search-result', { from, to, date }]);
   }
 
 }

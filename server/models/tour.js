@@ -152,13 +152,13 @@ tourSchema.statics.findDiscountedTours = function (req, res) {
 tourSchema.statics.getPopularPlaces = function (req, res) {
     const Tour = this;
 
-    Tour.find({}, 'journey.city', { 'journey._id': 0 }, (err, docs) => {
+    //find({conditions}, 'optional fields to return', {options}, {callback})
+    Tour.find({}, 'journey.city', {}, (err, docs) => {
         if (err) {
-            console.log(err)
-        };
+            console.log(err);
+        }
 
         let cities = [];
-
         docs.forEach(element => {
             element.journey.forEach(place => {
                 if (!cities.includes(place.city)) {
@@ -168,8 +168,49 @@ tourSchema.statics.getPopularPlaces = function (req, res) {
         });
 
         res.send(cities);
-
         //Find top 10 cities?
+    })
+}
+
+tourSchema.statics.getDeparturePlaces = function (req, res) {
+    const Tour = this;
+
+    Tour.find({}, 'journey.city', {}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        };
+
+        //Find the first cities of tours
+        let cities = [];
+        docs.forEach(element => {
+            if (!cities.includes(element.journey[0].city)) {
+                cities.push(element.journey[0].city);
+            }
+        });
+
+        res.send(cities);
+    })
+}
+
+tourSchema.statics.getDestinations = function (req, res) {
+    const Tour = this;
+
+    //Find all cities, exclude the first & last ones of every tour
+    Tour.find({}, 'journey.city', {}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        };
+
+        let cities = [];
+        docs.forEach(element => {
+            for (let i = 1; i < (element.journey.length - 1); i++) {
+                if (!cities.includes(element.journey[i].city)) {
+                    cities.push(element.journey[i].city);
+                }  
+            }
+        });
+
+        res.send(cities);
     })
 }
 

@@ -1,7 +1,29 @@
-.signin{
+.signin {
     padding: 5%;
+    /* background-image: linear-gradient(to bottom, rgb(255, 230, 119), rgb(255, 246, 219)); */
 }
 
-.signin-form{
+.signin-form {
     height: 100%;
+    background-image: linear-gradient(to bottom, rgb(235, 203, 100), rgb(223, 214, 185));
+}
+
+div.mat-form-field-flex {
+    height: auto;
+}
+
+.title {
+    font-size: 1.2em;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+a:visited {
+    color: rgb(0, 0, 0);
 }

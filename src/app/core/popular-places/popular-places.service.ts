@@ -12,5 +12,15 @@ export class PopularPlacesService {
     let url = `/api/places`;
     return this.httpClient.get<string[]>(url);        
   }
+
+  getDeparturePlaces(){
+    let url = `/api/from`;
+    return this.httpClient.get<string[]>(url);        
+  }
+
+  getDestinations(){
+    let url = `/api/to`;
+    return this.httpClient.get<string[]>(url);        
+  }
   
 }

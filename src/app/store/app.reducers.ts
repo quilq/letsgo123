@@ -28,23 +28,6 @@ export const toursLoaded = createSelector(
     }
 )
 
-// export const allCities = createSelector(
-//     selectTours,
-//     (tours: fromTours.ToursState) => {
-//         let cities = [];
-
-//         tours.tours.forEach(element => {
-//             element.journey.forEach(place => {
-//                 if (!cities.includes(place.city)) {
-//                     cities.push(place.city);
-//                 }
-//             })
-//         });
-
-//         return cities;
-//     }
-// )
-
 export const allTours = createSelector(
     selectTours,
     (tours: fromTours.ToursState) => {
@@ -69,7 +52,21 @@ export const selectedTour = createSelector(
 export const popularPlaces = createSelector(
     selectPopularPlaces,
     (places: fromPopularPlaces.PopularPlacesState) => {
-        return places.PopularPlaces;
+        return places.popularPlaces;
+    }
+)
+
+export const departurePlaces = createSelector(
+    selectPopularPlaces,
+    (places: fromPopularPlaces.PopularPlacesState) => {
+        return places.departurePlaces;
+    }
+)
+
+export const destinations = createSelector(
+    selectPopularPlaces,
+    (places: fromPopularPlaces.PopularPlacesState) => {
+        return places.destinations;
     }
 )
 

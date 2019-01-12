@@ -3,14 +3,14 @@
         <app-search></app-search>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-around start">
+    <div fxLayout="row" fxLayoutAlign="space-between start">
         <div fxFlex="65">
             <div>
                 <h1> {{selectedTour.name}} | {{selectedTour.price}} $ </h1>
                 <div> {{selectedTour.tourType}}</div>
                 <div> Rating: {{selectedTour.rating}} <mat-icon>star_rate</mat-icon>
                 </div>
-                <div> Available seats: </div>
+                <div> Available seats: {{selectedTour.availableSeats}} </div>
             </div>
             <div>
                 <img src="{{selectedTour.imageUrl}}" alt="image" class="margin-bottom-2">
@@ -59,7 +59,7 @@
 
         </div>
 
-        <div fxFlex>
+        <div fxFlex="25">
             <div>
                 <h2>
                     Other tours

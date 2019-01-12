@@ -39,6 +39,14 @@ router.get('/places', (req, res)=>{
     Tour.getPopularPlaces(req, res);
 })
 
+router.get('/from', (req, res)=>{
+    Tour.getDeparturePlaces(req, res);
+})
+
+router.get('/to', (req, res)=>{
+    Tour.getDestinations(req, res);
+})
+
 router.get('/id/:id', (req, res) => {
     Tour.findTourByID(req, res);
 })

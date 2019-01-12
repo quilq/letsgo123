@@ -20,6 +20,28 @@ export class PopularPlacesEffects {
         })
     );
 
+    @Effect()
+    getDeparturePlaces$: Observable<Action> = this.actions$.pipe(
+        ofType(PopularPlacesActions.ON_GET_DEPARTURE_PLACES),
+        switchMap(() => {
+            return this.popularPlacesService.getDeparturePlaces()
+                .pipe(
+                    map((places: string[]) => new PopularPlacesActions.GetDeparturePlaces(places))
+                )
+        })
+    );
+
+    @Effect()
+    getDestinations$: Observable<Action> = this.actions$.pipe(
+        ofType(PopularPlacesActions.ON_GET_DESTINATIONS),
+        switchMap(() => {
+            return this.popularPlacesService.getDestinations()
+                .pipe(
+                    map((places: string[]) => new PopularPlacesActions.GetDestinations(places))
+                )
+        })
+    );
+
     constructor(private actions$: Actions,
         private popularPlacesService: PopularPlacesService) { }
 }
