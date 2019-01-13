@@ -6,7 +6,7 @@
     <mat-sidenav-content fxLayout="column" fxLayoutAlign="space-between none">
         <mat-toolbar fxLayout="row" fxHide.gt-sm="true" fxLayoutAlign="start center" *ngIf="!onLoginPage">
             <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
-            <button mat-button routerLink="/"> letsgo123.xyz </button>
+            <button mat-button routerLink="/" class="title"> letsgo123.xyz </button>
         </mat-toolbar>
 
         <app-header fxHide.lt-md="true" *ngIf="!onLoginPage"></app-header>

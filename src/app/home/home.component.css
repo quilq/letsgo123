@@ -1,7 +1,4 @@
-/* .header, .footer {
-    background-color: rgb(165, 243, 93);
-}
-
+/*
 .header {
     position: fixed;
     top: 0;
@@ -20,4 +17,8 @@ mat-toolbar {
     background-color: rgb(236, 146, 7);
     color: rgb(255, 255, 255);
     padding: 3% 0%;
+}
+
+.title {
+    font-size: 1.2em;
 }

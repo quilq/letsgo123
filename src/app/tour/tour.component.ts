@@ -7,7 +7,6 @@ import { Tour } from './tour.model';
 import { AppState, toursToShow, toursLoaded, allTours } from '../store/app.reducers';
 import * as BookingActions from '../booking/store/booking.actions';
 import * as TourActions from './store/tour.action';
-import { TourService } from './tour.service';
 
 @Component({
   selector: 'app-tour',
@@ -23,7 +22,7 @@ export class TourComponent implements OnInit {
   numberOfTours = 0;
   toursToShow$: Observable<Tour[]>;
 
-  constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute, private tourService: TourService) { }
+  constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.url.subscribe(url => {
@@ -41,11 +40,6 @@ export class TourComponent implements OnInit {
       } else if (this.place === 'all') {
         this.title = 'Popular tours';
         this.loadTours();
-
-        //Today's deal
-      } else if (this.place === 'discount') {
-        this.title = 'Tours with best prices';
-        this.findDiscountedTour();
 
         //Tours to 'places'
       } else {
@@ -77,10 +71,6 @@ export class TourComponent implements OnInit {
 
   findTourByAddress(place: string) {
     this.store.dispatch(new TourActions.OnGetTourByAddress(place));
-  }
-
-  findDiscountedTour() {
-    this.store.dispatch(new TourActions.OnGetDiscountedTours());
   }
 
   bookTour(tour: Tour) {

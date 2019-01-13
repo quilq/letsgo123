@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { AppState, popularPlaces} from '../../store/app.reducers';
+import { AppState, popularPlaces} from '../store/app.reducers';
 import * as PopularPlacesAction from './store/popular-places.action';
 
 @Component({

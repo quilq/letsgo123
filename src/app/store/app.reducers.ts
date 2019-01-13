@@ -2,7 +2,7 @@ import { ActionReducerMap, createSelector } from '@ngrx/store';
 import * as fromAuth from '../user/auth/store/auth.reducers'
 import * as fromBooking from '../booking/store/booking.reducer';
 import * as fromTours from '../tour/store/tour.reducer';
-import * as fromPopularPlaces from '../core/popular-places/store/popular-places.reducer';
+import * as fromPopularPlaces from '../popular-places/store/popular-places.reducer';
 
 export interface AppState {
     auth: fromAuth.AuthState,

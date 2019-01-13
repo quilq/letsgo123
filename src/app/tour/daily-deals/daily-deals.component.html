@@ -1,0 +1,34 @@
+<div class="daily-deals" fxLayout="column">
+
+  <app-search></app-search>
+  
+  <div class="deals-message">
+    <h1>
+      Today's deals
+    </h1>
+    <p>
+      Spontaneous savings. Available nowhere else. Bookmark this page and check back daily.
+    </p>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="space-between none">
+    <mat-card *ngFor="let tour of (toursToShow$ | async)" fxFlex.lt-sm="100%" fxFlex.lt-md="45%" fxFlex="30%" class="discounted-tours">
+      <mat-card-header>
+        <mat-card-title [routerLink]="['/tour-details', tour._id]" class="tour-name">{{tour.name}} </mat-card-title>
+        <mat-card-subtitle>Available seats: {{tour.availableSeats}} </mat-card-subtitle>
+        <mat-card-content>
+          <p> {{tour.rating}} stars </p>
+          <p> {{tour.price}} $ </p>
+          <p> Discount -{{tour.discount}}% </p>
+        </mat-card-content>
+      </mat-card-header>
+      <img src="{{tour.imageUrl}}" alt="Photo of tour {{tour.name}}">
+      <mat-card-content>
+        Review
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button [routerLink]="['/tour-details', tour._id]"> More info </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

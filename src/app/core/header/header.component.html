@@ -4,7 +4,7 @@
       <nav fxLayout="row" fxLayoutAlign="start center">
           <button mat-button routerLink="/" class="title"> letsgo123.xyz </button>
           <button mat-button routerLink="/tour/all"> Explore </button>
-          <button mat-button routerLink="/tour/discount"> Today's deal </button>
+          <button mat-button routerLink="/deals"> Today's deal </button>
       </nav>
     
       <nav fxLayout="row" fxLayoutAlign="end center">
@@ -26,7 +26,7 @@
     <div fxLayout="column" fxHide.gt-sm="true" >
         <nav fxLayout="column" fxLayoutAlign="center " class="margin-1">
             <button mat-button routerLink="/tour/all" (click)="closeSideNav()"> Explore </button>
-            <button mat-button routerLink="/tour/discount" (click)="closeSideNav()"> Today's deal </button>
+            <button mat-button routerLink="/deals" (click)="closeSideNav()"> Today's deal </button>
         </nav>
         <mat-divider></mat-divider>
       

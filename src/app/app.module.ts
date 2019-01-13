@@ -17,7 +17,7 @@ import { BookingComponent } from './booking/booking.component';
 import { SigninComponent } from './user/auth/signin/signin.component';
 import { SignupComponent } from './user/auth/signup/signup.component';
 import { MaterialModule } from './material/material.module';
-import { PopularPlacesComponent } from './core/popular-places/popular-places.component';
+import { PopularPlacesComponent } from './popular-places/popular-places.component';
 import { TourEffects } from './tour/store/tour.effect';
 import { AuthEffects } from './user/auth/store/auth.effects';
 import { reducers } from './store/app.reducers';
@@ -26,7 +26,8 @@ import { SearchComponent } from './shared/search/search.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { FilterComponent } from './shared/filter/filter.component';
-import { PopularPlacesEffects } from './core/popular-places/store/popular-places.effect';
+import { PopularPlacesEffects } from './popular-places/store/popular-places.effect';
+import { DailyDealsComponent } from './tour/daily-deals/daily-deals.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { PopularPlacesEffects } from './core/popular-places/store/popular-places
     SearchComponent,
     HeaderComponent,
     FooterComponent,
-    FilterComponent
+    FilterComponent,
+    DailyDealsComponent
   ],
   imports: [
     BrowserModule,

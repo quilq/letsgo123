@@ -5,7 +5,7 @@ import * as moment from 'moment';
 
 import { AppState, departurePlaces, destinations } from '../../store/app.reducers';
 import * as TourActions from '../../tour/store/tour.action';
-import * as PopularPlacesAction from '../../core/popular-places/store/popular-places.action';
+import * as PopularPlacesAction from '../../popular-places/store/popular-places.action';
 
 export interface Place {
   value: string,
