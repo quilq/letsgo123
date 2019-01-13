@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT;
 const helmet = require('helmet');
 const compression = require('compression');
+const path = require('path');
 
 const api = require('./routes/api');
 
@@ -15,14 +16,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 //Output folder
-const publicPath = path.join(__dirname, './../dist/');
+const publicPath = path.join(__dirname, './../dist');
+console.log(publicPath);
 app.use(express.static(publicPath));
 
 app.use('/api', api);
 
 //Send all other routes (define last):
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './../dist/index.html'));
+    res.sendFile(path.join(__dirname, './../dist/letsgo123/index.html'));
 })
 
 app.listen(port, ()=>{
