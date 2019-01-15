@@ -6,3 +6,8 @@
 .subtitle {
     font-weight: bold;
 }
+
+.margin-1 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}

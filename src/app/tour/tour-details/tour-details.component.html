@@ -3,8 +3,8 @@
         <app-search></app-search>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between start">
-        <div fxFlex="65">
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="space-between start" fxLayoutAlign.lt-md="none none">
+        <div fxFlex.gt-sm="65" fxFlex.lt-sm>
             <div>
                 <h1> {{selectedTour.name}} | {{selectedTour.price}} $ </h1>
                 <div> {{selectedTour.tourType}}</div>
@@ -59,7 +59,7 @@
 
         </div>
 
-        <div fxFlex="25">
+        <div fxFlex.gt-sm="25" fxFlex.lt-sm>
             <div>
                 <h2>
                     Other tours

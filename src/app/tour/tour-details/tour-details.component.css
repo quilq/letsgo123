@@ -27,7 +27,8 @@ img {
     /* background-image: linear-gradient(to right, rgb(137, 217, 241), rgb(233, 250, 255)); */
     height: 100%;
     padding-top: 3%;
-    padding-left: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 /* .tour-info {

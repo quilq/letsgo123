@@ -9,6 +9,10 @@
     margin-bottom: 1em;
 }
 
+.subtitle {
+    font-weight: bold;
+}
+
 .title {
     font-size: 1.2em;
 }

@@ -1,16 +1,20 @@
-<div fxLayout="row" fxLayoutAlign="space-around none" class="footer">
-  <div fxLayout="column">
+<div fxLayout.gt-sm="row" fxLayout.lt-md="column" 
+fxLayoutAlign.gt-sm="space-around none"
+ngClass.gt-sm="footer">
+  <div fxLayout="column" fxLayoutAlign.lt-md="center center" class="margin-1">
       <div class="subtitle">Help</div>
       <div >Contact us</div>
       <div>FAQs</div>
       <div>Terms of use</div>
   </div>
-  <div fxLayout="column">
+  <mat-divider fxHide.gt-sm="true"></mat-divider>
+  <div fxLayout="column" fxLayoutAlign.lt-md="center center" class="margin-1">
       <div class="subtitle">About us</div>
       <div>Blog</div>
       <div>Press</div>
   </div>
-  <div fxLayout="column">
+  <mat-divider fxHide.gt-sm="true"></mat-divider>
+  <div fxLayout="column" fxLayoutAlign.lt-md="center center" class="margin-1">
       <div class="subtitle">Get the app</div>
       <div>iOS app</div>
       <div>Android app</div>
