@@ -16,8 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 //Output folder
-const publicPath = path.join(__dirname, './../dist');
-console.log(publicPath);
+const publicPath = path.join(__dirname, './../dist/letsgo123');
 app.use(express.static(publicPath));
 
 app.use('/api', api);
