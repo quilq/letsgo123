@@ -11,11 +11,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { UserComponent } from './user/user.component';
 import { TourComponent } from './tour/tour.component';
 import { BookingComponent } from './booking/booking.component';
-import { SigninComponent } from './user/auth/signin/signin.component';
-import { SignupComponent } from './user/auth/signup/signup.component';
 import { MaterialModule } from './material/material.module';
 import { PopularPlacesComponent } from './popular-places/popular-places.component';
 import { TourEffects } from './tour/store/tour.effect';
@@ -28,16 +25,14 @@ import { FooterComponent } from './core/footer/footer.component';
 import { FilterComponent } from './shared/filter/filter.component';
 import { PopularPlacesEffects } from './popular-places/store/popular-places.effect';
 import { DailyDealsComponent } from './tour/daily-deals/daily-deals.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    UserComponent,
     TourComponent,
     BookingComponent,
-    SigninComponent,
-    SignupComponent,
     TourDetailsComponent,
     PopularPlacesComponent,
     SearchComponent,
@@ -59,7 +54,8 @@ import { DailyDealsComponent } from './tour/daily-deals/daily-deals.component';
       maxAge: 10, // Retains last 10 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([TourEffects, AuthEffects, PopularPlacesEffects])
+    EffectsModule.forRoot([TourEffects, AuthEffects, PopularPlacesEffects]),
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
