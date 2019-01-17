@@ -44,6 +44,7 @@ import { UserModule } from './user/user.module';
   imports: [
     BrowserModule,
     HttpClientModule,
+    UserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
@@ -54,8 +55,7 @@ import { UserModule } from './user/user.module';
       maxAge: 10, // Retains last 10 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([TourEffects, AuthEffects, PopularPlacesEffects]),
-    UserModule
+    EffectsModule.forRoot([TourEffects, AuthEffects, PopularPlacesEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
