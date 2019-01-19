@@ -4,23 +4,24 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PopularPlacesService {
 
   constructor(private httpClient: HttpClient) { }
-  
-  getPopularPlaces(){
+
+  getPopularPlaces() {
     let url = `/api/places`;
-    return this.httpClient.get<string[]>(url);        
+    return this.httpClient.get<string[]>(url);
   }
 
-  getDeparturePlaces(){
+  getDeparturePlaces() {
     let url = `/api/from`;
-    return this.httpClient.get<string[]>(url);        
+    return this.httpClient.get<string[]>(url);
   }
 
-  getDestinations(){
+  getDestinations() {
     let url = `/api/to`;
-    return this.httpClient.get<string[]>(url);        
+    return this.httpClient.get<string[]>(url);
   }
-  
+
 }

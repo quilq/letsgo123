@@ -8,48 +8,34 @@ import { environment } from '../environments/environment'; // Angular CLI enviro
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 
+import { reducers } from './store/app.reducers';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { UserModule } from './user/user.module';
+import { CoreModule } from './core/core.module';
+import { BookingModule } from './booking/booking.module';
+import { TourModule } from './tour/tour.module';
+import { SharedModule } from './shared/shared.module';
+import { PopularPlacesModule } from './popular-places/popular-places.module';
 import { AppRoutingModule } from './app-routing.module';
-import { TourComponent } from './tour/tour.component';
-import { BookingComponent } from './booking/booking.component';
-import { MaterialModule } from './material/material.module';
-import { PopularPlacesComponent } from './popular-places/popular-places.component';
+
 import { TourEffects } from './tour/store/tour.effect';
 import { AuthEffects } from './user/auth/store/auth.effects';
-import { reducers } from './store/app.reducers';
-import { TourDetailsComponent } from './tour/tour-details/tour-details.component';
-import { SearchComponent } from './shared/search/search.component';
-import { HeaderComponent } from './core/header/header.component';
-import { FooterComponent } from './core/footer/footer.component';
-import { FilterComponent } from './shared/filter/filter.component';
 import { PopularPlacesEffects } from './popular-places/store/popular-places.effect';
-import { DailyDealsComponent } from './tour/daily-deals/daily-deals.component';
-import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    TourComponent,
-    BookingComponent,
-    TourDetailsComponent,
-    PopularPlacesComponent,
-    SearchComponent,
-    HeaderComponent,
-    FooterComponent,
-    FilterComponent,
-    DailyDealsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     UserModule,
+    CoreModule,
+    TourModule,
+    SharedModule,
+    BookingModule,
+    PopularPlacesModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    FlexLayoutModule,
-    MaterialModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 10, // Retains last 10 states
