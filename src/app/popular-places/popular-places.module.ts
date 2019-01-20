@@ -5,13 +5,15 @@ import { PopularPlacesComponent } from './popular-places.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    FlexLayoutModule
   ],
   declarations: [
     PopularPlacesComponent

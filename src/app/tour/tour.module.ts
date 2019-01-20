@@ -7,13 +7,15 @@ import { TourDetailsComponent } from './tour-details/tour-details.component';
 import { TourRoutingModule } from './tour-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     SharedModule,
-    TourRoutingModule
+    TourRoutingModule,
+    FlexLayoutModule
   ],
   declarations: [
     TourComponent,
