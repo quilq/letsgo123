@@ -8,7 +8,7 @@ mat-card {
 }
 
 .search-bar {
-    margin-bottom: 3%;
+    margin: 3%;
 }
 
 .container {
@@ -26,6 +26,10 @@ img {
     height: 150px;
 }
 
-.title {
+.margin-3 {
+    margin: 3% 0%;
+}
+
+.yellow {
     background-color: rgb(252, 220, 160);
 }

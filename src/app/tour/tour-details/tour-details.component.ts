@@ -6,6 +6,7 @@ import { Tour } from '../tour.model';
 import { AppState, selectedTour, toursToShow } from '../../store/app.reducers';
 import * as TourActions from '../store/tour.action';
 import * as BookingActions from '../../booking/store/booking.actions';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-tour-details',
@@ -26,6 +27,11 @@ export class TourDetailsComponent implements OnInit {
 
     this.store.select(selectedTour).subscribe(selectedTour => {
       this.selectedTour = selectedTour;
+
+      //format date
+      for (let i = 0; i < selectedTour.journey.length; i++) {
+        this.selectedTour.journey[i].formattedDate = moment(this.selectedTour.journey[i].date).format('MMM Do YYYY');
+      }
       this.store.dispatch(new TourActions.OnGetTourByAddress(this.selectedTour.journey[0].city));
     });
 

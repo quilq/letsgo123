@@ -1,39 +1,38 @@
 <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="space-around start" fxLayoutAlign.lt-md="space-between center">
-  <div fxLayout="column" fxLayoutAlign="center center" class="margin-top-3">
+  <div fxLayout="column" fxLayoutAlign="center center" class="margin-3">
     <h1> All Bookings </h1>
     <div *ngIf="bookings.length === 0">
       <p>You don't have any bookings! </p>
-      <button mat-raised-button routerLink="/tour/all" class="margin-top-6"> Explore popular destinations </button>
+      <button mat-raised-button routerLink="/tour/all" class="margin-top-6 yellow"> Explore popular destinations </button>
     </div>
 
     <div *ngIf="bookings.length > 0">
-      <mat-card fxLayout="column" fxLayoutAlign="start " class="margin-top-3" *ngFor="let booking of bookings ; let i = index">
-        <mat-card-title>
+      <mat-card fxLayout="column" fxLayoutAlign="start " class="margin-3" *ngFor="let booking of bookings ; let i = index">
+        <mat-card-title [routerLink]="['/tour-details', booking.tour._id]" class="cursor">
           {{booking.tour.name}}
         </mat-card-title>
         <mat-card-content>
-          <div> Ratings: {{booking.tour.rating}} </div>
-          <div> Price: {{booking.tour.price}} $ </div>
+          <div class="margin-2"> Price: {{booking.tour.price}} $ </div>
           <button mat-raised-button (click)="removeTour(i)">Cancel this booking</button>
         </mat-card-content>
       </mat-card>
     </div>
-
   </div>
 
-  <div fxLayout="column" fxLayoutAlign="start " class="margin-top-3" *ngIf="bookings.length > 0">
-    <mat-card>
+  <div fxLayout="column" fxLayoutAlign="start " class="margin-3" *ngIf="bookings.length > 0">
+    <h1 fxFlexAlign="center"> Payment </h1>
+    <mat-card class="margin-3">
       <mat-card-title>
-        Payment
+        Amount: {{amount}} $
       </mat-card-title>
       <mat-card-subtitle>
-        Amount: {{amount}} $
+        Total bookings: {{bookings.length}}
       </mat-card-subtitle>
     </mat-card>
-    <button mat-raised-button class="margin-top-3">
+    <button mat-raised-button class="margin-3">
       Check out
     </button>
-    <div class="margin-top-3">
+    <div class="margin-3">
       We accept: VISA - MASTERCARD - JCB
     </div>
   </div>
