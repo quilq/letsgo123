@@ -17,7 +17,7 @@
                 <mat-accordion multi="true" class="margin-bottom-2">
                     <mat-expansion-panel *ngFor="let place of selectedTour.journey ; let i = index" class="tour-info">
                         <mat-expansion-panel-header>
-                            Day {{i+1}} | {{place.formattedDate}} | {{place.city}}
+                            Day {{i+1}} | {{place.city}} | {{place.date | date: 'EEE dd MMM yyyy'}}
                         </mat-expansion-panel-header>
                         <p>
                             Info {{i+1}}

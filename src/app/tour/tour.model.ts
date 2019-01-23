@@ -5,8 +5,7 @@ export class Tour {
         city: string,
         country: string,
         date: Date,
-        info: string,
-        formattedDate?: string
+        info: string
     }];
     rating: number;
     tourType: string;
