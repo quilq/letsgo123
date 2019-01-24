@@ -39,7 +39,9 @@ export class TourDetailsComponent implements OnInit {
           if (toursToShow[i]._id !== this.selectedTour._id){
             this.similarTours.push(toursToShow[i]);
           }
-          if (this.similarTours.length > 5){
+
+          //limit the numbder of similar tours to 3
+          if (this.similarTours.length >= 3){
             break;
           }
         }

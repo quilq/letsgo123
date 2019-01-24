@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { StoreModule } from '@ngrx/store';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environemnt
 import { EffectsModule } from '@ngrx/effects';
+import { MAT_DATE_LOCALE } from '@angular/material';
 
 import { reducers } from './store/app.reducers';
 import { AppComponent } from './app.component';
@@ -42,7 +42,7 @@ import { PopularPlacesEffects } from './popular-places/store/popular-places.effe
     }),
     EffectsModule.forRoot([TourEffects, AuthEffects, PopularPlacesEffects])
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }], // for datepicker format 'DD/MM/YYYY'
   bootstrap: [AppComponent]
 })
 export class AppModule { }

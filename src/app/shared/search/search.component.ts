@@ -57,5 +57,4 @@ export class SearchComponent implements OnInit {
     this.store.dispatch(new TourActions.OnSearchTourByAddressAndDate({ from, to, date }));
     this.router.navigate(['/tour/search-result', { from, to, date }]);
   }
-
 }

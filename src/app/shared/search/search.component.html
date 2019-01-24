@@ -22,9 +22,10 @@ ngClass.lt-sm="margin-2">
 
     <mat-form-field appearance="fill">
         <mat-label>choose your date</mat-label>
-        <input matInput [matDatepicker]="datepicker" [(ngModel)]="date" name="ofDate">
+        <!-- toggle datepicker on focus -->
+        <input matInput #dateinput [matDatepicker]="datepicker" [(ngModel)]="date" name="ofDate" (focus)="datepicker.open()">
         <mat-datepicker-toggle matPrefix [for]="datepicker"></mat-datepicker-toggle>
-        <mat-datepicker #datepicker></mat-datepicker>
+        <mat-datepicker #datepicker (closed)="dateinput.blur()"></mat-datepicker>
         <button mat-button matSuffix mat-icon-button fxHide.lt-sm="true">
             <mat-icon aria-label="search icon-button" (click)="searchTour(from, to, date)">search</mat-icon>
         </button>
