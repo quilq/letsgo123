@@ -1,10 +1,25 @@
-<div *ngIf="((user$ | async) != null)">
-    <div>User:  {{(user$ | async).username}}</div>
-    <div>Email:  {{(user$ | async).email}} </div>
+<div fxLayout="column" fxLayoutAlign="center center">
+    <div *ngIf="((user$ | async) != null)">
+        <div>User: {{(user$ | async).username}}</div>
+        <div>Email: {{(user$ | async).email}} </div>
+        <button mat-raised-button (click)="onSignout()">Sign out</button>
+    </div>
+
+    <mat-tab-group>
+        <mat-tab label="History">
+            <p>Departed tours</p>
+            <mat-list>
+                <mat-list-item>Tour 1 | Jan 1st 2019</mat-list-item>
+                <mat-list-item>Tour 2 | Feb 2nd 2019</mat-list-item>
+                <mat-list-item>Tour 3 | Mar 3rd 2019</mat-list-item>
+            </mat-list>
+        </mat-tab>
+        <mat-tab label="My bookings">
+            <p> Current bookings </p>
+            <mat-list>
+                <mat-list-item>Tour 1 | Jan 1st 2020</mat-list-item>
+                <mat-list-item>Tour 2 | Feb 2nd 2020</mat-list-item>
+            </mat-list>
+        </mat-tab>
+    </mat-tab-group>
 </div>
-<button mat-raised-button (click)="onSignout()">Sign out</button>
-<button mat-raised-button>My booking history</button>
-
-<button mat-raised-button routerLink="/booking">My booking</button>
-
-

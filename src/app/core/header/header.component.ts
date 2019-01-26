@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
 
   onSignout() {
     this.store.dispatch(new AuthActions.OnSignout());
+    //todo: remove token
     this.closeSideNav();
   }
 

@@ -26,7 +26,8 @@ export class UserComponent implements OnInit {
   }
 
   onSignout() {
-    this.store.dispatch(new AuthActions.OnSignout())
+    this.store.dispatch(new AuthActions.OnSignout());
+    //todo: remove token
   }
 
 }

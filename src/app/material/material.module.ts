@@ -14,7 +14,8 @@ import {
   MatDividerModule,
   MatGridListModule,
   MatExpansionModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatTabsModule
 }
   from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -38,7 +39,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatGridListModule,
     MatDividerModule,
     MatExpansionModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTabsModule
   ],
   exports: [
     MatIconModule,
@@ -55,7 +57,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatGridListModule,
     MatDividerModule,
     MatExpansionModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule { }
