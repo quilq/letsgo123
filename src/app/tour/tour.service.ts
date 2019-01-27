@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Tour } from './tour.model';
-import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'

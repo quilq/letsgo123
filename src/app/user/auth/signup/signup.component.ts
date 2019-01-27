@@ -29,6 +29,5 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     let user = { username: this.signupForm.value.username, email: this.signupForm.value.email }
     this.authStore.dispatch(new AuthActions.OnSignup({ user, password: this.signupForm.value.password }));
-    //todo: set token
   }
 }

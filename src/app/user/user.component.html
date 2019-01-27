@@ -1,25 +1,47 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-    <div *ngIf="((user$ | async) != null)">
-        <div>User: {{(user$ | async).username}}</div>
-        <div>Email: {{(user$ | async).email}} </div>
-        <button mat-raised-button (click)="onSignout()">Sign out</button>
-    </div>
+<div fxLayout="column" class="user-page">
+    <mat-card *ngIf="((user$ | async) != null)" class="user-welcome">
+        <mat-card-content>
+            <div>Hello, {{(user$ | async).username}} ! </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="onSignout()">Sign out</button>
+        </mat-card-actions>
+    </mat-card>
 
     <mat-tab-group>
         <mat-tab label="History">
-            <p>Departed tours</p>
+            <p class="sub-label">Departed tours</p>
             <mat-list>
                 <mat-list-item>Tour 1 | Jan 1st 2019</mat-list-item>
                 <mat-list-item>Tour 2 | Feb 2nd 2019</mat-list-item>
                 <mat-list-item>Tour 3 | Mar 3rd 2019</mat-list-item>
+                <mat-list-item>Tour 3 | Apr 4th 2019</mat-list-item>
             </mat-list>
         </mat-tab>
         <mat-tab label="My bookings">
-            <p> Current bookings </p>
+            <p class="sub-label"> Current bookings </p>
             <mat-list>
                 <mat-list-item>Tour 1 | Jan 1st 2020</mat-list-item>
                 <mat-list-item>Tour 2 | Feb 2nd 2020</mat-list-item>
             </mat-list>
+        </mat-tab>
+        <mat-tab label="Payment method">
+            <p class="sub-label"> Payment info </p>
+            <mat-list>
+                <mat-list-item>Billing address: Ho Chi Minh City, Vietnam </mat-list-item>
+                <mat-list-item>Postal code: 700000 </mat-list-item>
+                <mat-list-item>Card number: **** **** **** 1000 </mat-list-item>
+            </mat-list>
+            <button mat-raised-button>Edit payment method </button>
+        </mat-tab>
+        <mat-tab label="My account">
+            <p class="sub-label"> User account </p>
+            <mat-list>
+                <mat-list-item> Username: {{(user$ | async).username}} </mat-list-item>
+                <mat-list-item> Email: {{(user$ | async).email}} </mat-list-item>
+                <mat-list-item> Password: ****** </mat-list-item>
+            </mat-list>
+            <button mat-raised-button>Edit personal info </button>
         </mat-tab>
     </mat-tab-group>
 </div>

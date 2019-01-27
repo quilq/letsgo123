@@ -23,3 +23,11 @@ a:hover {
 a:visited {
     color: rgb(0, 0, 0);
 }
+
+mat-form-field {
+    margin: 2% 0%;
+}
+
+.signin-button {
+    margin-top: 6%;
+}

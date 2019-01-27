@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 const { mongoose } = require('../database/mongoose');
+const { Tour } = require('./tour');
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -27,7 +28,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         minlength: 6,
         required: true
-    }
+    },
+    bookingsHistory: [],
+    currentBookings: []
 });
 
 //Hash password before saving
@@ -74,7 +77,7 @@ userSchema.methods.generateAuthToken = function () {
 }
 
 //Verify jwt
-userSchema.statics.findByToken = function(token) {
+userSchema.statics.findByToken = function (token) {
     let User = this;
     let decoded;
 
@@ -89,11 +92,11 @@ userSchema.statics.findByToken = function(token) {
     });
 }
 
-userSchema.methods.toJSON = function(){
+userSchema.methods.toJSON = function () {
     let user = this;
 
     let userObject = user.toObject();
-    return {_id: userObject._id, email: userObject.email, username: userObject.username}
+    return { _id: userObject._id, email: userObject.email, username: userObject.username }
 }
 
 const User = mongoose.model('User', userSchema);
