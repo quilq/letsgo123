@@ -58,7 +58,6 @@ router.post('/user/signup', (req, res) => {
     user.save().then(() => {
         return user.generateAuthToken();
     }).then((token) => {
-        console.log('test', token);
         res.header('x-auth', token).send(user);
     }).catch((e) => {
         res.status(400).send(e);
@@ -68,11 +67,9 @@ router.post('/user/signup', (req, res) => {
 //[User] Sign in
 router.post('/user/signin', (req, res) => {
     let body = { email: req.body.email, password: req.body.password };
-    console.log(body);
 
     User.findUserByCredentials(body.email, body.password).then((user) => {
         return user.generateAuthToken().then((token) => {
-            console.log('test', token);
             res.header('x-auth', token).send(user);
         });
     }).catch((e) => {

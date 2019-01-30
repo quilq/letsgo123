@@ -4,6 +4,7 @@ import { User } from '../../user.model';
 export const ON_SIGNIN = 'ON_SIGNIN';
 export const ON_SIGNUP = 'ON_SIGNUP';
 export const ON_SIGNOUT = 'ON_SIGNOUT';
+//Check auth status (local storage)
 
 export const SIGNIN = 'SIGNIN';
 export const SIGNUP = 'SIGNUP';

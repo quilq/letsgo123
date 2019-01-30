@@ -19,11 +19,14 @@ export class AuthEffects {
                 .pipe(
                     map((response: any) => {
                         let user = { username: response.body.username, email: response.body.email };
-                        let token: string = response.headers.get('x-auth');
-                        localStorage.setItem('token', token);
-                        this.router.navigate(['/user']);
-                        console.log('sign up called');
-                        return new AuthActions.Signup({ user, token });
+                        if (user){
+                            let token: string = response.headers.get('x-auth');
+                            localStorage.setItem('token', token);
+                            this.router.navigate(['/user']);
+                            return new AuthActions.Signup({ user, token });
+                        } else {
+                            alert('Please try again !');
+                        }
                     })
                 )
         })
@@ -37,11 +40,15 @@ export class AuthEffects {
                 .pipe(
                     map((response: any) => {
                         let user = { username: response.body.username, email: response.body.email };
-                        let token: string = response.headers.get('x-auth');
-                        localStorage.setItem('token', token);
-                        this.router.navigate(['/user']);
-                        console.log('sign in called');
-                        return new AuthActions.Signin({ user, token });
+                        if (user) {
+                            let token: string = response.headers.get('x-auth');
+                            localStorage.setItem('token', token);
+                            this.router.navigate(['/user']);
+                            console.log('sign in called');
+                            return new AuthActions.Signin({ user, token });
+                        }  else {
+                            alert('Wrong email or password !');
+                        }
                     })
                 )
         })
@@ -56,7 +63,6 @@ export class AuthEffects {
                 map(() => {
                     localStorage.removeItem('token');
                     this.router.navigate(['/']);
-                    console.log('sign out called');
                     return new AuthActions.Signout();
                 })
 

@@ -19,13 +19,13 @@ export class HeaderComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    //to do: check local storage for auth
     this.isAuthenticated$ = this.store.select('auth')
       .pipe(map(authState => authState.isAuthenticated));
   }
 
   onSignout() {
     this.store.dispatch(new AuthActions.OnSignout());
-    //todo: remove token
     this.closeSideNav();
   }
 
