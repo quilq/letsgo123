@@ -54,12 +54,19 @@ router.get('/id/:id', (req, res) => {
 //[User] Sign up
 router.post('/user/signup', (req, res) => {
     let body = { username: req.body.user.username, email: req.body.user.email, password: req.body.password };
-    let user = new User(body);
-    user.save().then(() => {
-        return user.generateAuthToken();
-    }).then((token) => {
-        res.header('x-auth', token).send(user);
+    
+    User.checkUsernameAndEmail(body.username, body.email).then(() => {
+        let user = new User(body);
+        user.save().then(() => {
+            return user.generateAuthToken();
+        }).then((token) => {
+            res.header('x-auth', token).send(user);
+        }).catch((e) => {
+            console.log(e);
+            res.status(400).send(e);
+        })
     }).catch((e) => {
+        console.log(e);
         res.status(400).send(e);
     })
 })
@@ -73,6 +80,7 @@ router.post('/user/signin', (req, res) => {
             res.header('x-auth', token).send(user);
         });
     }).catch((e) => {
+        console.log(e);
         res.status(400).send(e);
     })
 })

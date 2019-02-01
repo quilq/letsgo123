@@ -48,20 +48,37 @@ userSchema.pre('save', function (next) {
     }
 })
 
+userSchema.statics.checkUsernameAndEmail = function (username, email) {
+    let User = this;
+    return User.findOne({ username }).then(user => {
+        if (user) {
+            return Promise.reject('UsernameNotAvailable');
+        } else {
+            return Promise.resolve();
+        }
+    }).then(() => User.findOne({ email }).then(user => {
+        if (user) {
+            return Promise.reject('EmailRegistered')
+        } else {
+            return Promise.resolve();
+        }
+    }));
+}
+
 //Check hashed password when user logged in (Use statics method for model)
 userSchema.statics.findUserByCredentials = function (email, password) {
     let User = this;
 
     return User.findOne({ email }).then(user => {
         if (!user) {
-            return Promise.reject();
+            return Promise.reject('UserNotExist');
         }
         return new Promise((resolve, reject) => {
             bcrypt.compare(password, user.password, (err, result) => {
                 if (result) {
                     resolve(user);
                 } else {
-                    reject(user);
+                    reject('WrongPassword');
                 }
             });
         });
