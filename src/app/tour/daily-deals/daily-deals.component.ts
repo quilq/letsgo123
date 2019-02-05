@@ -28,7 +28,7 @@ export class DailyDealsComponent implements OnInit {
   }
 
   bookTour(tour: Tour) {
-    this.store.dispatch(new BookingActions.BookTour({ tour: tour, dates: [new Date()] }));
+    this.store.dispatch(new BookingActions.BookTour({ tour: tour, bookingDate: new Date() }));
   }
 
 }

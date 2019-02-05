@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+
 import { Booking } from './../booking.model';
 
 export const BOOK_TOUR = 'BOOK_TOUR';

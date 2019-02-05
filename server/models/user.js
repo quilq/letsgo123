@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 
 const { mongoose } = require('../database/mongoose');
 const { Tour } = require('./tour');
+const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -29,8 +30,8 @@ const userSchema = new mongoose.Schema({
         minlength: 6,
         required: true
     },
-    bookingsHistory: [],
-    currentBookings: []
+    bookingsHistory: [{type: Schema.Types.ObjectId, ref: 'Tour' }],
+    currentBookings: [{type: Schema.Types.ObjectId, ref: 'Tour' }]
 });
 
 //Hash password before saving
