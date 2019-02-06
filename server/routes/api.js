@@ -99,6 +99,12 @@ router.get('/user/me', (req, res) => {
 
 })
 
+//Update booking
+router.patch('/user-booking', (req, res) => {
+    //send back bookings
+    res.send()
+})
+
 //[User] Update user info
 
 //[User] Delete user info

@@ -30,8 +30,18 @@ const userSchema = new mongoose.Schema({
         minlength: 6,
         required: true
     },
-    bookingsHistory: [{type: Schema.Types.ObjectId, ref: 'Tour' }],
-    currentBookings: [{type: Schema.Types.ObjectId, ref: 'Tour' }]
+    bookingsHistory: [{
+        tour: {
+            type: Schema.Types.ObjectId, ref: 'Tour'
+        },
+        bookingDate: Date
+    }],
+    currentBookings: [{
+        tour: {
+            type: Schema.Types.ObjectId, ref: 'Tour'
+        },
+        bookingDate: Date
+    }]
 });
 
 //Hash password before saving

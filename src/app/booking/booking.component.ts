@@ -33,4 +33,9 @@ export class BookingComponent implements OnInit {
   removeTour(i: number) {
     this.store.dispatch(new BookingActions.RemoveTour(i));
   }
+
+  //update bookings on server
+  updateBooking(){
+    this.store.dispatch(new BookingActions.OnUpdateBooking());
+  }
 }

@@ -1,10 +1,10 @@
-import { Tour } from "../tour/tour.model";
+import { Booking } from "../booking/booking.model";
 
 export class User {
     username: string;
     email: string;
-    bookingsHistory?: Tour[];
-    currentBookings?: Tour[];
+    bookingsHistory?: Booking[];
+    currentBookings?: Booking[];
 
     constructor(username: string = '', email: string =''){
         this.username = username;

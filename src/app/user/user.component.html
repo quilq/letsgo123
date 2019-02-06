@@ -11,18 +11,14 @@
     <mat-tab-group>
         <mat-tab label="History">
             <p class="sub-label">Departed tours</p>
-            <mat-list>
-                <mat-list-item>Tour 1 | Jan 1st 2019</mat-list-item>
-                <mat-list-item>Tour 2 | Feb 2nd 2019</mat-list-item>
-                <mat-list-item>Tour 3 | Mar 3rd 2019</mat-list-item>
-                <mat-list-item>Tour 3 | Apr 4th 2019</mat-list-item>
+            <mat-list *ngFor="let bookingHistory of ((user$ | async).bookingsHistory)" >
+                <mat-list-item> {{bookingHistory.tour }} | {{bookingHistory.bookingDate }} </mat-list-item>
             </mat-list>
         </mat-tab>
         <mat-tab label="My bookings">
             <p class="sub-label"> Current bookings </p>
-            <mat-list>
-                <mat-list-item>Tour 1 | Jan 1st 2020</mat-list-item>
-                <mat-list-item>Tour 2 | Feb 2nd 2020</mat-list-item>
+            <mat-list *ngFor="let currentBooking of ((user$ | async).currentBookings)">
+                <mat-list-item> {{currentBooking.tour }} | {{currentBooking.bookingDate }} </mat-list-item>
             </mat-list>
         </mat-tab>
         <mat-tab label="Payment method">
