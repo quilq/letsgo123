@@ -9,8 +9,6 @@ export const ON_GET_TOUR_BY_ID = 'ON_GET_TOURS_BY_ID';
 export const GET_TOUR_BY_ID = 'GET_TOURS_BY_ID';
 export const ON_GET_TOUR_BY_ADDRESS = 'ON_GET_TOUR_BY_ADDRESS';
 export const GET_TOUR_BY_ADDRESS = 'GET_TOUR_BY_ADDRESS';
-export const ON_SEARCH_TOUR_BY_ADDRESS_AND_DATE = 'ON_SEARCH_TOUR_BY_ADDRESS_AND_DATE';
-export const SEARCH_TOUR_BY_ADDRESS_AND_DATE = 'SEARCH_TOUR_BY_ADDRESS_AND_DATE';
 export const ADD_TOURS = 'ADD_TOURS';
 export const UPDATE_TOURS_TO_SHOW = 'UPDATE_TOURS_TO_SHOW';
 
@@ -53,16 +51,6 @@ export class GetTourByAddress implements Action {
     constructor(public payload: Tour[]) { }
 };
 
-export class OnSearchTourByAddressAndDate implements Action {
-    readonly type = ON_SEARCH_TOUR_BY_ADDRESS_AND_DATE;
-    constructor(public payload: {from: string, to: string, date: Date}) { };
-};
-
-export class SearchTourByAddressAndDate implements Action {
-    readonly type = SEARCH_TOUR_BY_ADDRESS_AND_DATE;
-    constructor(public payload: Tour[]) { }
-};
-
 export class AddTours implements Action {
     readonly type = ADD_TOURS;
     constructor(public payload: Tour[]) { }
@@ -82,6 +70,4 @@ export type Actions = GetTours
 | OnGetTourByAddress 
 | GetTourByAddress
 | OnGetDiscountedTours
-| GetDiscountedTours 
-| OnSearchTourByAddressAndDate
-| SearchTourByAddressAndDate ;
+| GetDiscountedTours;

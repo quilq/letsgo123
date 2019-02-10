@@ -50,18 +50,6 @@ export class TourEffects {
     )
 
     @Effect()
-    searchTourByAddressAndDate$: Observable<Action> = this.actions$.pipe(
-        ofType(TourActions.ON_SEARCH_TOUR_BY_ADDRESS_AND_DATE),
-        switchMap((action: TourActions.OnSearchTourByAddressAndDate) =>
-            this.tourService.searchTourByAddressAndDate(action.payload.from, action.payload.to, action.payload.date)
-                .pipe(
-                    map((tours: Tour[]) => new TourActions.SearchTourByAddressAndDate(tours))
-                )
-        )
-    )
-
-
-    @Effect()
     getDiscountedTour$: Observable<Action> = this.actions$.pipe(
         ofType(TourActions.ON_GET_DISCOUNTED_TOURS),
         switchMap(() => this.tourService.findDiscountedTours().pipe(

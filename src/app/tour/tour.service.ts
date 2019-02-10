@@ -30,11 +30,6 @@ export class TourService {
     return this.httpClient.get<Tour[]>(url);
   }
 
-  searchTourByAddressAndDate(from: string, to: string, date: Date){
-    let url = `/api/search/${from}/${to}/${date}`;
-    return this.httpClient.get<Tour[]>(url);
-  }
-
   addNewTour(){
     let url = `/api/tour/new`;
     console.log('findTours called!');

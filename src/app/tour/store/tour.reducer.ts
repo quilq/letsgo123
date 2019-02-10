@@ -42,7 +42,6 @@ export function tourReducer(state: ToursState = initialState, action: TourAction
 
         case TourActions.GET_TOUR_BY_ADDRESS:
         case TourActions.GET_DISCOUNTED_TOURS:
-        case TourActions.SEARCH_TOUR_BY_ADDRESS_AND_DATE:
         case TourActions.UPDATE_TOURS_TO_SHOW:
             return { ...state, toursToShow: action.payload };
 
