@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 
 import { AppState, departurePlaces, destinations } from '../../store/app.reducers';
-import * as TourActions from '../../tour/store/tour.action';
+import * as SearchActions from './store/search.action';
 import * as PopularPlacesAction from '../../popular-places/store/popular-places.action';
 
 export interface Place {
@@ -54,7 +54,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchTour(from, to, date) {
-    this.store.dispatch(new TourActions.OnSearchTourByAddressAndDate({ from, to, date }));
+    this.store.dispatch(new SearchActions.OnSearchTourByAddressAndDate({ from, to, date }));
     this.router.navigate(['/tour/search-result', { from, to, date }]);
   }
 }
